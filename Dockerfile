@@ -3,7 +3,7 @@ FROM node:20-slim
 WORKDIR /app
 
 # Copy package files first (for layer caching)
-COPY package.json .npmrc ./
+COPY package.json ./
 
 # Install ALL dependencies (no lockfile = npm install works)
 RUN npm install
