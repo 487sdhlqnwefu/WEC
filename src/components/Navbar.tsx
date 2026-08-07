@@ -19,6 +19,7 @@ const navLinks = [
   { label: "Vision", href: "/vision" },
   { label: "Store", href: "/store" },
   { label: "News", href: "/news" },
+  { label: "Decisions", href: "/decisions" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
