@@ -9,6 +9,7 @@ import Store from "./pages/Store";
 import News from "./pages/News";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
+import Decisions from "./pages/Decisions";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ export default function App() {
         <Route path="/news" element={<News />} />
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/decisions" element={<Decisions />} />
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="/login" element={<Login />} />
