@@ -6,6 +6,7 @@ const footerLinks = {
     { label: "About WEC", href: "/about" },
     { label: "History", href: "/history" },
     { label: "WEC 2026 Panama", href: "/panama-2026" },
+    { label: "Live Bracket", href: "/live/wec-2026-panama" },
     { label: "Our Vision", href: "/vision" },
   ],
   participate: [

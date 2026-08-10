@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/providers/trpc";
 import { toast } from "sonner";
@@ -162,13 +163,13 @@ export default function Panama2026() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-5 h-5 text-cinnamon-400" />
-                <span>Panama City, Panama</span>
+                <span>Café Unido, Panama City</span>
               </div>
             </div>
             <p className="text-lg sm:text-xl text-sand-400 max-w-2xl mx-auto mb-10">
-              Panama is one of the most respected coffee origins in the world.
-              Home of the Gesha variety. A perfect stage for the world's most
-              objective espresso competition.
+              Café Unido hosts WEC 2026 and is the roaster sponsor. Same coffee.
+              Same machine. Blind sensory judging under Scoring v3. The cup
+              decides.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -179,6 +180,15 @@ export default function Panama2026() {
                 <Trophy className="mr-2 w-5 h-5" />
                 Register Now
               </Button>
+              <Link to="/live/wec-2026-panama">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8"
+                >
+                  Live Bracket
+                </Button>
+              </Link>
               <Button
                 size="lg"
                 variant="outline"

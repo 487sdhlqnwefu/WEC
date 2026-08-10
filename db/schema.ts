@@ -209,3 +209,96 @@ export const nationalOrganisers = mysqlTable("national_organisers", {
 });
 
 export type NationalOrganiser = typeof nationalOrganisers.$inferSelect;
+
+// ─── Tournaments (WBT-ready; WEC is espresso format under sensory family) ──
+export const tournaments = mysqlTable("tournaments", {
+  id: serial("id").primaryKey(),
+  eventId: bigint("eventId", { mode: "number", unsigned: true }),
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  name: varchar("name", { length: 255 }).notNull(),
+  /** Public brand shown on site */
+  brand: mysqlEnum("brand", ["wec", "wbt", "wlat"]).default("wec").notNull(),
+  /** Platform family — sensory (WBT) vs visual (WLAT) */
+  family: mysqlEnum("family", ["sensory", "visual"]).default("sensory").notNull(),
+  drinkFormat: varchar("drinkFormat", { length: 100 }).default("espresso"),
+  venue: varchar("venue", { length: 255 }),
+  location: varchar("location", { length: 255 }),
+  eventDate: varchar("eventDate", { length: 100 }),
+  roasterSponsor: varchar("roasterSponsor", { length: 255 }),
+  status: mysqlEnum("status", ["draft", "seeding", "ready", "live", "completed"]).default("draft").notNull(),
+  competitorLimit: int("competitorLimit").default(32).notNull(),
+  judgesPerHeat: int("judgesPerHeat").default(3).notNull(),
+  winThreshold: int("winThreshold").default(50).notNull(),
+  scoringVersion: varchar("scoringVersion", { length: 20 }).default("v3").notNull(),
+  championCompetitorId: bigint("championCompetitorId", { mode: "number", unsigned: true }),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().notNull().$onUpdate(() => new Date()),
+});
+
+export type Tournament = typeof tournaments.$inferSelect;
+
+export const tournamentCompetitors = mysqlTable("tournament_competitors", {
+  id: serial("id").primaryKey(),
+  tournamentId: bigint("tournamentId", { mode: "number", unsigned: true }).notNull(),
+  registrationId: bigint("registrationId", { mode: "number", unsigned: true }),
+  seed: int("seed").notNull(),
+  displayName: varchar("displayName", { length: 255 }).notNull(),
+  country: varchar("country", { length: 100 }).notNull(),
+  status: mysqlEnum("status", ["active", "eliminated", "champion", "withdrawn"]).default("active").notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type TournamentCompetitor = typeof tournamentCompetitors.$inferSelect;
+
+export const tournamentJudges = mysqlTable("tournament_judges", {
+  id: serial("id").primaryKey(),
+  tournamentId: bigint("tournamentId", { mode: "number", unsigned: true }).notNull(),
+  registrationId: bigint("registrationId", { mode: "number", unsigned: true }),
+  displayName: varchar("displayName", { length: 255 }).notNull(),
+  slot: int("slot"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type TournamentJudge = typeof tournamentJudges.$inferSelect;
+
+export const tournamentMatches = mysqlTable("tournament_matches", {
+  id: serial("id").primaryKey(),
+  tournamentId: bigint("tournamentId", { mode: "number", unsigned: true }).notNull(),
+  round: int("round").notNull(),
+  matchNumber: int("matchNumber").notNull(),
+  competitorAId: bigint("competitorAId", { mode: "number", unsigned: true }),
+  competitorBId: bigint("competitorBId", { mode: "number", unsigned: true }),
+  /** Blind service — who is in Cup A / Cup B (hidden from judge UI) */
+  cupACompetitorId: bigint("cupACompetitorId", { mode: "number", unsigned: true }),
+  cupBCompetitorId: bigint("cupBCompetitorId", { mode: "number", unsigned: true }),
+  status: mysqlEnum("status", ["pending", "ready", "in_progress", "completed", "void"]).default("pending").notNull(),
+  winnerId: bigint("winnerId", { mode: "number", unsigned: true }),
+  scoreA: int("scoreA").default(0),
+  scoreB: int("scoreB").default(0),
+  scoreATactile: int("scoreATactile").default(0),
+  scoreATaste: int("scoreATaste").default(0),
+  scoreAFlavour: int("scoreAFlavour").default(0),
+  scoreBTactile: int("scoreBTactile").default(0),
+  scoreBTaste: int("scoreBTaste").default(0),
+  scoreBFlavour: int("scoreBFlavour").default(0),
+  startedAt: timestamp("startedAt"),
+  completedAt: timestamp("completedAt"),
+  notes: text("notes"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type TournamentMatch = typeof tournamentMatches.$inferSelect;
+
+export const tournamentBallots = mysqlTable("tournament_ballots", {
+  id: serial("id").primaryKey(),
+  matchId: bigint("matchId", { mode: "number", unsigned: true }).notNull(),
+  judgeId: bigint("judgeId", { mode: "number", unsigned: true }),
+  judgeSlot: int("judgeSlot").notNull(),
+  judgeName: varchar("judgeName", { length: 255 }),
+  tactileChoice: mysqlEnum("tactileChoice", ["A", "B"]).notNull(),
+  tasteChoice: mysqlEnum("tasteChoice", ["A", "B"]).notNull(),
+  flavourChoice: mysqlEnum("flavourChoice", ["A", "B"]).notNull(),
+  submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+});
+
+export type TournamentBallot = typeof tournamentBallots.$inferSelect;

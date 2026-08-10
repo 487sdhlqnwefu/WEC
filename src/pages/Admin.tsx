@@ -13,12 +13,16 @@ import {
   CheckCircle,
   XCircle,
   Clock,
+  GitBranch,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import TournamentAdminPanel from "@/components/tournament/TournamentAdminPanel";
 
 export default function Admin() {
   const { user, isLoading, isAuthenticated } = useAuth();
-  const [activeTab, setActiveTab] = useState<"overview" | "registrations" | "sponsors" | "contacts" | "products" | "news">("overview");
+  const [activeTab, setActiveTab] = useState<
+    "overview" | "tournament" | "registrations" | "sponsors" | "contacts" | "products" | "news"
+  >("tournament");
 
   // Redirect non-admin users
   if (!isLoading && (!isAuthenticated || user?.role !== "admin")) {
@@ -40,7 +44,8 @@ export default function Admin() {
         <div className="wec-container py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Shield className="w-6 h-6 text-gold" />
+              <img src="/assets/logo-white.png" alt="WEC" className="h-8 w-8 object-contain" />
+              <Shield className="w-5 h-5 text-gold" />
               <h1 className="text-lg font-semibold text-sand-100">
                 Admin Dashboard
               </h1>
@@ -55,6 +60,7 @@ export default function Admin() {
       <div className="wec-container py-6">
         <div className="flex flex-wrap gap-2 mb-8">
           {[
+            { id: "tournament" as const, label: "Tournament", icon: GitBranch },
             { id: "overview" as const, label: "Overview", icon: BarChart3 },
             { id: "registrations" as const, label: "Registrations", icon: Users },
             { id: "sponsors" as const, label: "Sponsors", icon: Trophy },
@@ -76,6 +82,7 @@ export default function Admin() {
           ))}
         </div>
 
+        {activeTab === "tournament" && <TournamentAdminPanel />}
         {activeTab === "overview" && <OverviewTab />}
         {activeTab === "registrations" && <RegistrationsTab />}
         {activeTab === "sponsors" && <SponsorsTab />}

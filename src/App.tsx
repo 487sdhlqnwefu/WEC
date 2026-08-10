@@ -10,6 +10,7 @@ import News from "./pages/News";
 import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Decisions from "./pages/Decisions";
+import LiveTournament from "./pages/LiveTournament";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
@@ -22,6 +23,8 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/history" element={<History />} />
         <Route path="/panama-2026" element={<Panama2026 />} />
+        <Route path="/live" element={<LiveTournament />} />
+        <Route path="/live/:slug" element={<LiveTournament />} />
         <Route path="/vision" element={<Vision />} />
         <Route path="/store" element={<Store />} />
         <Route path="/news" element={<News />} />

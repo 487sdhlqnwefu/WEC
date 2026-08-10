@@ -9,7 +9,7 @@ const faqCategories = [
     questions: [
       {
         q: "What is ISO 5495 paired comparison methodology?",
-        a: "ISO 5495:2005 is the international standard for sensory analysis — methodology of paired comparison. In WEC, two espressos are presented to a judge who selects the better one. No scores, no deliberation. This binary choice removes bias, scoring drift, and politics from the competition.",
+        a: "ISO 5495:2005 is the international standard for sensory analysis — methodology of paired comparison. In WEC Scoring v3, judges choose Cup A or Cup B for Tactile (15 pts), Taste (10 pts), and Flavour (8 pts). Three judges = 99 points. 50+ wins. No visual categories, no deliberation.",
       },
       {
         q: "How many competitors participate?",
@@ -17,11 +17,15 @@ const faqCategories = [
       },
       {
         q: "What equipment is used?",
-        a: "All competitors use the exact same espresso machine, grinder, and tools. The coffee is identical — same beans, roasted identically. The only variable is the barista.",
+        a: "All competitors use the exact same espresso machine, grinder, and tools. The coffee is roasted by Café Unido — same beans for everyone. The only variable is the barista.",
       },
       {
         q: "How does blind judging work?",
-        a: "Judges never know whose coffee is whose. Each match presents two cups labeled A and B. The judge chooses the better espresso. No discussion, no deliberation. The coffee speaks for itself.",
+        a: "Judges never know whose coffee is whose. Each match presents two cups labeled A and B. Judges choose A or B independently for Tactile, Taste, and Flavour. No discussion, no deliberation. Results publish live on the public bracket.",
+      },
+      {
+        q: "Where can I watch results live?",
+        a: "The public live bracket is at /live/wec-2026-panama on this site. Match outcomes and scores update as heats complete.",
       },
     ],
   },
@@ -85,7 +89,7 @@ const faqCategories = [
     questions: [
       {
         q: "Where is WEC 2026 held?",
-        a: "WEC 2026 will be held on 26 October 2026 in Panama City, Panama. The exact venue will be confirmed soon.",
+        a: "WEC 2026 will be held on 26 October 2026 at Café Unido in Panama City, Panama. Café Unido is also the roaster sponsor for the championship.",
       },
       {
         q: "Do you cover travel costs?",

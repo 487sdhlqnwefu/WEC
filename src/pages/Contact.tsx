@@ -91,7 +91,7 @@ export default function Contact() {
                     <p className="text-sm text-sand-400">
                       26 October 2026
                       <br />
-                      Panama City, Panama
+                      Café Unido, Panama City
                     </p>
                   </div>
                 </div>

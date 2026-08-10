@@ -50,9 +50,9 @@ export default function About() {
       title: "Competition Format",
       content: `The World Espresso Championship is a single-elimination tournament built on ISO 5495:2005 paired comparison methodology. 32 country champions compete in 5 rounds of single-elimination competition. 31 matches total. One winner.
 
-Each match: Two competitors face each other with the same coffee, same equipment, blind judge. The judge chooses the better espresso. No scores. No deliberation. The coffee speaks. The judge decides. The loser is eliminated. The winner advances.
+Each match: Two competitors face each other with the same coffee, same equipment, blind judges. Three sensory categories — Tactile (15), Taste (10), Flavour (8) — scored as Cup A or Cup B per judge. No visual categories. No deliberation. 99 points total across three judges. 50+ wins.
 
-This is binary preference testing — the same methodology used in sensory science worldwide. It removes bias, removes scoring drift, and removes the politics that have plagued coffee competitions for decades.`,
+This is Scoring v3: texture carries the most weight because it is the most objective and consumer-relevant attribute. Flavour cannot decide a heat alone. The coffee speaks. The judges choose. The loser is eliminated. The winner advances.`,
     },
     {
       id: "coffee",
