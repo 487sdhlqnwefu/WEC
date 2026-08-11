@@ -4,6 +4,7 @@ import { Instagram, Mail, ExternalLink } from "lucide-react";
 const footerLinks = {
   championship: [
     { label: "About WEC", href: "/about" },
+    { label: "How Judging Works", href: "/judging" },
     { label: "History", href: "/history" },
     { label: "WEC 2026 Panama", href: "/panama-2026" },
     { label: "Live Bracket", href: "/live/wec-2026-panama" },
@@ -11,8 +12,8 @@ const footerLinks = {
   ],
   participate: [
     { label: "Competitor Registration", href: "/panama-2026" },
+    { label: "Become a Sponsor", href: "/panama-2026#sponsors" },
     { label: "Judge Registration", href: "/panama-2026" },
-    { label: "Volunteer", href: "/panama-2026" },
     { label: "National Organisers", href: "/about" },
   ],
   resources: [

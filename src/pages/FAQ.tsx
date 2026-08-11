@@ -55,15 +55,15 @@ const faqCategories = [
     questions: [
       {
         q: "What sponsorship tiers are available?",
-        a: "We offer Title Sponsor (€250,000), Green Sponsor ($5,000+), Gold Sponsor (€50,000), Silver Sponsor (€25,000), and Supporting Sponsor (€10,000). Each tier includes different benefits including branding, media coverage, and hospitality.",
+        a: "Presenting Partner (€15–25k), Official Partner (€7.5–12k), Supporting Partner (€2.5–5k), plus in-kind/trade by agreement. Café Unido is already confirmed as venue and roaster sponsor. Our cash target to run Panama cleanly is about €20,000.",
       },
       {
-        q: "What does the title sponsor receive?",
-        a: "The title sponsor gets full naming rights ('WEC 2026 presented by [Your Brand]'), partnership in the Champion's Coffee Product, global media coverage, on-site branding, prominent website placement, and VIP hospitality.",
+        q: "What does a presenting partner receive?",
+        a: "Lead recognition ('presented with [Your Brand]'), on-site branding at Café Unido, logo on the live bracket and website, social/LinkedIn mentions, hospitality passes, and optional demo space.",
       },
       {
-        q: "Can I sponsor as a small roaster?",
-        a: "Absolutely! The Green Sponsor tier starts at $5,000 and gives you association with the champion's product and 3% commission on future green sales. Every sponsor matters.",
+        q: "Can smaller brands still sponsor?",
+        a: "Yes. Supporting Partner starts around €2,500, and we welcome in-kind partners (machines, water, media, travel support). Every partner that helps Panama run well matters.",
       },
     ],
   },

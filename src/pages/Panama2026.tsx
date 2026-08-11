@@ -81,52 +81,56 @@ export default function Panama2026() {
 
   const sponsorTiers = [
     {
-      name: "Title Sponsor",
-      price: "€250,000",
-      description: "Full naming rights, champion's product partnership, global media coverage",
+      name: "Presenting Partner",
+      price: "€15,000–€25,000",
+      description:
+        "Lead equipment or brand partner. Closest association with the live, blind format.",
       features: [
-        "'WEC 2026 presented by [Your Brand]'",
-        "Champion's Coffee Product partnership",
-        "Global media coverage & logo placement",
-        "On-site full branding at venue",
-        "Prominent placement on website",
-        "VIP hospitality package",
+        "'WEC 2026 presented with [Your Brand]' recognition",
+        "On-site branding at Café Unido",
+        "Logo on live bracket + website",
+        "Social + LinkedIn campaign mentions",
+        "2–4 team passes / hospitality",
+        "Optional machine or product demo zone",
       ],
       highlighted: true,
     },
     {
-      name: "Gold Sponsor",
-      price: "€50,000",
-      description: "Equipment branding, media coverage, hospitality access",
+      name: "Official Partner",
+      price: "€7,500–€12,000",
+      description:
+        "Strong visibility for grinders, water, milk, or media brands that fit the sensory story.",
       features: [
-        "Equipment branding rights",
-        "Media coverage & press releases",
-        "Hospitality package",
-        "Logo on website & materials",
-        "Social media mentions",
+        "Category exclusivity where possible",
+        "Logo on website + event materials",
+        "Live-board mention during finals",
+        "Social media package",
+        "2 team passes",
       ],
       highlighted: false,
     },
     {
-      name: "Silver Sponsor",
-      price: "€25,000",
-      description: "Digital presence, logo placement, event access",
+      name: "Supporting Partner",
+      price: "€2,500–€5,000",
+      description:
+        "Accessible entry for roasters, tools, and regional brands who want to stand with WEC.",
       features: [
-        "Digital presence on all channels",
-        "Logo placement on materials",
-        "Event access for team",
-        "Social media mentions",
+        "Logo on website sponsor wall",
+        "Social thank-you posts",
+        "Name in event programme",
+        "1 team pass",
       ],
       highlighted: false,
     },
     {
-      name: "Supporting Sponsor",
-      price: "€10,000",
-      description: "Logo on website, social media mentions",
+      name: "In-kind / Trade",
+      price: "By agreement",
+      description:
+        "Coffee already covered by Café Unido. Open for machines, water, cups, media, travel support.",
       features: [
-        "Logo on website",
-        "Social media mentions",
-        "Event access",
+        "Negotiated visibility for real operational value",
+        "Credit on site + live board where relevant",
+        "Warm intro to competitor & judge network",
       ],
       highlighted: false,
     },
@@ -301,16 +305,38 @@ export default function Panama2026() {
           {/* Sponsors Content */}
           {activeTab === "sponsors" && (
             <div>
-              <div className="text-center mb-12" id="sponsors">
+              <div className="text-center mb-10" id="sponsors">
                 <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
-                  Why Roasters Should Sponsor
+                  Partner with WEC 2026
                 </h2>
-                <p className="text-sand-400 max-w-3xl mx-auto">
-                  The title sponsor gets to develop, roast, and sell the
-                  first-ever Champion's Coffee Product. This is unprecedented in
-                  coffee. No other competition does this.
+                <p className="text-sand-400 max-w-3xl mx-auto mb-6">
+                  Café Unido is confirmed as venue and roaster sponsor. We are
+                  filling the remaining stack — equipment, water, tools, media —
+                  with partners who want their name on the most objective espresso
+                  format in coffee.
                 </p>
+                <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-5 py-3 rounded-xl bg-gold/10 border border-gold/30 text-sm">
+                  <span className="text-gold font-medium">Funding target</span>
+                  <span className="text-sand-200">
+                    ~€20,000 cash + in-kind to run Panama cleanly
+                  </span>
+                </div>
               </div>
+
+              <div className="wec-card rounded-xl p-6 mb-10 max-w-3xl mx-auto">
+                <h3 className="font-semibold text-sand-100 mb-2">Why sponsor this?</h3>
+                <ul className="space-y-2 text-sm text-sand-400">
+                  <li>• Blind sensory format — your brand beside trust, not politics</li>
+                  <li>• Public live bracket software — results the industry can watch</li>
+                  <li>• Same week the global coffee community is already in Panama</li>
+                  <li>• Honest packages sized for real partners (not fantasy title fees)</li>
+                </ul>
+                <Link to="/judging" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300 mt-4">
+                  Read how Scoring v3 works
+                  <ArrowRight className="ml-1 w-4 h-4" />
+                </Link>
+              </div>
+
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {sponsorTiers.map((tier) => (
                   <div
@@ -324,13 +350,13 @@ export default function Panama2026() {
                     {tier.highlighted && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold/10 border border-gold/30 text-xs text-gold mb-3 self-start">
                         <Star className="w-3 h-3" />
-                        Recommended
+                        Best fit for lead partners
                       </span>
                     )}
                     <h3 className="text-lg font-bold text-sand-100 mb-1">
                       {tier.name}
                     </h3>
-                    <div className="text-2xl font-bold text-gold mb-2">
+                    <div className="text-xl font-bold text-gold mb-2">
                       {tier.price}
                     </div>
                     <p className="text-sm text-sand-500 mb-4 flex-1">

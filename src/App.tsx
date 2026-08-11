@@ -11,6 +11,7 @@ import FAQ from "./pages/FAQ";
 import Contact from "./pages/Contact";
 import Decisions from "./pages/Decisions";
 import LiveTournament from "./pages/LiveTournament";
+import Judging from "./pages/Judging";
 import PreviewLiveBoard from "./pages/previews/PreviewLiveBoard";
 import PreviewAdminControl from "./pages/previews/PreviewAdminControl";
 import PreviewJudgingTrust from "./pages/previews/PreviewJudgingTrust";
@@ -28,6 +29,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/history" element={<History />} />
         <Route path="/panama-2026" element={<Panama2026 />} />
+        <Route path="/judging" element={<Judging />} />
         <Route path="/live" element={<LiveTournament />} />
         <Route path="/live/:slug" element={<LiveTournament />} />
         <Route path="/vision" element={<Vision />} />

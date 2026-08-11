@@ -292,8 +292,8 @@ export default function Home() {
                 Sponsors
               </h3>
               <p className="text-sand-400 text-sm leading-relaxed mb-6">
-                From €10,000 to €250,000 title sponsorship. Be part of the most
-                innovative product launch in coffee history.
+                From €2,500 supporting partners up to presenting partners.
+                Help us fund Panama — and stand beside a format people can trust.
               </p>
               <Link to="/panama-2026#sponsors">
                 <Button

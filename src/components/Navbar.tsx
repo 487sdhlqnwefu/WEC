@@ -14,12 +14,11 @@ import { Menu, User, LogOut, Shield } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "History", href: "/history" },
+  { label: "Judging", href: "/judging" },
   { label: "WEC 2026", href: "/panama-2026" },
   { label: "Live", href: "/live/wec-2026-panama" },
   { label: "Vision", href: "/vision" },
   { label: "Store", href: "/store" },
-  { label: "News", href: "/news" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
