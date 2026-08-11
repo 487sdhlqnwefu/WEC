@@ -387,12 +387,10 @@ export default function Panama2026() {
                   <input name="phone" placeholder="Phone" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
                   <select name="tier" className="wec-input w-full px-4 py-3 rounded-lg text-sm" defaultValue="">
                     <option value="">Select Tier</option>
-                    <option value="title">Title Sponsor (€250,000)</option>
-                    <option value="green">Green Sponsor ($5,000+)</option>
-                    <option value="gold">Gold Sponsor (€50,000)</option>
-                    <option value="silver">Silver Sponsor (€25,000)</option>
-                    <option value="supporting">Supporting Sponsor (€10,000)</option>
-                    <option value="custom">Custom</option>
+                    <option value="title">Presenting Partner (€15–25k)</option>
+                    <option value="gold">Official Partner (€7.5–12k)</option>
+                    <option value="supporting">Supporting Partner (€2.5–5k)</option>
+                    <option value="custom">In-kind / Trade</option>
                   </select>
                   <input name="website" placeholder="Company Website" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
                   <input name="budget" placeholder="Budget Range" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
