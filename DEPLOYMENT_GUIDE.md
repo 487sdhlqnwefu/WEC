@@ -12,10 +12,11 @@ Make sure this repo is on GitHub (you already have it if you’re reading this f
 2. **Add new site** → **Import an existing project** → choose GitHub
 3. Select the `WEC` repository
 4. Netlify reads `netlify.toml` automatically:
-   - **Build command:** `npm run build:client`
+   - **Build command:** `npm run build:netlify`
    - **Publish directory:** `dist/public`
    - **Node version:** `20`
 5. Click **Deploy site**
+6. **Production blocker:** fill `src/config/legalIdentity.ts` before production publish (see `docs/LEGAL_IDENTITY.md`). Deploy previews can build with incomplete legal identity; production cannot.
 
 ### Step 3: Optional env vars (Netlify → Site configuration → Environment variables)
 | Variable | When you need it |
@@ -217,8 +218,17 @@ npm run check
 # Build for production (frontend + API server bundle)
 npm run build
 
-# Build frontend only (Netlify / static hosts)
+# Build frontend only + prerender public routes (Netlify / static hosts)
 npm run build:client
+
+# Same as Netlify build (includes legal-identity assert)
+npm run build:netlify
+
+# Verify prerendered routes return HTTP 200 and unknown paths HTTP 404
+npm run verify:status
+
+# Regenerate 1200×630 Open Graph images from event photos
+npm run og:generate
 
 # Database operations
 npm run db:push      # Sync schema to database

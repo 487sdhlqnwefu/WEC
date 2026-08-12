@@ -9,7 +9,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && esbuild api/boot.ts --platform=node --bundle --format=esm --outdir=dist --banner:js=\"import { createRequire } from 'module';const require = createRequire(import.meta.url);\"",
-    "build:client": "vite build",
+    "build:client": "vite build && node scripts/prerender.mjs",
+    "build:netlify": "node scripts/assert-legal-ready.mjs && npm run build:client",
+    "og:generate": "python3 scripts/generate-og-images.py",
+    "assert:legal": "node scripts/assert-legal-ready.mjs",
+    "verify:status": "node scripts/verify-status.mjs",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "NODE_ENV=production node dist/boot.js",

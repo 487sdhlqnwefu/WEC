@@ -1,14 +1,21 @@
 # World Espresso Championship — Netlify frontend deploy
-# Connect this repo in Netlify (https://app.netlify.com) and deploy.
-# Forms, store checkout, admin, and auth need a separate API host
-# (see DEPLOYMENT_GUIDE.md). Set API_PROXY_URL below when ready.
+# Prerendered public routes → HTTP 200. Unknown paths → 404.html with true HTTP 404.
+# No soft SPA rewrite (that caused soft-404s for crawlers).
 
 [build]
-  command = "npm run build:client"
+  command = "npm run build:netlify"
   publish = "dist/public"
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Preview / branch deploys may build before legal identity is filled.
+# Production (CONTEXT=production) always requires complete legalIdentity.
+[context.deploy-preview.environment]
+  WEC_ALLOW_INCOMPLETE_LEGAL = "1"
+
+[context.branch-deploy.environment]
+  WEC_ALLOW_INCOMPLETE_LEGAL = "1"
 
 # Optional: proxy /api/* to your backend (Railway, etc.)
 # Uncomment and set the target after the API is live:
@@ -19,13 +26,21 @@
 #   status = 200
 #   force = true
 
-# SPA fallback for React Router
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# No /* → /index.html 200 rewrite.
+# Known routes are prerendered as /path/index.html.
+# Netlify serves 404.html with HTTP 404 for everything else.
 
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/og/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
