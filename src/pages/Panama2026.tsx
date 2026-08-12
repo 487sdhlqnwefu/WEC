@@ -115,6 +115,7 @@ export default function Panama2026() {
         title="WEC 2026 Panama | World Espresso Championship"
         description={`Register for WEC 2026 at Café Unido, Panama City on ${ev.dateDisplay}. Blind espresso championship with public scoring.`}
         path="/panama-2026"
+        image={`${SITE_URL}/assets/og/panama-2026.jpg`}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Event",
@@ -132,14 +133,8 @@ export default function Panama2026() {
             name: WEC_FACTS.organisation.legalName,
             url: SITE_URL,
           },
+          description: `${ev.independentEraNote} Registration: ${SITE_URL}${ev.registrationPath}`,
           url: `${SITE_URL}/panama-2026`,
-          offers: {
-            "@type": "Offer",
-            url: `${SITE_URL}${ev.registrationPath}`,
-            availability: "https://schema.org/InStock",
-            price: "0",
-            priceCurrency: "EUR",
-          },
         }}
       />
 

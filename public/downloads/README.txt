@@ -1,14 +1,12 @@
-Full deploy zip (all assets, ~318 MB compressed / ~321 MB unzipped):
-  Download from the cloud agent Artifacts panel:
-  wec-netlify-FOR-MAC.zip
+WEC Netlify package
+===================
 
-GitHub cannot host files over 100 MB, so the full package is not in the repo.
+Full deploy (all photos + prerendered routes + true 404):
+  Download from cloud agent Artifacts: wec-netlify-FOR-MAC.zip
 
-How to deploy:
-1. Download wec-netlify-FOR-MAC.zip from Artifacts
-2. Unzip (should be ~320 MB of files, not 4 MB)
-3. Drag the unzipped folder into Netlify Deploys
+This repo copy may be a lite subset under GitHub size limits.
 
-Verified JS/CSS for this build:
-  assets/index-Dq8jbAaF.js
-  assets/index-CECq-QzI.css
+Verified for this build:
+  assets/index-3HWD_6a6.js
+  assets/index-B9QXuFqH.css
+  404.html (HTTP 404 fallback via _redirects)

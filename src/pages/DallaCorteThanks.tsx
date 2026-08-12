@@ -12,6 +12,7 @@ export default function DallaCorteThanks() {
         title="Thank You, Dalla Corte | WEC 2022–2025"
         description="World Espresso Championship thanks founding equipment partner Dalla Corte for four years of support across WEC 2022, 2023, 2024 and 2025."
         path={WEC_FACTS.partners.foundingEquipment.pagePath}
+        image="https://worldespressochampionship.com/assets/og/dalla-corte.jpg"
       />
       <section className="wec-section">
         <div className="wec-container max-w-3xl">

@@ -1,3 +1,4 @@
+# Permanent redirects (evaluated before static files)
 /truth /news/cafe-unido-confirmed-wec-2026 301
 /truth.html /news/cafe-unido-confirmed-wec-2026 301
 /vision.html /vision 301
@@ -5,6 +6,7 @@
 /panama2026 /panama-2026 301
 /panama2026.html /panama-2026 301
 /participate /panama-2026 301
+/innovation-lab /innovation 301
 /champions/2022 /champions 301
 /champions/2022/ /champions 301
 /champions/2023 /champions 301
@@ -14,4 +16,7 @@
 /champions/2025 /champions 301
 /champions/2025/ /champions 301
 /think-tank /innovation 301
-/*    /index.html   200
+
+# Known public routes are prerendered as directory index.html files.
+# Anything else returns the branded 404 page with a genuine HTTP 404.
+/* /404.html 404

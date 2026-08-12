@@ -38,6 +38,7 @@ export default function Home() {
         title="World Espresso Championship (WEC)"
         description="The World Espresso Championship is a controlled, blind espresso competition. Same coffee. Same machine. Only the barista differs."
         path="/"
+        image={`${SITE_URL}/assets/og/home.jpg`}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Organization",

@@ -26,7 +26,7 @@ export default function Seo({
   description,
   path,
   type = "website",
-  image = `${SITE_URL}/assets/logo-original.png`,
+  image = `${SITE_URL}/assets/og/home.jpg`,
   noindex = false,
   jsonLd,
 }: SeoProps) {

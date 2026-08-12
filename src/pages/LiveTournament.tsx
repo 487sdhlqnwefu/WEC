@@ -33,6 +33,7 @@ export default function LiveTournament() {
         title={`${title} | World Espresso Championship`}
         description={`${ev.name} live results and bracket. ${ev.liveMessage}`}
         path={`/live/${boardSlug}`}
+        image={`${SITE_URL}/assets/og/live.jpg`}
         noindex={state === "fault"}
       />
       <div className="wec-section min-h-[60vh]">

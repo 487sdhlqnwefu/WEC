@@ -10,7 +10,8 @@ Disallow: /store
 User-agent: OAI-SearchBot
 Allow: /
 
-# GPTBot left undecided — do not assume search == training crawl
+# Model-training crawler kept separate from AI search discovery.
+# OAI-SearchBot allowed above; GPTBot blocked for now (can change later).
 User-agent: GPTBot
 Disallow: /
 

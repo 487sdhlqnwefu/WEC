@@ -8,7 +8,10 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build && esbuild api/boot.ts --platform=node --bundle --format=esm --outdir=dist --banner:js=\"import { createRequire } from 'module';const require = createRequire(import.meta.url);\"",
+    "og:generate": "python3 scripts/generate-og-images.py",
+    "prerender": "node scripts/prerender.mjs",
+    "build:web": "npm run og:generate && vite build && node scripts/prerender.mjs",
+    "build": "npm run build:web && esbuild api/boot.ts --platform=node --bundle --format=esm --outdir=dist --banner:js=\"import { createRequire } from 'module';const require = createRequire(import.meta.url);\"",
     "lint": "eslint .",
     "preview": "vite preview",
     "start": "NODE_ENV=production node dist/boot.js",

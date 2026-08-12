@@ -25,6 +25,9 @@ export const WEC_FACTS = {
     founderMailto: "mailto:tristan@worldespressochampionship.com",
     coreLine: "The cup is the only judge.",
     innovationLine: "Find excellence. Understand it. Build from it.",
+    /** See src/data/legalIdentity.ts for expandable formal-structure fields. */
+    identityStatement:
+      "World Espresso Championship is an independently organised community project coordinated by founder Tristan Creswick.",
   },
 
   features: {

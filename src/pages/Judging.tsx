@@ -38,6 +38,7 @@ export default function Judging() {
         title="How Judging Works | World Espresso Championship"
         description="Scoring v3: three independent judges, Tactile 15 / Taste 10 / Flavour 8, 99 points per heat, 50+ wins. Blind Cup A vs Cup B for the World Espresso Championship."
         path="/judging"
+        image="https://worldespressochampionship.com/assets/og/judging.jpg"
       />
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cinnamon-950/20 to-transparent" />

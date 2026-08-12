@@ -1,18 +1,21 @@
-# Static SPA on Netlify (no Node API on this host)
+# Static site with prerendered public routes (no Node API on this host)
 [build]
   publish = "dist/public"
-  command = "npx vite build"
+  command = "npm run build:web"
 
 # Forms: wec-registration, wec-sponsor, wec-contact, wec-organiser
 # Enable email notifications: Netlify → Forms → Form notifications → Add notification
 
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# Pretty URLs: /about → /about/index.html (Netlify default)
+# Unknown paths: HTTP 404 via public/_redirects → /404.html
 
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/assets/og/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

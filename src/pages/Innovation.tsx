@@ -1,6 +1,7 @@
-import { useEffect } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
+import { SITE_URL } from "@/data/wecFacts";
 import {
   ArrowRight,
   BookOpen,
@@ -109,25 +110,14 @@ const journey = [
 ];
 
 export default function Innovation() {
-  useEffect(() => {
-    document.title =
-      "Competition-Driven Coffee Innovation | World Espresso Championship";
-    const desc =
-      "WEC combines controlled espresso competition, purpose-built software, elite barista feedback and the Champion’s Protocol to turn world-class competition into a platform for learning and innovation.";
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
-    }
-    meta.setAttribute("content", desc);
-    return () => {
-      document.title = "World Espresso Championship";
-    };
-  }, []);
-
   return (
     <div>
+      <Seo
+        title="Innovation Lab | World Espresso Championship"
+        description="Find excellence. Understand it. Build from it. The WEC Innovation Lab supports the championship with structured insight."
+        path="/innovation"
+        image={`${SITE_URL}/assets/og/innovation.jpg`}
+      />
       {/* Hero — championship first, innovation as layer */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">

@@ -24,8 +24,8 @@ const footerLinks = {
     { label: "News & Media", href: "/news" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
-    { label: "Privacy", href: "/privacy" },
-    { label: "Terms", href: "/terms" },
+    { label: "Privacy & Data Use", href: "/privacy" },
+    { label: "Website & Participation Terms", href: "/terms" },
   ],
 };
 
@@ -126,10 +126,10 @@ export default function Footer() {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Link to="/privacy" className="text-xs text-sand-600 hover:text-sand-400">
-              Privacy Policy
+              Privacy &amp; Data Use
             </Link>
             <Link to="/terms" className="text-xs text-sand-600 hover:text-sand-400">
-              Terms of Use
+              Website &amp; Participation Terms
             </Link>
             <Link
               to={WEC_FACTS.partners.foundingEquipment.pagePath}

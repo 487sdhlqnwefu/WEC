@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 import { STATIC_EVENTS } from "@/data/staticContent";
+import { SITE_URL, WEC_FACTS } from "@/data/wecFacts";
 import { Instagram, Trophy, ArrowRight, MapPin, Calendar } from "lucide-react";
 
 /**
@@ -15,6 +17,12 @@ export default function Champions() {
 
   return (
     <div>
+      <Seo
+        title="Champions | World Espresso Championship"
+        description="World Espresso Champions 2022–2025. The fifth World Espresso Champion will be crowned in Panama in 2026."
+        path="/champions"
+        image={`${SITE_URL}/assets/og/champions.jpg`}
+      />
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cinnamon-950/20 to-transparent" />
         <div className="wec-container relative">
@@ -25,8 +33,8 @@ export default function Champions() {
               <span className="wec-gradient-text">Champions</span>
             </h1>
             <p className="text-lg text-sand-400 max-w-2xl leading-relaxed">
-              Real winners. Real Instagram. Every championship since 2022 —
-              building toward the first independent finals in Panama.
+              Real winners. Real Instagram. Every championship since 2022 —{" "}
+              {WEC_FACTS.event2026.independentEraNote}
             </p>
           </div>
         </div>
