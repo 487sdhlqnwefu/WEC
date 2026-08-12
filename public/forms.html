@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WEC Netlify Forms</title>
+  </head>
+  <body>
+    <!-- Netlify detects these at deploy; React submits via POST to / -->
+    <form name="wec-registration" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="wec-registration" />
+      <input name="bot-field" />
+      <input name="type" />
+      <input name="fullName" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="country" />
+      <input name="city" />
+      <input name="employer" />
+      <input name="experience" />
+      <input name="qualificationMethod" />
+      <input name="professionalBackground" />
+      <input name="sensoryExperience" />
+      <input name="availability" />
+      <input name="rolePreference" />
+      <input name="skills" />
+      <input name="languages" />
+      <input name="socialMedia" />
+      <input name="conflictOfInterest" />
+      <input name="dietaryRequirements" />
+      <input name="emergencyContact" />
+      <input name="agreedToRules" />
+    </form>
+
+    <form name="wec-sponsor" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="wec-sponsor" />
+      <input name="bot-field" />
+      <input name="companyName" />
+      <input name="contactName" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="tier" />
+      <input name="budget" />
+      <input name="message" />
+      <input name="website" />
+    </form>
+
+    <form name="wec-contact" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="wec-contact" />
+      <input name="bot-field" />
+      <input name="type" />
+      <input name="name" />
+      <input name="email" />
+      <input name="subject" />
+      <input name="message" />
+      <input name="phone" />
+      <input name="company" />
+    </form>
+
+    <form name="wec-organiser" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="wec-organiser" />
+      <input name="bot-field" />
+      <input name="fullName" />
+      <input name="email" />
+      <input name="phone" />
+      <input name="country" />
+      <input name="city" />
+      <input name="organisation" />
+      <input name="experience" />
+      <input name="venueDescription" />
+      <input name="expectedCompetitors" />
+      <input name="proposedDate" />
+      <input name="message" />
+    </form>
+  </body>
+</html>

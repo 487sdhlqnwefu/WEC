@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router";
 import { Button } from "@/components/ui/button";
-import { trpc } from "@/providers/trpc";
 import { toast } from "sonner";
+import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
 import {
   Trophy,
   Calendar,
@@ -21,63 +21,61 @@ import {
 import SoftwareShowcase from "@/components/SoftwareShowcase";
 
 export default function Panama2026() {
+  const location = useLocation();
   const [regType, setRegType] = useState<"competitor" | "judge" | "volunteer">("competitor");
   const [activeTab, setActiveTab] = useState<"competitors" | "sponsors" | "register">("competitors");
+  const [regSubmitting, setRegSubmitting] = useState(false);
+  const [sponsorSubmitting, setSponsorSubmitting] = useState(false);
 
-  const createRegistration = trpc.registrations.create.useMutation({
-    onSuccess: () => toast.success("Registration submitted successfully!"),
-    onError: (err) => toast.error(err.message),
-  });
+  useEffect(() => {
+    const hash = location.hash.replace("#", "");
+    if (hash === "sponsors") {
+      setActiveTab("sponsors");
+      requestAnimationFrame(() => {
+        document.getElementById("sponsors")?.scrollIntoView({ behavior: "smooth" });
+      });
+    } else if (hash === "register") {
+      setActiveTab("register");
+      requestAnimationFrame(() => {
+        document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
+      });
+    }
+  }, [location.hash]);
 
-  const createSponsor = trpc.sponsors.create.useMutation({
-    onSuccess: () => toast.success("Sponsorship inquiry submitted! We'll be in touch."),
-    onError: (err) => toast.error(err.message),
-  });
-
-  const handleRegSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    createRegistration.mutate({
-      type: regType,
-      fullName: formData.get("fullName") as string,
-      email: formData.get("email") as string,
-      phone: (formData.get("phone") as string) || undefined,
-      country: formData.get("country") as string,
-      city: (formData.get("city") as string) || undefined,
-      employer: (formData.get("employer") as string) || undefined,
-      experience: (formData.get("experience") as string) || undefined,
-      qualificationMethod: (formData.get("qualificationMethod") as string) || undefined,
-      professionalBackground: (formData.get("professionalBackground") as string) || undefined,
-      sensoryExperience: (formData.get("sensoryExperience") as string) || undefined,
-      availability: (formData.get("availability") as string) || undefined,
-      rolePreference: (formData.get("rolePreference") as string) || undefined,
-      skills: (formData.get("skills") as string) || undefined,
-      languages: (formData.get("languages") as string) || undefined,
-      socialMedia: (formData.get("socialMedia") as string) || undefined,
-      conflictOfInterest: (formData.get("conflictOfInterest") as string) || undefined,
-      dietaryRequirements: (formData.get("dietaryRequirements") as string) || undefined,
-      emergencyContact: (formData.get("emergencyContact") as string) || undefined,
-      agreedToRules: formData.get("agreedToRules") === "on",
-    });
-    form.reset();
+    setRegSubmitting(true);
+    try {
+      await submitNetlifyForm("wec-registration", {
+        ...formDataToRecord(formData),
+        type: regType,
+        agreedToRules: formData.get("agreedToRules") === "on" ? "yes" : "no",
+      });
+      toast.success("Registration submitted! We'll confirm within 5 business days.");
+      form.reset();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Registration failed");
+    } finally {
+      setRegSubmitting(false);
+    }
   };
 
-  const handleSponsorSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSponsorSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    createSponsor.mutate({
-      companyName: formData.get("companyName") as string,
-      contactName: formData.get("contactName") as string,
-      email: formData.get("email") as string,
-      phone: (formData.get("phone") as string) || undefined,
-      tier: (formData.get("tier") as "title" | "green" | "gold" | "silver" | "supporting" | "custom") || "custom",
-      budget: (formData.get("budget") as string) || undefined,
-      message: (formData.get("message") as string) || undefined,
-      website: (formData.get("website") as string) || undefined,
-    });
-    form.reset();
+    setSponsorSubmitting(true);
+    try {
+      await submitNetlifyForm("wec-sponsor", formDataToRecord(formData));
+      toast.success("Sponsorship inquiry submitted! We'll be in touch within 3 business days.");
+      form.reset();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Submission failed");
+    } finally {
+      setSponsorSubmitting(false);
+    }
   };
 
   const sponsorTiers = [
@@ -419,9 +417,9 @@ export default function Panama2026() {
                   <Button
                     type="submit"
                     className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 sm:col-span-2"
-                    disabled={createSponsor.isPending}
+                    disabled={sponsorSubmitting}
                   >
-                    {createSponsor.isPending ? "Submitting..." : "Submit Inquiry"}
+                    {sponsorSubmitting ? "Submitting..." : "Submit Inquiry"}
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </form>
@@ -534,9 +532,9 @@ export default function Panama2026() {
                   <Button
                     type="submit"
                     className="w-full bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100"
-                    disabled={createRegistration.isPending}
+                    disabled={regSubmitting}
                   >
-                    {createRegistration.isPending
+                    {regSubmitting
                       ? "Submitting..."
                       : `Register as ${regType.charAt(0).toUpperCase() + regType.slice(1)}`}
                   </Button>

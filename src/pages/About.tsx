@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
-import { trpc } from "@/providers/trpc";
 import { toast } from "sonner";
+import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
 import {
   Coffee,
   ArrowRight,
@@ -19,29 +19,22 @@ import {
 
 export default function About() {
   const [activeAccordion, setActiveAccordion] = useState<string | null>("format");
-  const createOrganiser = trpc.organiser.create.useMutation({
-    onSuccess: () => toast.success("Application submitted successfully!"),
-    onError: (err) => toast.error(err.message),
-  });
+  const [organiserSubmitting, setOrganiserSubmitting] = useState(false);
 
-  const handleOrganiserSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleOrganiserSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    createOrganiser.mutate({
-      fullName: formData.get("fullName") as string,
-      email: formData.get("email") as string,
-      phone: (formData.get("phone") as string) || undefined,
-      country: formData.get("country") as string,
-      city: (formData.get("city") as string) || undefined,
-      organisation: (formData.get("organisation") as string) || undefined,
-      experience: (formData.get("experience") as string) || undefined,
-      venueDescription: (formData.get("venueDescription") as string) || undefined,
-      expectedCompetitors: formData.get("expectedCompetitors") ? parseInt(formData.get("expectedCompetitors") as string) : undefined,
-      proposedDate: (formData.get("proposedDate") as string) || undefined,
-      message: (formData.get("message") as string) || undefined,
-    });
-    form.reset();
+    setOrganiserSubmitting(true);
+    try {
+      await submitNetlifyForm("wec-organiser", formDataToRecord(formData));
+      toast.success("Application submitted! We'll review and respond within 5 business days.");
+      form.reset();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Submission failed");
+    } finally {
+      setOrganiserSubmitting(false);
+    }
   };
 
   const accordionItems = [
@@ -405,7 +398,8 @@ This is how competition drives progress. This is what the manufacturer could not
                 />
                 <input
                   name="phone"
-                  type="tel"
+                  type="text"
+                  inputMode="tel"
                   placeholder="Phone Number"
                   className="wec-input w-full px-4 py-3 rounded-lg text-sm"
                 />
@@ -444,9 +438,9 @@ This is how competition drives progress. This is what the manufacturer could not
                 <Button
                   type="submit"
                   className="w-full bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100"
-                  disabled={createOrganiser.isPending}
+                  disabled={organiserSubmitting}
                 >
-                  {createOrganiser.isPending ? "Submitting..." : "Submit Application"}
+                  {organiserSubmitting ? "Submitting..." : "Submit Application"}
                 </Button>
               </form>
             </div>

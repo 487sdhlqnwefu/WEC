@@ -3,6 +3,9 @@
   publish = "dist/public"
   command = "npx vite build"
 
+# Forms: wec-registration, wec-sponsor, wec-contact, wec-organiser
+# Enable email notifications: Netlify → Forms → Form notifications → Add notification
+
 [[redirects]]
   from = "/*"
   to = "/index.html"

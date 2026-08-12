@@ -1,31 +1,30 @@
 import { useState } from "react";
-import { trpc } from "@/providers/trpc";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
 import { Mail, MapPin, MessageSquare, Send, Instagram, ExternalLink, HelpCircle } from "lucide-react";
 
 export default function Contact() {
   const [contactType, setContactType] = useState<string>("general");
+  const [submitting, setSubmitting] = useState(false);
 
-  const createContact = trpc.contacts.create.useMutation({
-    onSuccess: () => toast.success("Message sent! We'll get back to you soon."),
-    onError: (err) => toast.error(err.message),
-  });
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
-    createContact.mutate({
-      type: contactType as "general" | "sponsorship" | "press" | "competitor_support",
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      subject: (formData.get("subject") as string) || undefined,
-      message: formData.get("message") as string,
-      phone: (formData.get("phone") as string) || undefined,
-      company: (formData.get("company") as string) || undefined,
-    });
-    form.reset();
+    setSubmitting(true);
+    try {
+      await submitNetlifyForm("wec-contact", {
+        ...formDataToRecord(formData),
+        type: contactType,
+      });
+      toast.success("Message sent! We'll get back to you within 2 business days.");
+      form.reset();
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Could not send message");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const contactTypes = [
@@ -186,7 +185,8 @@ export default function Contact() {
                   />
                   <input
                     name="phone"
-                    type="tel"
+                    type="text"
+                    inputMode="tel"
                     placeholder="Phone Number"
                     className="wec-input w-full px-4 py-3 rounded-lg text-sm"
                   />
@@ -207,9 +207,9 @@ export default function Contact() {
                 <Button
                   type="submit"
                   className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100"
-                  disabled={createContact.isPending}
+                  disabled={submitting}
                 >
-                  {createContact.isPending ? "Sending..." : "Send Message"}
+                  {submitting ? "Sending..." : "Send Message"}
                   <Send className="ml-2 w-4 h-4" />
                 </Button>
               </form>
