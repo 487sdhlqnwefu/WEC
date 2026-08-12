@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Instagram, Mail, ExternalLink } from "lucide-react";
+import { FOUNDER_EMAIL, FOUNDER_MAILTO } from "@/lib/contact";
 
 const footerLinks = {
   championship: [
@@ -49,10 +50,19 @@ export default function Footer() {
                 </span>
               </div>
             </Link>
-            <p className="text-sm text-sand-400 leading-relaxed max-w-sm mb-6">
+            <p className="text-sm text-sand-400 leading-relaxed max-w-sm mb-4">
               The world's most objective espresso competition. Same coffee. Same
               machine. Only the barista differs. Winner takes a career, not just
               a trophy.
+            </p>
+            <p className="text-xs text-sand-500 leading-relaxed max-w-sm mb-6">
+              Reach the founder directly:{" "}
+              <a
+                href={FOUNDER_MAILTO}
+                className="text-cinnamon-400 hover:text-cinnamon-300"
+              >
+                {FOUNDER_EMAIL}
+              </a>
             </p>
             <div className="flex items-center gap-4">
               <a
@@ -64,7 +74,8 @@ export default function Footer() {
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@worldespressochampionship.com"
+                href={FOUNDER_MAILTO}
+                title={FOUNDER_EMAIL}
                 className="w-10 h-10 rounded-full bg-[#231a14] border border-[#3a2a1f] flex items-center justify-center text-sand-400 hover:text-cinnamon-400 hover:border-cinnamon-500/50 transition-colors"
               >
                 <Mail className="w-5 h-5" />

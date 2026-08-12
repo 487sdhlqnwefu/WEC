@@ -2,6 +2,12 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
+import {
+  FOUNDER_ACCESS_BLURB,
+  FOUNDER_EMAIL,
+  FOUNDER_MAILTO,
+  FOUNDER_NAME,
+} from "@/lib/contact";
 import { Mail, MapPin, MessageSquare, Send, Instagram, ExternalLink, HelpCircle } from "lucide-react";
 
 export default function Contact() {
@@ -60,9 +66,12 @@ export default function Contact() {
             <h1 className="text-4xl sm:text-5xl font-bold text-sand-100 mb-4">
               Get in <span className="wec-gradient-text">Touch</span>
             </h1>
-            <p className="text-lg text-sand-400 max-w-2xl">
-              Have a question, want to sponsor, or need competitor support? We
-              are here to help.
+            <p className="text-lg text-sand-400 max-w-2xl mb-4">
+              Questions, sponsorship, press, or competitor support — you talk
+              directly to {FOUNDER_NAME}, founder of WEC.
+            </p>
+            <p className="text-sm text-sand-500 max-w-2xl">
+              {FOUNDER_ACCESS_BLURB}
             </p>
           </div>
         </div>
@@ -83,14 +92,19 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="text-sm font-medium text-sand-200 mb-1">
-                      Email
+                      Founder — direct line
                     </h3>
                     <a
-                      href="mailto:hello@worldespressochampionship.com"
+                      href={FOUNDER_MAILTO}
                       className="text-sm text-sand-400 hover:text-cinnamon-400 transition-colors"
                     >
-                      hello@worldespressochampionship.com
+                      {FOUNDER_EMAIL}
                     </a>
+                    <p className="text-xs text-sand-500 mt-2 leading-relaxed">
+                      {FOUNDER_NAME} reads and replies personally. No ticket
+                      queue, no &ldquo;we&apos;ll pass this to the right
+                      team.&rdquo;
+                    </p>
                   </div>
                 </div>
 

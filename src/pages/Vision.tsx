@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { FOUNDER_EMAIL, FOUNDER_MAILTO } from "@/lib/contact";
 import {
   Target,
   FlaskConical,
@@ -332,11 +333,17 @@ export default function Vision() {
                 variant="outline"
                 className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8"
               >
-                Contact Us
+                Email Tristan
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </div>
+          <a
+            href={FOUNDER_MAILTO}
+            className="text-sm text-sand-500 hover:text-cinnamon-400 mt-4 inline-block"
+          >
+            {FOUNDER_EMAIL}
+          </a>
         </div>
       </section>
     </div>

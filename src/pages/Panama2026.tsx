@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
+import { FOUNDER_EMAIL, FOUNDER_MAILTO } from "@/lib/contact";
 import {
   Trophy,
   Calendar,
@@ -538,6 +539,16 @@ export default function Panama2026() {
                       ? "Submitting..."
                       : `Register as ${regType.charAt(0).toUpperCase() + regType.slice(1)}`}
                   </Button>
+                  <p className="text-xs text-sand-500 text-center pt-2">
+                    Questions before you register? Email{" "}
+                    <a
+                      href={FOUNDER_MAILTO}
+                      className="text-cinnamon-400 hover:text-cinnamon-300"
+                    >
+                      {FOUNDER_EMAIL}
+                    </a>{" "}
+                    — Tristan replies personally.
+                  </p>
                 </form>
               </div>
             </div>

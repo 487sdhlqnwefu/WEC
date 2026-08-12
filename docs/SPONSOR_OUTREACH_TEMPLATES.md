@@ -40,7 +40,8 @@ I can share:
 Worth a 15-minute call this week?
 
 Tristan Creswick
-Founder, World Espresso Championship / Objective Coffee Community
+Founder, World Espresso Championship
+tristan@worldespressochampionship.com
 
 ---
 

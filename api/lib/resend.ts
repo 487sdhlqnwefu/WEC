@@ -1,8 +1,8 @@
 import { Resend } from "resend";
 
 const apiKey = process.env.RESEND_API_KEY;
-const fromEmail = process.env.FROM_EMAIL || "hello@worldespressochampionship.com";
-const adminEmail = process.env.ADMIN_EMAIL || "hello@worldespressochampionship.com";
+const fromEmail = process.env.FROM_EMAIL || "tristan@worldespressochampionship.com";
+const adminEmail = process.env.ADMIN_EMAIL || "tristan@worldespressochampionship.com";
 
 if (!apiKey || apiKey.includes("your_resend_api_key")) {
   console.warn("⚠️ RESEND_API_KEY not configured. Emails will be logged to console only.");
@@ -56,7 +56,7 @@ Event Details:
 - Date: 26 October 2026
 - Location: Panama City, Panama
 
-If you have any questions, reply to this email or contact us at hello@worldespressochampionship.com
+If you have any questions, reply to this email or contact us at tristan@worldespressochampionship.com
 
 Best regards,
 The WEC Team

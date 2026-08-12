@@ -2,6 +2,8 @@
  * Submit forms on static Netlify hosting (no /api/trpc backend).
  * Requires matching hidden forms in public/forms.html at deploy time.
  */
+import { FOUNDER_EMAIL } from "./contact";
+
 export async function submitNetlifyForm(
   formName: string,
   fields: Record<string, string>,
@@ -19,7 +21,7 @@ export async function submitNetlifyForm(
 
   if (!res.ok) {
     throw new Error(
-      "Could not send your form. Please email hello@worldespressochampionship.com",
+      `Could not send your form. Please email ${FOUNDER_EMAIL}`,
     );
   }
 }

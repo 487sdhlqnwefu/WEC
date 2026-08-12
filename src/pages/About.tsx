@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
+import { FOUNDER_EMAIL, FOUNDER_MAILTO, FOUNDER_NAME } from "@/lib/contact";
 import {
   Coffee,
   ArrowRight,
@@ -15,6 +16,7 @@ import {
   Scale,
   BookOpen,
   User,
+  Mail,
 } from "lucide-react";
 
 export default function About() {
@@ -183,10 +185,21 @@ This is how competition drives progress. This is what the manufacturer could not
                 software, sponsor relationships, and the push toward Panama 2026
                 at Café Unido.
               </p>
-              <p className="text-sand-500 text-sm leading-relaxed">
+              <p className="text-sand-500 text-sm leading-relaxed mb-4">
                 The goal is not another trophy. It is a transparent format the
                 industry can trust — and a Champion&apos;s Coffee Product that
                 turns winning into a real career.
+              </p>
+              <a
+                href={FOUNDER_MAILTO}
+                className="inline-flex items-center gap-2 text-sm text-cinnamon-400 hover:text-cinnamon-300 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                {FOUNDER_EMAIL}
+              </a>
+              <p className="text-xs text-sand-500 mt-2">
+                Direct line to {FOUNDER_NAME} — competitors, sponsors, and media
+                welcome.
               </p>
             </div>
             <div className="flex justify-center lg:justify-end">

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown, HelpCircle, MessageCircle } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { FOUNDER_EMAIL, FOUNDER_MAILTO } from "@/lib/contact";
 
 const faqCategories = [
   {
@@ -199,13 +200,20 @@ export default function FAQ() {
             <h3 className="text-xl font-semibold text-sand-100 mb-2">
               Still Have Questions?
             </h3>
-            <p className="text-sand-400 text-sm mb-6 max-w-md mx-auto">
-              We are here to help. Reach out to us and we'll get back to you as
-              soon as possible.
+            <p className="text-sand-400 text-sm mb-4 max-w-md mx-auto">
+              You reach Tristan Creswick, WEC founder, directly — not a generic
+              inbox. Email{" "}
+              <a
+                href={FOUNDER_MAILTO}
+                className="text-cinnamon-400 hover:text-cinnamon-300"
+              >
+                {FOUNDER_EMAIL}
+              </a>{" "}
+              or use the form below.
             </p>
             <Link to="/contact">
               <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
-                Contact Us
+                Contact Tristan
               </Button>
             </Link>
           </div>

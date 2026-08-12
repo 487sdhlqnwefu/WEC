@@ -28,8 +28,8 @@ git push -u origin main
 | `STRIPE_PUBLISHABLE_KEY` | `pk_live_...` | [Stripe Dashboard](https://dashboard.stripe.com/apikeys) |
 | `FRONTEND_URL` | `https://your-railway-url.up.railway.app` | Railway provides this after deploy |
 | `RESEND_API_KEY` | `re_...` | [Resend API Keys](https://resend.com/api-keys) |
-| `FROM_EMAIL` | `hello@worldespressochampionship.com` | Your domain (or use `onboarding@resend.dev` for testing) |
-| `ADMIN_EMAIL` | `hello@worldespressochampionship.com` | Where you want notifications sent |
+| `FROM_EMAIL` | `tristan@worldespressochampionship.com` | Your domain (or use `onboarding@resend.dev` for testing) |
+| `ADMIN_EMAIL` | `tristan@worldespressochampionship.com` | Where you want notifications sent |
 
 8. Click **Deploy** — Railway builds and deploys everything automatically
 
@@ -111,8 +111,8 @@ git push -u origin main
 | `STRIPE_PUBLISHABLE_KEY` | Stripe publishable key | `pk_live_...` |
 | `FRONTEND_URL` | Your website URL | `https://worldespressochampionship.com` |
 | `RESEND_API_KEY` | Resend API key | `re_...` |
-| `FROM_EMAIL` | Sender email address | `hello@worldespressochampionship.com` |
-| `ADMIN_EMAIL` | Admin notification email | `hello@worldespressochampionship.com` |
+| `FROM_EMAIL` | Sender email address | `tristan@worldespressochampionship.com` |
+| `ADMIN_EMAIL` | Admin notification email | `tristan@worldespressochampionship.com` |
 
 ---
 
