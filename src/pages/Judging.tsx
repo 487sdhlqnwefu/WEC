@@ -5,7 +5,6 @@ import {
   Eye,
   Scale,
   ArrowRight,
-  Trophy,
   Handshake,
 } from "lucide-react";
 
