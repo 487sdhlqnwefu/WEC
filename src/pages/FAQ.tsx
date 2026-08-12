@@ -29,7 +29,7 @@ const faqCategories = [
       },
       {
         q: "Is WEC only a competition?",
-        a: "No. WEC is also a think tank. After each heat, competitors provide structured feedback — recipes, extraction choices, equipment notes. That insight helps the industry build better machines, grinders, water systems, and accessories. Read more at /innovation.",
+        a: "WEC is first a championship designed to find the better cup. Beside that sits the WEC Innovation Lab: structured post-heat feedback from elite baristas under controlled conditions, connected to results and the Champion’s Protocol — so the industry can learn how better espresso is made. See /innovation.",
       },
     ],
   },

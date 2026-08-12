@@ -32,6 +32,7 @@ export default function App() {
         <Route path="/panama-2026" element={<Panama2026 />} />
         <Route path="/judging" element={<Judging />} />
         <Route path="/innovation" element={<Innovation />} />
+        <Route path="/innovation-lab" element={<Innovation />} />
         <Route path="/live" element={<LiveTournament />} />
         <Route path="/live/:slug" element={<LiveTournament />} />
         <Route path="/vision" element={<Vision />} />

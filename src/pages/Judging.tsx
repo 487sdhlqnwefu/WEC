@@ -118,9 +118,9 @@ export default function Judging() {
                 Your brand sits next to a format people can verify. Not a private
                 score sheet. Not a story competition. A public, scientific
                 preference test — the same idea used in food science labs
-                worldwide (ISO 5495). And because competitors leave structured
-                feedback after heats, sponsors also sit next to a living think
-                tank.
+                worldwide (ISO 5495). Beside the result sits the Innovation Lab:
+                structured elite-barista insight that can inform further testing
+                and product-development thinking.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/panama-2026#sponsors">
@@ -134,7 +134,7 @@ export default function Judging() {
                     variant="outline"
                     className="border-sand-400/30 text-sand-200"
                   >
-                    Think Tank model
+                    Innovation Lab
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>

@@ -394,27 +394,30 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Think Tank Teaser */}
+      {/* Innovation Lab Teaser — secondary to championship hero */}
       <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
-                Competition as innovation
+                Competition-driven innovation
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sand-100 mt-3 mb-5">
-                A championship that{" "}
-                <span className="wec-gradient-text">thinks</span>
+                The competition is also{" "}
+                <span className="wec-gradient-text">a lab</span>
               </h2>
-              <p className="text-sand-400 leading-relaxed mb-6">
-                After every heat, the world’s best leave structured feedback —
-                recipes, extraction choices, equipment notes. That is how WEC
-                becomes a think tank: the people who make the best coffee tell
-                the industry what to build next.
+              <p className="text-sand-400 leading-relaxed mb-4">
+                WEC brings elite baristas into a controlled environment and asks
+                who can make the better cup. Through the competition software,
+                they can also document what they attempted, changed, and learned.
+              </p>
+              <p className="text-sand-500 text-sm leading-relaxed mb-6">
+                Find excellence. Understand it. Build from it. — WEC Innovation
+                Lab
               </p>
               <Link to="/innovation">
                 <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
-                  Explore the Think Tank
+                  Explore the Innovation Lab
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
               </Link>
@@ -422,7 +425,7 @@ export default function Home() {
             <div className="aspect-[4/3] overflow-hidden border border-[#3a2a1f]">
               <img
                 src="/assets/event-28.jpg"
-                alt="WEC competitors at work"
+                alt="WEC competitors at work under competition conditions"
                 className="w-full h-full object-cover opacity-90"
               />
             </div>

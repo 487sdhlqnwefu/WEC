@@ -15,7 +15,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Judging", href: "/judging" },
-  { label: "Think Tank", href: "/innovation" },
+  { label: "Innovation Lab", href: "/innovation" },
   { label: "WEC 2026", href: "/panama-2026" },
   { label: "Live", href: "/live/wec-2026-panama" },
   { label: "Store", href: "/store" },

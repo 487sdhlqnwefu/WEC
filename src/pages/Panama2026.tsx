@@ -328,7 +328,7 @@ export default function Panama2026() {
                 <ul className="space-y-2 text-sm text-sand-400">
                   <li>• Blind sensory format — your brand beside trust, not politics</li>
                   <li>• Public live bracket software — results the industry can watch</li>
-                  <li>• Think tank data from the world’s best — what to build next</li>
+                  <li>• Structured elite-barista insight via the Innovation Lab — inform product development thinking</li>
                   <li>• Same week the global coffee community is already in Panama</li>
                   <li>• Honest packages sized for real partners (not fantasy title fees)</li>
                 </ul>
@@ -338,7 +338,7 @@ export default function Panama2026() {
                     <ArrowRight className="ml-1 w-4 h-4" />
                   </Link>
                   <Link to="/innovation" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300">
-                    See the Think Tank model
+                    Explore the Innovation Lab
                     <ArrowRight className="ml-1 w-4 h-4" />
                   </Link>
                 </div>
