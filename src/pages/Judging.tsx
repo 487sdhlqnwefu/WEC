@@ -119,7 +119,9 @@ export default function Judging() {
                 Your brand sits next to a format people can verify. Not a private
                 score sheet. Not a story competition. A public, scientific
                 preference test — the same idea used in food science labs
-                worldwide (ISO 5495).
+                worldwide (ISO 5495). And because competitors leave structured
+                feedback after heats, sponsors also sit next to a living think
+                tank.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link to="/panama-2026#sponsors">
@@ -128,13 +130,12 @@ export default function Judging() {
                     Sponsor WEC 2026
                   </Button>
                 </Link>
-                <Link to="/live/wec-2026-panama">
+                <Link to="/innovation">
                   <Button
                     variant="outline"
                     className="border-sand-400/30 text-sand-200"
                   >
-                    <Trophy className="mr-2 w-4 h-4" />
-                    See live board
+                    Think Tank model
                     <ArrowRight className="ml-2 w-4 h-4" />
                   </Button>
                 </Link>

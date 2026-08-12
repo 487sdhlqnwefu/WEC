@@ -394,6 +394,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Think Tank Teaser */}
+      <section className="wec-section bg-[#140f0b]">
+        <div className="wec-container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
+                Competition as innovation
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sand-100 mt-3 mb-5">
+                A championship that{" "}
+                <span className="wec-gradient-text">thinks</span>
+              </h2>
+              <p className="text-sand-400 leading-relaxed mb-6">
+                After every heat, the world’s best leave structured feedback —
+                recipes, extraction choices, equipment notes. That is how WEC
+                becomes a think tank: the people who make the best coffee tell
+                the industry what to build next.
+              </p>
+              <Link to="/innovation">
+                <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
+                  Explore the Think Tank
+                  <ArrowRight className="ml-2 w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="aspect-[4/3] overflow-hidden border border-[#3a2a1f]">
+              <img
+                src="/assets/event-28.jpg"
+                alt="WEC competitors at work"
+                className="w-full h-full object-cover opacity-90"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Vision Teaser */}
       <section className="wec-section">
         <div className="wec-container">

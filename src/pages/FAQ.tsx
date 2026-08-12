@@ -27,6 +27,10 @@ const faqCategories = [
         q: "Where can I watch results live?",
         a: "The public live bracket is at /live/wec-2026-panama on this site. Match outcomes and scores update as heats complete.",
       },
+      {
+        q: "Is WEC only a competition?",
+        a: "No. WEC is also a think tank. After each heat, competitors provide structured feedback — recipes, extraction choices, equipment notes. That insight helps the industry build better machines, grinders, water systems, and accessories. Read more at /innovation.",
+      },
     ],
   },
   {

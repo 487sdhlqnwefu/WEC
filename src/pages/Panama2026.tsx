@@ -328,13 +328,20 @@ export default function Panama2026() {
                 <ul className="space-y-2 text-sm text-sand-400">
                   <li>• Blind sensory format — your brand beside trust, not politics</li>
                   <li>• Public live bracket software — results the industry can watch</li>
+                  <li>• Think tank data from the world’s best — what to build next</li>
                   <li>• Same week the global coffee community is already in Panama</li>
                   <li>• Honest packages sized for real partners (not fantasy title fees)</li>
                 </ul>
-                <Link to="/judging" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300 mt-4">
-                  Read how Scoring v3 works
-                  <ArrowRight className="ml-1 w-4 h-4" />
-                </Link>
+                <div className="flex flex-wrap gap-4 mt-4">
+                  <Link to="/judging" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300">
+                    Read how Scoring v3 works
+                    <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
+                  <Link to="/innovation" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300">
+                    See the Think Tank model
+                    <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
+                </div>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -5,6 +5,7 @@ const footerLinks = {
   championship: [
     { label: "About WEC", href: "/about" },
     { label: "How Judging Works", href: "/judging" },
+    { label: "Think Tank", href: "/innovation" },
     { label: "History", href: "/history" },
     { label: "WEC 2026 Panama", href: "/panama-2026" },
     { label: "Live Bracket", href: "/live/wec-2026-panama" },
