@@ -1,12 +1,18 @@
-WEC Netlify package
-===================
+WEC Netlify deploy package (Mac)
+================================
 
-Full deploy (all photos + prerendered routes + true 404):
-  Download from cloud agent Artifacts: wec-netlify-FOR-MAC.zip
+PRIMARY DOWNLOAD (GitHub Release):
+https://github.com/487sdhlqnwefu/WEC/releases/download/deploy-mac-20260812-2359/WEC-Netlify-Deploy-Mac.zip
 
-This repo copy may be a lite subset under GitHub size limits.
+Alternate (tar.gz — right-click > Open With > Archive Utility if zip fails):
+https://github.com/487sdhlqnwefu/WEC/releases/download/deploy-mac-20260812-2359/WEC-Netlify-Deploy-Mac.tar.gz
 
-Verified for this build:
-  assets/index-3HWD_6a6.js
-  assets/index-B9QXuFqH.css
-  404.html (HTTP 404 fallback via _redirects)
+Size ~12 MB. Unzip should expand to ~13 MB of site files (not 4 MB).
+
+How to deploy:
+1. Download WEC-Netlify-Deploy-Mac.zip
+2. Double-click to unzip (or: tar -xzf WEC-Netlify-Deploy-Mac.tar.gz)
+3. Open the unzipped folder
+4. Drag its CONTENTS into Netlify Deploys (index.html should be at the top level)
+
+Ignore any old 4 MB wec-netlify-FOR-MAC.zip — that was a broken/incomplete file.
