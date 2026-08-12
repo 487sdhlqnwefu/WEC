@@ -302,7 +302,7 @@ export default function Home() {
                 Sponsors
               </h3>
               <p className="text-sand-400 text-sm leading-relaxed mb-6">
-                From €1–3k community partners up to a €75k presenting package.
+                From €5k+ community partners up to a €150k+ presenting package.
                 Help us fund Panama — and stand beside a format people can trust.
               </p>
               <Link to="/panama-2026#sponsors">
@@ -377,7 +377,7 @@ export default function Home() {
                       `/assets/event-${[28, 2, 37, 35][Math.max(0, (event.id ?? 1) - 1)] ?? 2}.jpg`
                     }
                     alt={event.name}
-                    className="w-full h-full object-cover opacity-80"
+                    className="w-full h-full object-cover object-top opacity-80"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#231a14] to-transparent" />
                   <div className="absolute bottom-4 left-4">

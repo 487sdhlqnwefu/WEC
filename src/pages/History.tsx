@@ -50,7 +50,7 @@ export default function History() {
                         "/assets/event-2.jpg"
                       }
                       alt={event.name}
-                      className="w-full h-full object-cover opacity-85"
+                      className="w-full h-full object-cover object-top opacity-85"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#231a14] via-transparent to-transparent" />
                   </div>

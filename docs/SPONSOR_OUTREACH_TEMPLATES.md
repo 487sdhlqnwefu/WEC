@@ -14,7 +14,7 @@ Format: same coffee, same machine, blind cups, Scoring v3 (Tactile / Taste / Fla
 
 Café Unido is already in as venue + roaster. We're filling ~€20k cash + smart in-kind (machine / water / media).
 
-Packages from ~€2.5k supporting up to presenting partner.
+Packages from €5k+ community up to €150k+ presenting partner.
 
 Happy to send the 60-second visual pack (screenshots of the live board + judging system).
 
@@ -30,7 +30,7 @@ Quick context: WEC is the blind espresso championship — ISO-style paired compa
 
 We built tournament software that publishes every heat live. Sponsors sit next to a format people can verify.
 
-Café Unido covers venue + coffee. We're looking for a presenting or official partner on the equipment / water side in the €7.5k–€25k range (or serious in-kind).
+Café Unido covers venue + coffee. We're looking for a presenting or official partner on the equipment / water side in the €70k–€150k+ range (or serious in-kind).
 
 I can share:
 1) scoring one-pager

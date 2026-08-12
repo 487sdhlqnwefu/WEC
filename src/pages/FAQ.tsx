@@ -59,7 +59,7 @@ const faqCategories = [
     questions: [
       {
         q: "What sponsorship tiers are available?",
-        a: "Presenting Partner (€75,000), Official Partner (€10–20k), Supporting Partner (€3–10k), and Community Partner (€1–3k, cash or high-value in-kind). Café Unido is already confirmed as venue and roaster sponsor.",
+        a: "Presenting Partner (€150k+), Official Partner (€70k+), Supporting Partner (€15k+), and Community Partner (€5k+, cash or high-value in-kind). Café Unido is already confirmed as venue and roaster sponsor.",
       },
       {
         q: "What does a presenting partner receive?",
@@ -67,7 +67,7 @@ const faqCategories = [
       },
       {
         q: "Can smaller brands still sponsor?",
-        a: "Yes. Community Partner starts at €1–3k, Supporting Partner at €3–10k, and we welcome in-kind partners (machines, water, media, travel support). Every partner that helps Panama run well matters.",
+        a: "Yes. Community Partner starts at €5k+, Supporting Partner at €15k+, and we welcome in-kind partners (machines, water, media, travel support). Every partner that helps Panama run well matters.",
       },
     ],
   },

@@ -196,18 +196,20 @@ This is how competition drives progress. This is what the manufacturer could not
                 turns winning into a real career.
               </p>
             </div>
-            <div className="relative">
-              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-[#3a2a1f]">
-                <img
-                  src="/assets/event-25.jpg"
-                  alt="World Espresso Championship"
-                  className="w-full h-full object-cover opacity-90"
-                />
+            <div className="flex justify-center lg:justify-end">
+              <div className="w-full max-w-[220px]">
+                <div className="aspect-[3/4] rounded-2xl overflow-hidden border border-[#3a2a1f] bg-[#2a1f16]">
+                  <img
+                    src="/assets/founder-tristan.jpg"
+                    alt="Tristan Creswick, founder of the World Espresso Championship"
+                    className="w-full h-full object-cover object-top"
+                  />
+                </div>
+                <p className="mt-3 text-sm text-sand-500 text-center lg:text-left">
+                  Four championships held since 2022. First independent finals:
+                  Panama City · 26 October 2026.
+                </p>
               </div>
-              <p className="mt-4 text-sm text-sand-500">
-                Four championships held since 2022. First independent finals:
-                Panama City · 26 October 2026.
-              </p>
             </div>
           </div>
         </div>

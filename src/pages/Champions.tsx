@@ -45,7 +45,7 @@ export default function Champions() {
                   <img
                     src={event.photoUrl || "/assets/event-2.jpg"}
                     alt={event.name}
-                    className="w-full h-full object-cover opacity-85"
+                      className="w-full h-full object-cover object-top opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#231a14] via-transparent to-transparent" />
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">

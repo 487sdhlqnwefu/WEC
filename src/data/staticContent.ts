@@ -75,7 +75,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     sponsor: "Italian espresso machine manufacturer",
     isUpcoming: false,
     sortOrder: 2,
-    photoUrl: "/assets/event-35.jpg",
+    photoUrl: "/assets/champions/2025-muhammad-aga.jpg",
     videoUrl: null,
     createdAt: new Date("2025-01-01"),
   },
@@ -97,7 +97,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     sponsor: "Italian espresso machine manufacturer",
     isUpcoming: false,
     sortOrder: 3,
-    photoUrl: "/assets/event-37.jpg",
+    photoUrl: "/assets/champions/2024-ian-kissick.jpg",
     videoUrl: null,
     createdAt: new Date("2024-01-01"),
   },
@@ -118,7 +118,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     sponsor: "Italian espresso machine manufacturer",
     isUpcoming: false,
     sortOrder: 4,
-    photoUrl: "/assets/event-2.jpg",
+    photoUrl: "/assets/champions/2023-jack-simpson.jpg",
     videoUrl: null,
     createdAt: new Date("2023-01-01"),
   },
@@ -140,7 +140,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     sponsor: "Italian espresso machine manufacturer",
     isUpcoming: false,
     sortOrder: 5,
-    photoUrl: "/assets/event-28.jpg",
+    photoUrl: "/assets/champions/2022-junior-vargas.jpg",
     videoUrl: null,
     createdAt: new Date("2022-01-01"),
   },
@@ -205,8 +205,8 @@ export const STATIC_NEWS: StaticNewsPost[] = [
   },
 ];
 
-/** Fallback when API has no registration count yet */
+/** Fallback when API has no registration count yet — marketing-confirmed field size */
 export const REGISTRATION_FALLBACK = {
-  confirmedCompetitors: 0,
+  confirmedCompetitors: 7,
   competitorLimit: 32,
 };
