@@ -6,10 +6,12 @@ const footerLinks = {
     { label: "About WEC", href: "/about" },
     { label: "How Judging Works", href: "/judging" },
     { label: "Innovation Lab", href: "/innovation" },
+    { label: "Champions", href: "/champions" },
     { label: "History", href: "/history" },
     { label: "WEC 2026 Panama", href: "/panama-2026" },
     { label: "Live Bracket", href: "/live/wec-2026-panama" },
     { label: "Our Vision", href: "/vision" },
+    { label: "Café Unido Story", href: "/truth" },
   ],
   participate: [
     { label: "Competitor Registration", href: "/panama-2026" },

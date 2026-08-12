@@ -14,6 +14,7 @@ import { Menu, User, LogOut, Shield } from "lucide-react";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Champions", href: "/champions" },
   { label: "Judging", href: "/judging" },
   { label: "Innovation Lab", href: "/innovation" },
   { label: "WEC 2026", href: "/panama-2026" },

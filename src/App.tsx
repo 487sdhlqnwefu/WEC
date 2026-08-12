@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router";
+import { Routes, Route, Navigate } from "react-router";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -13,6 +13,8 @@ import Decisions from "./pages/Decisions";
 import LiveTournament from "./pages/LiveTournament";
 import Judging from "./pages/Judging";
 import Innovation from "./pages/Innovation";
+import Truth from "./pages/Truth";
+import Champions from "./pages/Champions";
 import PreviewLiveBoard from "./pages/previews/PreviewLiveBoard";
 import PreviewAdminControl from "./pages/previews/PreviewAdminControl";
 import PreviewJudgingTrust from "./pages/previews/PreviewJudgingTrust";
@@ -28,14 +30,24 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/about.html" element={<Navigate to="/about" replace />} />
         <Route path="/history" element={<History />} />
+        <Route path="/champions" element={<Champions />} />
+        <Route path="/champions/:year" element={<Champions />} />
+        <Route path="/champions/:year/" element={<Champions />} />
         <Route path="/panama-2026" element={<Panama2026 />} />
+        <Route path="/panama2026" element={<Navigate to="/panama-2026" replace />} />
+        <Route path="/panama2026.html" element={<Navigate to="/panama-2026" replace />} />
         <Route path="/judging" element={<Judging />} />
         <Route path="/innovation" element={<Innovation />} />
         <Route path="/innovation-lab" element={<Innovation />} />
+        <Route path="/think-tank" element={<Navigate to="/innovation" replace />} />
         <Route path="/live" element={<LiveTournament />} />
         <Route path="/live/:slug" element={<LiveTournament />} />
         <Route path="/vision" element={<Vision />} />
+        <Route path="/vision.html" element={<Navigate to="/vision" replace />} />
+        <Route path="/truth" element={<Truth />} />
+        <Route path="/truth.html" element={<Navigate to="/truth" replace />} />
         <Route path="/store" element={<Store />} />
         <Route path="/news" element={<News />} />
         <Route path="/faq" element={<FAQ />} />

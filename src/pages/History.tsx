@@ -78,9 +78,19 @@ export default function History() {
                       </span>
                     </div>
                     {event.winner && (
-                      <p className="text-gold text-sm font-medium mb-3 flex items-center gap-2">
+                      <p className="text-gold text-sm font-medium mb-3 flex items-center gap-2 flex-wrap">
                         <Trophy className="w-4 h-4" />
                         Champion: {event.winner}
+                        {"winnerProfileUrl" in event && event.winnerProfileUrl ? (
+                          <a
+                            href={event.winnerProfileUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-cinnamon-400 hover:text-cinnamon-300 underline-offset-2 hover:underline"
+                          >
+                            Instagram →
+                          </a>
+                        ) : null}
                       </p>
                     )}
                     <p className="text-sand-400 text-sm leading-relaxed mb-2">

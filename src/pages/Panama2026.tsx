@@ -18,6 +18,7 @@ import {
   Award,
   Crown,
 } from "lucide-react";
+import SoftwareShowcase from "@/components/SoftwareShowcase";
 
 export default function Panama2026() {
   const [regType, setRegType] = useState<"competitor" | "judge" | "volunteer">("competitor");
@@ -153,11 +154,18 @@ export default function Panama2026() {
         </div>
         <div className="wec-container relative">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/30 mb-8">
-              <Star className="w-4 h-4 text-gold" />
-              <span className="text-sm text-gold font-medium">
-                Inaugural Champion's Coffee Product Year
-              </span>
+            <div className="inline-flex flex-wrap items-center justify-center gap-2 mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/30">
+                <Star className="w-4 h-4 text-gold" />
+                <span className="text-sm text-gold font-medium">
+                  Café Unido · Venue &amp; Roaster Sponsor
+                </span>
+              </div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cinnamon-950/50 border border-cinnamon-800/50">
+                <span className="text-sm text-cinnamon-300 font-medium">
+                  First independently-run WEC · Live transparent results
+                </span>
+              </div>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-sand-100 mb-6">
               WEC 2026{" "}
@@ -176,7 +184,7 @@ export default function Panama2026() {
             <p className="text-lg sm:text-xl text-sand-400 max-w-2xl mx-auto mb-10">
               Café Unido hosts WEC 2026 and is the roaster sponsor. Same coffee.
               Same machine. Blind sensory judging under Scoring v3. The cup
-              decides.
+              decides — on a public live bracket.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
@@ -210,8 +218,10 @@ export default function Panama2026() {
         </div>
       </section>
 
+      <SoftwareShowcase className="bg-[#140f0b]" />
+
       {/* Key Info Cards */}
-      <section className="wec-section bg-[#140f0b]">
+      <section className="wec-section">
         <div className="wec-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[

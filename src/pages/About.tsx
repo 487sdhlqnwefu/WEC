@@ -244,6 +244,43 @@ This is how competition drives progress. This is what the manufacturer could not
         </div>
       </section>
 
+      {/* Coffee sharing principle */}
+      <section className="wec-section bg-[#140f0b]">
+        <div className="wec-container">
+          <div className="max-w-3xl mx-auto">
+            <BookOpen className="w-8 h-8 text-cinnamon-400 mb-4" />
+            <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
+              The coffee sharing principle
+            </h2>
+            <p className="text-sand-400 leading-relaxed mb-4">
+              After the competition, the winning recipe should not disappear.
+              Water, filtration, grinder, machine, tools, green coffee, roast
+              profile, espresso recipe — whatever is needed so that{" "}
+              <strong className="text-sand-200">
+                anyone can access the ingredients and method to make championship
+                coffee for themselves
+              </strong>
+              .
+            </p>
+            <p className="text-sand-500 text-sm leading-relaxed mb-6">
+              That is how competition evolves espresso for the whole industry —
+              not just the people who were in the room. The Champion&apos;s Coffee
+              Product and the Innovation Lab are how we turn that principle into
+              something people can buy, learn from, and build on.
+            </p>
+            <Link to="/vision">
+              <Button
+                variant="outline"
+                className="border-sand-400/30 text-sand-200"
+              >
+                Read the full vision
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Accordion Sections */}
       <section className="wec-section">
         <div className="wec-container">

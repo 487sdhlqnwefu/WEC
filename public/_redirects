@@ -1,0 +1,16 @@
+/truth /truth 200
+/truth.html /truth 301
+/vision.html /vision 301
+/about.html /about 301
+/panama2026 /panama-2026 301
+/panama2026.html /panama-2026 301
+/champions/2022 /champions 301
+/champions/2022/ /champions 301
+/champions/2023 /champions 301
+/champions/2023/ /champions 301
+/champions/2024 /champions 301
+/champions/2024/ /champions 301
+/champions/2025 /champions 301
+/champions/2025/ /champions 301
+/think-tank /innovation 301
+/*    /index.html   200

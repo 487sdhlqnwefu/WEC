@@ -2,6 +2,7 @@ import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/providers/trpc";
 import { STATIC_EVENTS } from "@/data/staticContent";
+import SoftwareShowcase from "@/components/SoftwareShowcase";
 import {
   Trophy,
   Coffee,
@@ -48,7 +49,7 @@ export default function Home() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cinnamon-950/50 border border-cinnamon-800/50 mb-8">
             <span className="w-2 h-2 rounded-full bg-cinnamon-500 animate-pulse" />
             <span className="text-sm text-cinnamon-300">
-              WEC 2026 — First Independent Championship
+              WEC 2026 · Café Unido, Panama · 26 October
             </span>
           </div>
 
@@ -404,13 +405,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Software launch promo */}
+      <SoftwareShowcase compact className="bg-[#140f0b]" />
+
       {/* Innovation Lab Teaser — secondary to championship hero */}
-      <section className="wec-section bg-[#140f0b]">
+      <section className="wec-section">
         <div className="wec-container">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
-                Competition-driven innovation
+                Competition-driven innovation · Innovation Lab
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sand-100 mt-3 mb-5">
                 The competition is also{" "}
@@ -434,8 +438,8 @@ export default function Home() {
             </div>
             <div className="aspect-[4/3] overflow-hidden border border-[#3a2a1f]">
               <img
-                src="/assets/event-28.jpg"
-                alt="WEC competitors at work under competition conditions"
+                src="/assets/marketing/04-judging-trust-v3.png"
+                alt="WEC Scoring v3 software"
                 className="w-full h-full object-cover opacity-90"
               />
             </div>
@@ -444,28 +448,38 @@ export default function Home() {
       </section>
 
       {/* Vision Teaser */}
-      <section className="wec-section">
+      <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
           <div className="wec-card rounded-2xl p-8 sm:p-12 text-center relative overflow-hidden">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cinnamon-600/5 rounded-full blur-3xl" />
             <div className="relative">
               <Eye className="w-10 h-10 text-cinnamon-400 mx-auto mb-6" />
               <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
-                A New Vision for Coffee
+                Good coffee was never meant to stay on stage
               </h2>
               <p className="text-sand-400 max-w-2xl mx-auto mb-8 leading-relaxed">
                 Competition as innovation. Competition as transparency.
-                Competition as commercial opportunity. The champion's recipe
-                becomes the industry's standard. Every barista can learn from it.
+                Competition as commercial opportunity. The champion&apos;s recipe
+                becomes the industry&apos;s standard. Every barista can learn from it.
                 Every cafe can serve it. The winner gets paid. The industry gets
                 better.
               </p>
-              <Link to="/vision">
-                <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
-                  Read Our Vision
-                  <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <Link to="/vision">
+                  <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
+                    Read Our Vision
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </Link>
+                <Link to="/truth">
+                  <Button
+                    variant="outline"
+                    className="border-sand-400/30 text-sand-200"
+                  >
+                    Café Unido announcement
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

@@ -61,16 +61,16 @@ export const STATIC_EVENTS: StaticEvent[] = [
     id: 4,
     name: "WEC 2025",
     year: 2025,
-    date: "2025",
+    date: "22 October 2025",
     location: "Milan, Italy",
-    venue: "Milan",
-    winner: null,
-    winnerProfileUrl: null,
+    venue: "Bobino Milano",
+    winner: "Muhammad Aga",
+    winnerProfileUrl: "https://www.instagram.com/muhammadaga/",
     format: "Single elimination, ISO 5495 paired comparison",
     keyHighlights:
-      "The manufacturer's home territory. The turning point toward independence.",
+      "Held at Bobino Milano. The manufacturer's home territory — and the turning point toward independence.",
     description:
-      "The event that proved WEC needed to become independent.",
+      "The event that proved WEC needed to become independent. Champion: Muhammad Aga (Indonesia).",
     championProduct: "Pre-product era",
     sponsor: "Italian espresso machine manufacturer",
     isUpcoming: false,
@@ -87,7 +87,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     location: "Busan, South Korea",
     venue: "Momos Coffee HQ",
     winner: "Ian Kissick",
-    winnerProfileUrl: null,
+    winnerProfileUrl: "https://www.instagram.com/ian_kissick/",
     format: "Single elimination, ISO 5495 paired comparison",
     keyHighlights:
       "Biggest event yet. More SCA and WBC judges than ever before.",
@@ -109,7 +109,7 @@ export const STATIC_EVENTS: StaticEvent[] = [
     location: "Athens, Greece",
     venue: "360 Athens",
     winner: "Jack Simpson",
-    winnerProfileUrl: null,
+    winnerProfileUrl: "https://www.instagram.com/jacksimpson32/",
     format: "Single elimination, ISO 5495 paired comparison",
     keyHighlights:
       "First event held alongside WBC. Increased visibility across the community.",
@@ -188,6 +188,20 @@ export const STATIC_NEWS: StaticNewsPost[] = [
     author: "WEC Team",
     published: true,
     createdAt: new Date("2026-08-01"),
+  },
+  {
+    id: 4,
+    title: "Café Unido confirmed: venue and roaster for WEC 2026 Panama",
+    slug: "cafe-unido-confirmed-wec-2026",
+    excerpt:
+      "26 October 2026 at Café Unido, Panama City. Same coffee for every competitor. The first independent WEC has a home.",
+    content:
+      "Café Unido is confirmed as venue and roaster sponsor for the World Espresso Championship 2026. Panama City. Blind paired comparison. Live public bracket. Inaugural Champion's Coffee Product year. Read the full story on /truth.",
+    category: "announcement",
+    coverImage: null,
+    author: "WEC Team",
+    published: true,
+    createdAt: new Date("2026-07-01"),
   },
 ];
 

@@ -151,8 +151,51 @@ export default function Vision() {
         </div>
       </section>
 
-      {/* Champion's Coffee Is The Model */}
+      {/* Good Coffee Was Never Meant to Stay on Stage */}
       <section className="wec-section bg-[#140f0b]">
+        <div className="wec-container">
+          <div className="max-w-3xl mx-auto text-center">
+            <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
+              Sharing principle
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-sand-100 mt-3 mb-6">
+              Good Coffee Was Never Meant to{" "}
+              <span className="wec-gradient-text">Stay on Stage</span>
+            </h2>
+            <p className="text-sand-400 leading-relaxed mb-6">
+              The discoveries made under competition pressure are not meant to
+              die in a private score sheet. They are meant to ripple outward —
+              to baristas, cafes, producers, and anyone who wants to make a
+              better cup.
+            </p>
+            <p className="text-sand-400 leading-relaxed mb-8">
+              That is why WEC publishes what matters: the format, the live
+              bracket, and — through the Champion&apos;s Coffee Product and the
+              Innovation Lab — a path from winning protocol to coffee the world
+              can actually drink and learn from.
+            </p>
+            <div className="wec-card rounded-xl p-6 text-left space-y-3">
+              {[
+                "Winning recipes and protocols shared for the industry to learn",
+                "Public live results — not closed-door deliberation",
+                "Champion's Coffee Product: excellence that leaves the stage",
+                "Innovation Lab: structured insight beside the championship",
+              ].map((item) => (
+                <p
+                  key={item}
+                  className="flex items-start gap-3 text-sm text-sand-300"
+                >
+                  <Check className="w-4 h-4 text-cinnamon-400 mt-0.5 flex-shrink-0" />
+                  {item}
+                </p>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Champion's Coffee Is The Model */}
+      <section className="wec-section">
         <div className="wec-container">
           <div className="max-w-3xl mx-auto text-center">
             <Coffee className="w-12 h-12 text-gold mx-auto mb-6" />
