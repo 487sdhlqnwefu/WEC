@@ -1,9 +1,14 @@
-WEC Netlify packages (Mac)
+Full deploy zip (all assets, ~318 MB compressed / ~321 MB unzipped):
+  Download from the cloud agent Artifacts panel:
+  wec-netlify-FOR-MAC.zip
 
-1) BEST: Give Cursor Netlify access — see docs/NETLIFY_DEPLOY_ACCESS.md
-2) Manual: use wec-netlify-FOR-MAC.tar.gz or wec-netlify-FOR-MAC.zip (~2 MB).
-3) If .zip fails with Error 94, use the .tar.gz instead.
-4) If download is ~700 KB, it is incomplete — re-download.
+GitHub cannot host files over 100 MB, so the full package is not in the repo.
 
-GitHub direct (usually more reliable):
-https://github.com/487sdhlqnwefu/WEC/raw/cursor/wec-tournament-mvp-784e/public/downloads/wec-netlify-FOR-MAC.tar.gz
+How to deploy:
+1. Download wec-netlify-FOR-MAC.zip from Artifacts
+2. Unzip (should be ~320 MB of files, not 4 MB)
+3. Drag the unzipped folder into Netlify Deploys
+
+Verified JS/CSS for this build:
+  assets/index-Dq8jbAaF.js
+  assets/index-CECq-QzI.css
