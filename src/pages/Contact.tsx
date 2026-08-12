@@ -34,6 +34,21 @@ export default function Contact() {
     { id: "competitor_support", label: "Competitor Support", icon: HelpCircle },
   ];
 
+  const partners = [
+    {
+      name: "Objective Coffee Community (OCC)",
+      href: "https://objectivecoffeecommunity.com",
+    },
+    {
+      name: "Specialty Coffee Community",
+      href: "https://www.specialtycoffeecommunity.com",
+    },
+    {
+      name: "Specialty Coffee Education",
+      href: "https://www.specialtycoffee.education",
+    },
+  ];
+
   return (
     <div>
       {/* Hero */}
@@ -119,17 +134,23 @@ export default function Contact() {
                     <ExternalLink className="w-5 h-5 text-cinnamon-400" />
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-sand-200 mb-1">
-                      Partner
+                    <h3 className="text-sm font-medium text-sand-200 mb-2">
+                      Partners
                     </h3>
-                    <a
-                      href="https://objectivecoffeecommunity.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-sand-400 hover:text-cinnamon-400 transition-colors"
-                    >
-                      Objective Coffee Community (OCC)
-                    </a>
+                    <ul className="space-y-2">
+                      {partners.map((partner) => (
+                        <li key={partner.href}>
+                          <a
+                            href={partner.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-sand-400 hover:text-cinnamon-400 transition-colors"
+                          >
+                            {partner.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
               </div>
