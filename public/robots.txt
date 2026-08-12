@@ -1,0 +1,26 @@
+# World Espresso Championship — crawler policy
+# Documented separately so training vs search access can change independently.
+# See docs/CRAWLER_POLICY.md
+
+User-agent: *
+Allow: /
+
+# Allow OpenAI's search crawler (AI-assisted search / citations)
+User-agent: OAI-SearchBot
+Allow: /
+
+# Block OpenAI model-training crawler (GPTBot) at this stage
+User-agent: GPTBot
+Disallow: /
+
+# Explicit allow for common search crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+Sitemap: https://worldespressochampionship.com/sitemap.xml

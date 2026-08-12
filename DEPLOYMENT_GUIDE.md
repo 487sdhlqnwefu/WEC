@@ -1,6 +1,45 @@
 # WEC Website — Deployment Guide
 
-## Quick Start (Railway — Easiest Option)
+## Quick Start (Netlify — Frontend)
+
+Publish the marketing site and Tiny Decisions tools on [Netlify](https://www.netlify.com) in a few minutes. Forms, store checkout, admin, and login still need a backend (Railway section below); until then those features simply won’t load data.
+
+### Step 1: Push to GitHub
+Make sure this repo is on GitHub (you already have it if you’re reading this from the WEC project).
+
+### Step 2: Create a Netlify site
+1. Go to [app.netlify.com](https://app.netlify.com) and sign up / log in
+2. **Add new site** → **Import an existing project** → choose GitHub
+3. Select the `WEC` repository
+4. Netlify reads `netlify.toml` automatically:
+   - **Build command:** `npm run build:netlify`
+   - **Publish directory:** `dist/public`
+   - **Node version:** `20`
+5. Click **Deploy site**
+6. **Production blocker:** fill `src/config/legalIdentity.ts` before production publish (see `docs/LEGAL_IDENTITY.md`). Deploy previews can build with incomplete legal identity; production cannot.
+
+### Step 3: Optional env vars (Netlify → Site configuration → Environment variables)
+| Variable | When you need it |
+|----------|------------------|
+| `VITE_APP_ID` | Login / Kimi OAuth |
+| `VITE_KIMI_AUTH_URL` | Login / Kimi OAuth |
+| `VITE_API_URL` | When the API is on another host (e.g. `https://your-api.up.railway.app`) |
+
+After changing `VITE_*` vars, trigger a new deploy (they are baked in at build time).
+
+### Step 4: Point API traffic (when the backend is live)
+**Option A — env var:** set `VITE_API_URL` to your API origin and redeploy.
+
+**Option B — Netlify proxy:** in `netlify.toml`, uncomment the `/api/*` redirect and set `to` to your API host. Then leave `VITE_API_URL` empty so the browser keeps calling `/api/trpc`.
+
+### Step 5: Custom domain
+1. Netlify → **Domain management** → **Add a domain**
+2. Follow DNS instructions for `worldespressochampionship.com`
+3. Set `FRONTEND_URL` on the API host to that domain
+
+---
+
+## Fullstack on Railway (API + DB + optional hosting)
 
 ### Step 1: Push to GitHub
 ```bash
@@ -60,16 +99,20 @@ git push -u origin main
 
 ## Alternative: Deploy Frontend + Backend Separately
 
+### Frontend on Netlify (recommended)
+See **Quick Start (Netlify — Frontend)** above. Config lives in `netlify.toml`.
+
 ### Frontend on Vercel
 1. Push to GitHub
 2. Go to [vercel.com](https://vercel.com)
 3. **New Project** → Import your repo
 4. Framework preset: `Vite`
-5. Build command: `npm run build`
+5. Build command: `npm run build:client`
 6. Output directory: `dist/public`
 7. Add environment variables:
    - `VITE_APP_ID` (same as in .env)
    - `VITE_KIMI_AUTH_URL` (same as in .env)
+   - `VITE_API_URL` (your Railway API origin, if split)
 8. Deploy
 
 ### Backend on Railway
@@ -77,7 +120,8 @@ git push -u origin main
 2. Add a MySQL database
 3. Deploy from the same GitHub repo
 4. Add all environment variables (Stripe, Resend, DB URL)
-5. Set `FRONTEND_URL` to your Vercel URL
+5. Set `FRONTEND_URL` to your Netlify (or Vercel) URL
+6. On Netlify, set `VITE_API_URL` to the Railway URL (or enable the proxy in `netlify.toml`) and redeploy
 
 ---
 
@@ -103,6 +147,7 @@ git push -u origin main
 | `APP_SECRET` | Kimi OAuth app secret |
 | `VITE_APP_ID` | Same as APP_ID (for frontend) |
 | `VITE_KIMI_AUTH_URL` | Kimi auth endpoint |
+| `VITE_API_URL` | Optional API origin when frontend is on Netlify/Vercel |
 
 ### You Need to Add
 | Variable | Description | Example |
@@ -170,8 +215,20 @@ npm run dev
 # Type check
 npm run check
 
-# Build for production
+# Build for production (frontend + API server bundle)
 npm run build
+
+# Build frontend only + prerender public routes (Netlify / static hosts)
+npm run build:client
+
+# Same as Netlify build (includes legal-identity assert)
+npm run build:netlify
+
+# Verify prerendered routes return HTTP 200 and unknown paths HTTP 404
+npm run verify:status
+
+# Regenerate 1200×630 Open Graph images from event photos
+npm run og:generate
 
 # Database operations
 npm run db:push      # Sync schema to database

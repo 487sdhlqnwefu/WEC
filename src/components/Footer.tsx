@@ -4,21 +4,26 @@ import { Instagram, Mail, ExternalLink } from "lucide-react";
 const footerLinks = {
   championship: [
     { label: "About WEC", href: "/about" },
+    { label: "How It Works", href: "/how-it-works" },
     { label: "History", href: "/history" },
+    { label: "Champions", href: "/champions" },
     { label: "WEC 2026 Panama", href: "/panama-2026" },
     { label: "Our Vision", href: "/vision" },
+    { label: "Innovation Lab", href: "/innovation-lab" },
   ],
   participate: [
     { label: "Competitor Registration", href: "/panama-2026" },
     { label: "Judge Registration", href: "/panama-2026" },
     { label: "Volunteer", href: "/panama-2026" },
     { label: "National Organisers", href: "/about" },
+    { label: "Live Results", href: "/live" },
   ],
   resources: [
     { label: "Champion's Coffee Store", href: "/store" },
     { label: "News & Media", href: "/news" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
+    { label: "Dalla Corte", href: "/thanks/dalla-corte" },
   ],
 };
 
@@ -139,13 +144,13 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-6">
             <Link
-              to="/contact"
+              to="/privacy"
               className="text-xs text-sand-600 hover:text-sand-400 transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              to="/contact"
+              to="/terms"
               className="text-xs text-sand-600 hover:text-sand-400 transition-colors"
             >
               Terms of Service
