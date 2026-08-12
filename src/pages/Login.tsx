@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 
 function getOAuthUrl() {
   const kimiAuthUrl = import.meta.env.VITE_KIMI_AUTH_URL;
@@ -20,11 +21,20 @@ function getOAuthUrl() {
 export default function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center">
+      <Seo
+        title="Admin sign-in | World Espresso Championship"
+        description="Restricted sign-in for WEC administrators."
+        path="/login"
+        noindex
+      />
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle>Welcome</CardTitle>
+          <CardTitle>Admin access</CardTitle>
         </CardHeader>
         <CardContent>
+          <p className="text-sm text-muted-foreground mb-4 text-center">
+            Restricted to authorised WEC administrators.
+          </p>
           <Button
             className="w-full"
             size="lg"
@@ -32,7 +42,7 @@ export default function Login() {
               window.location.href = getOAuthUrl();
             }}
           >
-            Sign in with Kimi
+            Continue
           </Button>
         </CardContent>
       </Card>

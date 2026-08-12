@@ -1,7 +1,7 @@
 WEC Netlify packages (Mac)
 
 1) BEST: Give Cursor Netlify access — see docs/NETLIFY_DEPLOY_ACCESS.md
-2) Manual: use wec-netlify-FOR-MAC.tar.gz (double-click). Expect ~1.4 MB.
+2) Manual: use wec-netlify-FOR-MAC.tar.gz or wec-netlify-FOR-MAC.zip (~2 MB).
 3) If .zip fails with Error 94, use the .tar.gz instead.
 4) If download is ~700 KB, it is incomplete — re-download.
 

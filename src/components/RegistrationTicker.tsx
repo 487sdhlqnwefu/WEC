@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { Users } from "lucide-react";
 import { trpc } from "@/providers/trpc";
-import { REGISTRATION_FALLBACK } from "@/data/staticContent";
+import { WEC_FACTS } from "@/data/wecFacts";
 
 /**
  * Sticky registration progress bar — centered “X / 32 confirmed” ticker.
@@ -19,9 +19,9 @@ export default function RegistrationTicker() {
     : null;
   const confirmed =
     apiCount != null
-      ? Math.max(apiCount, REGISTRATION_FALLBACK.confirmedCompetitors)
-      : REGISTRATION_FALLBACK.confirmedCompetitors;
-  const limit = REGISTRATION_FALLBACK.competitorLimit;
+      ? Math.max(apiCount, WEC_FACTS.event2026.confirmedCompetitors)
+      : WEC_FACTS.event2026.confirmedCompetitors;
+  const limit = WEC_FACTS.event2026.fieldSize;
   const pct = Math.min(100, Math.round((confirmed / limit) * 100));
 
   return (
@@ -44,7 +44,7 @@ export default function RegistrationTicker() {
             />
           </div>
           <Link
-            to="/panama-2026"
+            to="/panama-2026#competitor-registration"
             className="text-xs font-medium text-cinnamon-400 hover:text-cinnamon-300 whitespace-nowrap"
           >
             Register →

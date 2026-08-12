@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
 import {
   FOUNDER_ACCESS_BLURB,
@@ -24,7 +25,7 @@ export default function Contact() {
         ...formDataToRecord(formData),
         type: contactType,
       });
-      toast.success("Message sent! We'll get back to you within 2 business days.");
+      toast.success("Message sent. Tristan will reply when he can.");
       form.reset();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not send message");
@@ -57,6 +58,11 @@ export default function Contact() {
 
   return (
     <div>
+      <Seo
+        title="Contact | World Espresso Championship"
+        description="Your message reaches Tristan Creswick, WEC founder, directly. Competitors, partners and media are welcome."
+        path="/contact"
+      />
       {/* Hero */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cinnamon-950/20 to-transparent" />
@@ -67,11 +73,14 @@ export default function Contact() {
               Get in <span className="wec-gradient-text">Touch</span>
             </h1>
             <p className="text-lg text-sand-400 max-w-2xl mb-4">
-              Questions, sponsorship, press, or competitor support — you talk
-              directly to {FOUNDER_NAME}, founder of WEC.
+              {FOUNDER_ACCESS_BLURB}
             </p>
             <p className="text-sm text-sand-500 max-w-2xl">
-              {FOUNDER_ACCESS_BLURB}
+              Questions, sponsorship, press, or competitor support — email{" "}
+              <a href={FOUNDER_MAILTO} className="text-cinnamon-400 hover:underline">
+                {FOUNDER_EMAIL}
+              </a>{" "}
+              or use the form below to reach {FOUNDER_NAME}.
             </p>
           </div>
         </div>

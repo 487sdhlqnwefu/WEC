@@ -1,15 +1,17 @@
-import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router";
+import { useEffect, useId, useState } from "react";
+import { Link } from "react-router";
+import Seo from "@/components/Seo";
+import ChampionsProductModule from "@/components/ChampionsProductModule";
+import SoftwareShowcase from "@/components/SoftwareShowcase";
 import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
 import { formDataToRecord, submitNetlifyForm } from "@/lib/netlifyForm";
-import { FOUNDER_EMAIL, FOUNDER_MAILTO } from "@/lib/contact";
+import { WEC_FACTS, SITE_URL } from "@/data/wecFacts";
+import { toast } from "sonner";
 import {
   Trophy,
   Calendar,
   MapPin,
   Users,
-  DollarSign,
   Star,
   Coffee,
   Handshake,
@@ -17,47 +19,72 @@ import {
   Check,
   Globe,
   Award,
-  Crown,
 } from "lucide-react";
-import SoftwareShowcase from "@/components/SoftwareShowcase";
+
+type RegType = "competitor" | "judge" | "volunteer";
+type Panel = "competitors" | "sponsors" | "register";
+
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  window.setTimeout(() => {
+    el.focus({ preventScroll: true });
+  }, 400);
+}
 
 export default function Panama2026() {
-  const location = useLocation();
-  const [regType, setRegType] = useState<"competitor" | "judge" | "volunteer">("competitor");
-  const [activeTab, setActiveTab] = useState<"competitors" | "sponsors" | "register">("competitors");
+  const formId = useId();
+  const [regType, setRegType] = useState<RegType>("competitor");
+  const [panel, setPanel] = useState<Panel>("competitors");
   const [regSubmitting, setRegSubmitting] = useState(false);
+  const [regSuccess, setRegSuccess] = useState(false);
   const [sponsorSubmitting, setSponsorSubmitting] = useState(false);
+  const [statusMsg, setStatusMsg] = useState("");
 
   useEffect(() => {
-    const hash = location.hash.replace("#", "");
+    const hash = window.location.hash.replace("#", "");
     if (hash === "sponsors") {
-      setActiveTab("sponsors");
-      requestAnimationFrame(() => {
-        document.getElementById("sponsors")?.scrollIntoView({ behavior: "smooth" });
-      });
-    } else if (hash === "register") {
-      setActiveTab("register");
-      requestAnimationFrame(() => {
-        document.getElementById("register")?.scrollIntoView({ behavior: "smooth" });
-      });
+      setPanel("sponsors");
+      requestAnimationFrame(() => scrollToId("sponsors"));
+    } else if (hash === "competitor-registration" || hash === "register") {
+      setPanel("register");
+      setRegType("competitor");
+      requestAnimationFrame(() => scrollToId("competitor-registration"));
     }
-  }, [location.hash]);
+  }, []);
 
   const handleRegSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
     const formData = new FormData(form);
+    if (formData.get("bot-field")) return;
+    if (formData.get("privacyConsent") !== "on" || formData.get("agreedToRules") !== "on") {
+      setStatusMsg("Please accept the rules and privacy notices to continue.");
+      toast.error("Please accept the rules and privacy notices.");
+      return;
+    }
     setRegSubmitting(true);
+    setStatusMsg("Submitting…");
+    setRegSuccess(false);
     try {
       await submitNetlifyForm("wec-registration", {
         ...formDataToRecord(formData),
         type: regType,
-        agreedToRules: formData.get("agreedToRules") === "on" ? "yes" : "no",
+        agreedToRules: "yes",
+        privacyConsent: "yes",
       });
-      toast.success("Registration submitted! We'll confirm within 5 business days.");
+      setRegSuccess(true);
+      setStatusMsg("Registration received. We will review and contact you by email.");
+      toast.success("Registration submitted.");
       form.reset();
     } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Registration failed");
+      const msg =
+        err instanceof Error
+          ? err.message
+          : `Submission failed. Email ${WEC_FACTS.organisation.founderEmail}`;
+      setStatusMsg(msg);
+      toast.error(msg);
     } finally {
       setRegSubmitting(false);
     }
@@ -70,7 +97,7 @@ export default function Panama2026() {
     setSponsorSubmitting(true);
     try {
       await submitNetlifyForm("wec-sponsor", formDataToRecord(formData));
-      toast.success("Sponsorship inquiry submitted! We'll be in touch within 3 business days.");
+      toast.success("Sponsorship enquiry submitted.");
       form.reset();
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Submission failed");
@@ -79,75 +106,51 @@ export default function Panama2026() {
     }
   };
 
-  const sponsorTiers = [
-    {
-      name: "Presenting Partner",
-      price: "€150,000+",
-      description:
-        "Lead presenting partner. Closest association with the live, blind format and the WEC brand.",
-      features: [
-        "'WEC 2026 presented with [Your Brand]' recognition",
-        "Category exclusivity as lead partner",
-        "On-site branding at Café Unido",
-        "Logo on live bracket + website",
-        "Social + LinkedIn campaign package",
-        "4–6 team passes / hospitality",
-        "Optional machine or product demo zone",
-        "Priority access to Competition Intelligence (by agreement)",
-      ],
-      highlighted: true,
-    },
-    {
-      name: "Official Partner",
-      price: "€70,000+",
-      description:
-        "Strong visibility for grinders, water, milk, or media brands that fit the sensory story.",
-      features: [
-        "Category exclusivity where possible",
-        "Logo on website + event materials",
-        "Live-board mention during finals",
-        "Social media package",
-        "2–3 team passes",
-      ],
-      highlighted: false,
-    },
-    {
-      name: "Supporting Partner",
-      price: "€15,000+",
-      description:
-        "Accessible entry for roasters, tools, and regional brands who want to stand with WEC.",
-      features: [
-        "Logo on website sponsor wall",
-        "Social thank-you posts",
-        "Name in event programme",
-        "1–2 team passes",
-      ],
-      highlighted: false,
-    },
-    {
-      name: "Community Partner",
-      price: "€5,000+",
-      description:
-        "Entry-level partnership for tools, media, travel support, or regional brands — cash or high-value in-kind.",
-      features: [
-        "Logo on website sponsor wall",
-        "Social thank-you credit",
-        "Name in event programme",
-        "Warm intro to competitor & judge network",
-      ],
-      highlighted: false,
-    },
-  ];
+  const packages = WEC_FACTS.sponsorship.packages;
+  const ev = WEC_FACTS.event2026;
 
   return (
     <div>
-      {/* Hero */}
+      <Seo
+        title="WEC 2026 Panama | World Espresso Championship"
+        description={`Register for WEC 2026 at Café Unido, Panama City on ${ev.dateDisplay}. Blind espresso championship with public scoring.`}
+        path="/panama-2026"
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: ev.name,
+          startDate: ev.dateISO,
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          eventStatus: "https://schema.org/EventScheduled",
+          location: {
+            "@type": "Place",
+            name: ev.venue,
+            address: ev.addressDisplay,
+          },
+          organizer: {
+            "@type": "Organization",
+            name: WEC_FACTS.organisation.legalName,
+            url: SITE_URL,
+          },
+          url: `${SITE_URL}/panama-2026`,
+          offers: {
+            "@type": "Offer",
+            url: `${SITE_URL}${ev.registrationPath}`,
+            availability: "https://schema.org/InStock",
+            price: "0",
+            priceCurrency: "EUR",
+          },
+        }}
+      />
+
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/assets/event-36.jpg"
-            alt="Panama"
+            alt="Café Unido, Panama City — host venue for WEC 2026"
             className="w-full h-full object-cover opacity-20"
+            width={1920}
+            height={1080}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1a1410]/80 via-[#1a1410]/90 to-[#1a1410]" />
         </div>
@@ -155,61 +158,61 @@ export default function Panama2026() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex flex-wrap items-center justify-center gap-2 mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gold/10 border border-gold/30">
-                <Star className="w-4 h-4 text-gold" />
+                <Star className="w-4 h-4 text-gold" aria-hidden />
                 <span className="text-sm text-gold font-medium">
                   Café Unido · Venue &amp; Roaster Sponsor
                 </span>
               </div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cinnamon-950/50 border border-cinnamon-800/50">
-                <span className="text-sm text-cinnamon-300 font-medium">
-                  First independently-run WEC · Live transparent results
-                </span>
-              </div>
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-sand-100 mb-6">
-              WEC 2026{" "}
-              <span className="wec-gradient-text">Panama</span>
+              WEC 2026 <span className="wec-gradient-text">Panama</span>
             </h1>
             <div className="flex flex-wrap items-center justify-center gap-6 mb-8 text-sand-400">
               <div className="flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-cinnamon-400" />
-                <span>26 October 2026</span>
+                <Calendar className="w-5 h-5 text-cinnamon-400" aria-hidden />
+                <span>{ev.dateDisplay}</span>
               </div>
               <div className="flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-cinnamon-400" />
-                <span>Café Unido, Panama City</span>
+                <MapPin className="w-5 h-5 text-cinnamon-400" aria-hidden />
+                <span>{ev.addressDisplay}</span>
               </div>
             </div>
-            <p className="text-lg sm:text-xl text-sand-400 max-w-2xl mx-auto mb-10">
-              Café Unido hosts WEC 2026 and is the roaster sponsor. Same coffee.
-              Same machine. Blind sensory judging under Scoring v3. The cup
-              decides — on a public live bracket.
+            <p className="text-lg sm:text-xl text-sand-400 max-w-2xl mx-auto mb-6">
+              Café Unido hosts WEC 2026 and is the roaster sponsor. Same coffee. Same machine.
+              Blind sensory judging under {WEC_FACTS.scoring.version}. {ev.independentEraNote}
+            </p>
+            <p className="text-sm text-cinnamon-300 mb-10" role="status">
+              Registration is open · {ev.confirmedCompetitors} / {ev.fieldSize} competitors confirmed
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 size="lg"
-                className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 px-8 wec-glow"
-                onClick={() => { setActiveTab("register"); document.getElementById("register")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 px-8 wec-glow min-h-11"
+                onClick={() => {
+                  setPanel("register");
+                  setRegType("competitor");
+                  scrollToId("competitor-registration");
+                }}
               >
-                <Trophy className="mr-2 w-5 h-5" />
-                Register Now
+                <Trophy className="mr-2 w-5 h-5" aria-hidden />
+                Register
               </Button>
-              <Link to="/live/wec-2026-panama">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8"
-                >
-                  Live Bracket
-                </Button>
+              <Link
+                to={ev.livePath}
+                className="inline-flex items-center justify-center min-h-11 px-8 rounded-md border border-sand-400/30 text-sand-200 hover:bg-sand-400/10"
+              >
+                Live Bracket
               </Link>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8"
-                onClick={() => { setActiveTab("sponsors"); document.getElementById("sponsors")?.scrollIntoView({ behavior: "smooth" }); }}
+                className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8 min-h-11"
+                onClick={() => {
+                  setPanel("sponsors");
+                  scrollToId("sponsors");
+                }}
               >
-                <Handshake className="mr-2 w-5 h-5" />
+                <Handshake className="mr-2 w-5 h-5" aria-hidden />
                 Become a Sponsor
               </Button>
             </div>
@@ -219,24 +222,18 @@ export default function Panama2026() {
 
       <SoftwareShowcase className="bg-[#140f0b]" />
 
-      {/* Key Info Cards */}
       <section className="wec-section">
         <div className="wec-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {[
-              { icon: Users, label: "Competitors", value: "32" },
-              { icon: Trophy, label: "Prize Money", value: "€3,000" },
-              { icon: Crown, label: "Champion's Product", value: "5-10% Royalty" },
-              { icon: Globe, label: "Countries", value: "Worldwide" },
+              { icon: Users, label: "Planned field", value: String(ev.fieldSize) },
+              { icon: Trophy, label: "Title", value: "World Champion" },
+              { icon: Coffee, label: "Champion's Product", value: "Ambition" },
+              { icon: Globe, label: "Format", value: "Blind heats" },
             ].map((stat) => (
-              <div
-                key={stat.label}
-                className="wec-card rounded-xl p-6 text-center"
-              >
-                <stat.icon className="w-8 h-8 text-cinnamon-400 mx-auto mb-3" />
-                <div className="text-2xl sm:text-3xl font-bold text-sand-100">
-                  {stat.value}
-                </div>
+              <div key={stat.label} className="wec-card rounded-xl p-6 text-center">
+                <stat.icon className="w-8 h-8 text-cinnamon-400 mx-auto mb-3" aria-hidden />
+                <div className="text-2xl sm:text-3xl font-bold text-sand-100">{stat.value}</div>
                 <div className="text-sm text-sand-500 mt-1">{stat.label}</div>
               </div>
             ))}
@@ -244,317 +241,493 @@ export default function Panama2026() {
         </div>
       </section>
 
-      {/* Why Register / Why Sponsor Tabs */}
-      <section className="wec-section">
+      <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {[
-              { id: "competitors" as const, label: "For Competitors", icon: Trophy },
-              { id: "sponsors" as const, label: "For Sponsors", icon: Handshake },
-              { id: "register" as const, label: "Register Now", icon: ArrowRight },
-            ].map((tab) => (
+          <div
+            role="tablist"
+            aria-label="Panama 2026 audiences"
+            className="flex flex-wrap justify-center gap-2 mb-12"
+          >
+            {(
+              [
+                { id: "competitors" as const, label: "For Competitors", icon: Trophy },
+                { id: "sponsors" as const, label: "For Sponsors", icon: Handshake },
+                { id: "register" as const, label: "Register", icon: ArrowRight },
+              ] as const
+            ).map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                  activeTab === tab.id
+                type="button"
+                role="tab"
+                id={`tab-${tab.id}`}
+                aria-selected={panel === tab.id}
+                aria-controls={`panel-${tab.id}`}
+                tabIndex={panel === tab.id ? 0 : -1}
+                onClick={() => setPanel(tab.id)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium min-h-11 transition-all ${
+                  panel === tab.id
                     ? "bg-cinnamon-600 text-sand-100"
                     : "bg-[#231a14] text-sand-400 hover:text-sand-200 border border-[#3a2a1f]"
                 }`}
               >
-                <tab.icon className="w-4 h-4" />
+                <tab.icon className="w-4 h-4" aria-hidden />
                 {tab.label}
               </button>
             ))}
           </div>
 
-          {/* Competitors Content */}
-          {activeTab === "competitors" && (
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {panel === "competitors" && (
+            <div
+              role="tabpanel"
+              id="panel-competitors"
+              aria-labelledby="tab-competitors"
+              className="grid lg:grid-cols-2 gap-12 items-center"
+            >
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-6">
-                  Why Competitors Should Register
+                  Why competitors register
                 </h2>
-                <p className="text-sand-400 leading-relaxed mb-8">
-                  The first WEC champion will be the first barista in history to
-                  have a globally distributed coffee product named after them.
-                  Not just a trophy. A career. A legacy. A revenue stream.
+                <p className="text-sand-400 leading-relaxed mb-6">
+                  {ev.independentEraNote} Same coffee. Same machine. Blind cups. Results published
+                  on a public live bracket.
                 </p>
-                <div className="space-y-4">
-                  {[
-                    { icon: Trophy, text: "WEC 2026 World Champion title and trophy" },
-                    { icon: Coffee, text: "Champion's Coffee Product — retail blend named after you, sold globally" },
-                    { icon: DollarSign, text: "5-10% royalty on every bag sold (estimated €7,500+ in Year 1)" },
-                    { icon: Globe, text: "Media coverage and profile feature on OCC platforms" },
-                    { icon: Award, text: "Automatic invitation to defend title at WEC 2027" },
-                    { icon: Users, text: "Lifetime OCC membership and alumni network access" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-cinnamon-950/50 border border-cinnamon-800/50 flex items-center justify-center flex-shrink-0">
-                        <item.icon className="w-4 h-4 text-cinnamon-400" />
-                      </div>
-                      <span className="text-sand-300 text-sm">{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-gold text-sm font-medium mt-8">
-                  There will only be one first champion. One first product. One
-                  first legacy. Will it be you?
-                </p>
+                <ul className="space-y-3 text-sand-300 text-sm mb-8">
+                  <li className="flex gap-2">
+                    <Check className="w-4 h-4 text-cinnamon-400 mt-0.5" aria-hidden />
+                    World Espresso Champion title and trophy
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="w-4 h-4 text-cinnamon-400 mt-0.5" aria-hidden />
+                    Public Scoring v3 results
+                  </li>
+                  <li className="flex gap-2">
+                    <Check className="w-4 h-4 text-cinnamon-400 mt-0.5" aria-hidden />
+                    Champion&apos;s Product only if responsibly agreed — see transparency model
+                  </li>
+                </ul>
+                <Button
+                  className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 min-h-11"
+                  onClick={() => {
+                    setPanel("register");
+                    scrollToId("competitor-registration");
+                  }}
+                >
+                  Register
+                </Button>
               </div>
-              <div className="relative">
-                <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-[#3a2a1f]">
-                  <img
-                    src="/assets/event-25.jpg"
-                    alt="Competitor"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-[#3a2a1f]">
+                <img
+                  src="/assets/event-25.jpg"
+                  alt="Competitors preparing espresso at a WEC heat"
+                  className="w-full h-full object-cover"
+                  width={1200}
+                  height={900}
+                />
               </div>
             </div>
           )}
 
-          {/* Sponsors Content */}
-          {activeTab === "sponsors" && (
-            <div>
-              <div className="text-center mb-10" id="sponsors">
+          {panel === "sponsors" && (
+            <div role="tabpanel" id="panel-sponsors" aria-labelledby="tab-sponsors">
+              <div
+                id="sponsors"
+                tabIndex={-1}
+                className="text-center mb-10 scroll-mt-36 outline-none"
+              >
                 <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
-                  Partner with WEC 2026
+                  {WEC_FACTS.sponsorship.heading}
                 </h2>
-                <p className="text-sand-400 max-w-3xl mx-auto mb-6">
-                  Café Unido is confirmed as venue and roaster sponsor. We are
-                  filling the remaining stack — equipment, water, tools, media —
-                  with partners who want their name on the most objective espresso
-                  format in coffee.
+                <p className="text-sand-400 max-w-3xl mx-auto mb-4">
+                  {WEC_FACTS.sponsorship.intro}
                 </p>
-                <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-5 py-3 rounded-xl bg-gold/10 border border-gold/30 text-sm">
-                  <span className="text-gold font-medium">Funding target</span>
-                  <span className="text-sand-200">
-                    ~€20,000 cash + in-kind to run Panama cleanly
-                  </span>
-                </div>
+                <p className="text-sm text-sand-500 max-w-2xl mx-auto">
+                  {WEC_FACTS.sponsorship.independencePrinciple}
+                </p>
               </div>
 
-              <div className="wec-card rounded-xl p-6 mb-10 max-w-3xl mx-auto">
-                <h3 className="font-semibold text-sand-100 mb-2">Why sponsor this?</h3>
-                <ul className="space-y-2 text-sm text-sand-400">
-                  <li>• Blind sensory format — your brand beside trust, not politics</li>
-                  <li>• Public live bracket software — results the industry can watch</li>
-                  <li>• Structured elite-barista insight via the Innovation Lab — inform product development thinking</li>
-                  <li>• Same week the global coffee community is already in Panama</li>
-                  <li>• Honest packages sized for real partners (not fantasy title fees)</li>
-                </ul>
-                <div className="flex flex-wrap gap-4 mt-4">
-                  <Link to="/judging" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300">
-                    Read how Scoring v3 works
-                    <ArrowRight className="ml-1 w-4 h-4" />
-                  </Link>
-                  <Link to="/innovation" className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300">
-                    Explore the Innovation Lab
-                    <ArrowRight className="ml-1 w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                {sponsorTiers.map((tier) => (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {packages.map((tier) => (
                   <div
-                    key={tier.name}
+                    key={tier.id}
                     className={`wec-card rounded-xl p-6 flex flex-col ${
-                      tier.highlighted
-                        ? "border-gold/50 ring-1 ring-gold/20"
-                        : ""
+                      tier.highlighted ? "border-gold/50 ring-1 ring-gold/20" : ""
                     }`}
                   >
-                    {tier.highlighted && (
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-gold/10 border border-gold/30 text-xs text-gold mb-3 self-start">
-                        <Star className="w-3 h-3" />
-                        Best fit for lead partners
-                      </span>
-                    )}
-                    <h3 className="text-lg font-bold text-sand-100 mb-1">
-                      {tier.name}
-                    </h3>
-                    <div className="text-xl font-bold text-gold mb-2">
-                      {tier.price}
-                    </div>
-                    <p className="text-sm text-sand-500 mb-4 flex-1">
-                      {tier.description}
+                    <h3 className="text-lg font-bold text-sand-100 mb-1">{tier.name}</h3>
+                    <div className="text-xl font-bold text-gold mb-1">{tier.price}</div>
+                    <p className="text-xs text-sand-500 mb-3">Status: {tier.availability}</p>
+                    <p className="text-sm text-sand-500 mb-3 flex-1">{tier.description}</p>
+                    <p className="text-xs text-sand-400 mb-2">
+                      <span className="text-sand-300">Funds:</span> {tier.funds}
                     </p>
-                    <ul className="space-y-2 mb-6">
-                      {tier.features.map((f) => (
-                        <li
-                          key={f}
-                          className="flex items-start gap-2 text-sm text-sand-400"
-                        >
-                          <Check className="w-4 h-4 text-cinnamon-400 mt-0.5 flex-shrink-0" />
+                    <ul className="space-y-2 mb-4">
+                      {tier.deliverables.map((f) => (
+                        <li key={f} className="flex items-start gap-2 text-sm text-sand-400">
+                          <Check className="w-4 h-4 text-cinnamon-400 mt-0.5 flex-shrink-0" aria-hidden />
                           {f}
                         </li>
                       ))}
                     </ul>
+                    <p className="text-xs text-sand-500 mb-4">After the event: {tier.reportedAfter}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-12 wec-card rounded-xl p-8">
-                <h3 className="text-xl font-semibold text-sand-100 mb-4">
-                  Submit Sponsorship Inquiry
-                </h3>
-                <form onSubmit={handleSponsorSubmit} className="grid sm:grid-cols-2 gap-4">
-                  <input name="companyName" required placeholder="Company Name *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="contactName" required placeholder="Contact Name *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="email" type="email" required placeholder="Email *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="phone" placeholder="Phone" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <select name="tier" className="wec-input w-full px-4 py-3 rounded-lg text-sm" defaultValue="">
-                    <option value="">Select Tier</option>
-                    <option value="title">Presenting Partner (€150k+)</option>
-                    <option value="gold">Official Partner (€70k+)</option>
-                    <option value="supporting">Supporting Partner (€15k+)</option>
-                    <option value="silver">Community Partner (€5k+)</option>
-                    <option value="custom">In-kind / Trade (value match)</option>
-                  </select>
-                  <input name="website" placeholder="Company Website" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="budget" placeholder="Budget Range" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <textarea name="message" placeholder="Message" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none sm:col-span-2" rows={3} />
+
+              <div className="wec-card rounded-xl p-8">
+                <h3 className="text-xl font-semibold text-sand-100 mb-4">Sponsorship enquiry</h3>
+                <form onSubmit={handleSponsorSubmit} className="grid sm:grid-cols-2 gap-4" noValidate>
+                  <p className="hidden" aria-hidden>
+                    <label>
+                      Don&apos;t fill this out
+                      <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                    </label>
+                  </p>
+                  <div>
+                    <label htmlFor={`${formId}-co`} className="block text-sm text-sand-300 mb-1">
+                      Company name *
+                    </label>
+                    <input
+                      id={`${formId}-co`}
+                      name="companyName"
+                      required
+                      className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`${formId}-cn`} className="block text-sm text-sand-300 mb-1">
+                      Contact name *
+                    </label>
+                    <input
+                      id={`${formId}-cn`}
+                      name="contactName"
+                      required
+                      autoComplete="name"
+                      className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`${formId}-em`} className="block text-sm text-sand-300 mb-1">
+                      Email *
+                    </label>
+                    <input
+                      id={`${formId}-em`}
+                      name="email"
+                      type="email"
+                      required
+                      autoComplete="email"
+                      className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={`${formId}-tier`} className="block text-sm text-sand-300 mb-1">
+                      Package of interest
+                    </label>
+                    <select
+                      id={`${formId}-tier`}
+                      name="tier"
+                      className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                      defaultValue=""
+                    >
+                      <option value="">Select package</option>
+                      {packages.map((p) => (
+                        <option key={p.id} value={p.formTier}>
+                          {p.name} ({p.price})
+                        </option>
+                      ))}
+                      <option value="custom">In-kind / trade</option>
+                    </select>
+                  </div>
+                  <div className="sm:col-span-2">
+                    <label htmlFor={`${formId}-msg`} className="block text-sm text-sand-300 mb-1">
+                      Message
+                    </label>
+                    <textarea
+                      id={`${formId}-msg`}
+                      name="message"
+                      rows={3}
+                      className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none"
+                    />
+                  </div>
                   <Button
                     type="submit"
-                    className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 sm:col-span-2"
+                    className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 sm:col-span-2 min-h-11"
                     disabled={sponsorSubmitting}
                   >
-                    {sponsorSubmitting ? "Submitting..." : "Submit Inquiry"}
-                    <ArrowRight className="ml-2 w-4 h-4" />
+                    {sponsorSubmitting ? "Submitting…" : "Submit enquiry"}
                   </Button>
                 </form>
               </div>
             </div>
           )}
 
-          {/* Register Form */}
-          {activeTab === "register" && (
-            <div id="register">
-              <div className="text-center mb-8">
-                <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
-                  Registration
-                </h2>
-                <p className="text-sand-400">
-                  Choose your role and fill out the form below.
-                </p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-2 mb-8">
-                {[
-                  { id: "competitor" as const, label: "Competitor", icon: Trophy },
-                  { id: "judge" as const, label: "Judge", icon: Award },
-                  { id: "volunteer" as const, label: "Volunteer", icon: Users },
-                ].map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setRegType(t.id)}
-                    className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium transition-all ${
-                      regType === t.id
-                        ? "bg-cinnamon-600 text-sand-100"
-                        : "bg-[#231a14] text-sand-400 hover:text-sand-200 border border-[#3a2a1f]"
-                    }`}
-                  >
-                    <t.icon className="w-4 h-4" />
-                    {t.label}
-                  </button>
-                ))}
-              </div>
-
-              <div className="max-w-2xl mx-auto wec-card rounded-xl p-6 sm:p-8">
-                {regType === "competitor" && (
-                  <div className="mb-6 p-4 rounded-lg bg-cinnamon-950/30 border border-cinnamon-800/50">
-                    <p className="text-sm text-cinnamon-300">
-                      <strong>Eligibility:</strong> Open for current Barista
-                      Champions attending WBC 2026, or top 3 National Espresso
-                      Champions from 2021. Limited to 1 per country.
-                    </p>
-                  </div>
-                )}
-                {regType === "judge" && (
-                  <div className="mb-6 p-4 rounded-lg bg-cinnamon-950/30 border border-cinnamon-800/50">
-                    <p className="text-sm text-cinnamon-300">
-                      <strong>Eligibility:</strong> Barista Champions (top 6),
-                      Cup Tasters Champions, Q Graders, or WCC Sensory
-                      Certification. No prior judging required — we train you.
-                    </p>
-                  </div>
-                )}
-                {regType === "volunteer" && (
-                  <div className="mb-6 p-4 rounded-lg bg-cinnamon-950/30 border border-cinnamon-800/50">
-                    <p className="text-sm text-cinnamon-300">
-                      <strong>Open for anyone.</strong> Previous experience
-                      preferred but not required. Roles include stage
-                      management, competitor liaison, registration, social
-                      media, and photography.
-                    </p>
-                  </div>
-                )}
-
-                <form onSubmit={handleRegSubmit} className="space-y-4">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <input name="fullName" required placeholder="Full Name *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                    <input name="email" type="email" required placeholder="Email *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  </div>
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <input name="country" required placeholder="Country *" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                    <input name="phone" placeholder="Phone" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  </div>
-                  <input name="employer" placeholder="Current Employer / Cafe" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  {regType === "competitor" && (
-                    <>
-                      <input name="qualificationMethod" placeholder="Qualification method (national champion / qualifier winner / wildcard)" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                      <textarea name="experience" placeholder="Professional experience (years as barista)" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none" rows={2} />
-                    </>
-                  )}
-                  {regType === "judge" && (
-                    <>
-                      <input name="professionalBackground" placeholder="Professional background (barista, roaster, Q-grader, researcher)" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                      <textarea name="sensoryExperience" placeholder="Sensory experience (years, qualifications)" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none" rows={2} />
-                      <textarea name="conflictOfInterest" placeholder="Conflict of interest declaration" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none" rows={2} />
-                    </>
-                  )}
-                  {regType === "volunteer" && (
-                    <>
-                      <input name="rolePreference" placeholder="Role preference" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                      <textarea name="skills" placeholder="Skills and experience" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none" rows={2} />
-                    </>
-                  )}
-                  <textarea name="availability" placeholder="Availability for competition dates" className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none" rows={2} />
-                  <input name="languages" placeholder="Languages spoken" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="socialMedia" placeholder="Social media handles (Instagram, LinkedIn)" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="emergencyContact" placeholder="Emergency contact" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <input name="dietaryRequirements" placeholder="Dietary requirements / accessibility needs" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
-                  <label className="flex items-center gap-3">
-                    <input name="agreedToRules" type="checkbox" className="w-4 h-4 rounded border-[#3a2a1f] bg-[#1a1410] text-cinnamon-600" />
-                    <span className="text-sm text-sand-400">
-                      I agree to the competition rules and code of conduct
-                    </span>
-                  </label>
-                  <Button
-                    type="submit"
-                    className="w-full bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100"
-                    disabled={regSubmitting}
-                  >
-                    {regSubmitting
-                      ? "Submitting..."
-                      : `Register as ${regType.charAt(0).toUpperCase() + regType.slice(1)}`}
-                  </Button>
-                  <p className="text-xs text-sand-500 text-center pt-2">
-                    Questions before you register? Email{" "}
-                    <a
-                      href={FOUNDER_MAILTO}
-                      className="text-cinnamon-400 hover:text-cinnamon-300"
-                    >
-                      {FOUNDER_EMAIL}
-                    </a>{" "}
-                    — Tristan replies personally.
+          {panel === "register" && (
+            <div role="tabpanel" id="panel-register" aria-labelledby="tab-register">
+              <div
+                id="competitor-registration"
+                tabIndex={-1}
+                className="max-w-2xl mx-auto scroll-mt-36 outline-none"
+              >
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-3">
+                    Registration
+                  </h2>
+                  <p className="text-cinnamon-300 text-sm font-medium mb-2" role="status">
+                    Registration is open
                   </p>
-                </form>
+                  <p className="text-sand-400 text-sm">
+                    Choose your role. After submission we review eligibility and contact you by
+                    email. No registration deadline is published yet.
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-2 mb-8">
+                  {(
+                    [
+                      { id: "competitor" as const, label: "Competitor", icon: Trophy },
+                      { id: "judge" as const, label: "Judge", icon: Award },
+                      { id: "volunteer" as const, label: "Volunteer", icon: Users },
+                    ] as const
+                  ).map((t) => (
+                    <button
+                      key={t.id}
+                      type="button"
+                      onClick={() => {
+                        setRegType(t.id);
+                        setRegSuccess(false);
+                      }}
+                      className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium min-h-11 ${
+                        regType === t.id
+                          ? "bg-cinnamon-600 text-sand-100"
+                          : "bg-[#231a14] text-sand-400 border border-[#3a2a1f]"
+                      }`}
+                    >
+                      <t.icon className="w-4 h-4" aria-hidden />
+                      {t.label}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="wec-card rounded-xl p-6 sm:p-8">
+                  <div className="mb-6 p-4 rounded-lg bg-cinnamon-950/30 border border-cinnamon-800/50">
+                    <p className="text-sm text-cinnamon-300">
+                      <strong>Eligibility:</strong>{" "}
+                      {regType === "competitor"
+                        ? WEC_FACTS.eligibility.competitor
+                        : regType === "judge"
+                          ? WEC_FACTS.eligibility.judge
+                          : WEC_FACTS.eligibility.volunteer}
+                    </p>
+                  </div>
+
+                  {regSuccess && (
+                    <div
+                      className="mb-4 p-4 rounded-lg bg-green-950/40 border border-green-800/50 text-sm text-green-200"
+                      role="status"
+                    >
+                      Registration received. Check your email for follow-up from the WEC team.
+                    </div>
+                  )}
+
+                  <form onSubmit={handleRegSubmit} className="space-y-4" noValidate>
+                    <p className="hidden" aria-hidden>
+                      <label>
+                        Don&apos;t fill this out
+                        <input name="bot-field" tabIndex={-1} autoComplete="off" />
+                      </label>
+                    </p>
+                    <div className="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label htmlFor={`${formId}-name`} className="block text-sm text-sand-300 mb-1">
+                          Full name *
+                        </label>
+                        <input
+                          id={`${formId}-name`}
+                          name="fullName"
+                          required
+                          autoComplete="name"
+                          className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor={`${formId}-email`} className="block text-sm text-sand-300 mb-1">
+                          Email *
+                        </label>
+                        <input
+                          id={`${formId}-email`}
+                          name="email"
+                          type="email"
+                          required
+                          autoComplete="email"
+                          className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                        />
+                      </div>
+                    </div>
+                    <div>
+                      <label htmlFor={`${formId}-country`} className="block text-sm text-sand-300 mb-1">
+                        Country / territory represented *
+                      </label>
+                      <input
+                        id={`${formId}-country`}
+                        name="country"
+                        required
+                        autoComplete="country-name"
+                        className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                      />
+                    </div>
+                    {regType === "competitor" && (
+                      <>
+                        <div>
+                          <label
+                            htmlFor={`${formId}-qual`}
+                            className="block text-sm text-sand-300 mb-1"
+                          >
+                            National title or qualifying event *
+                          </label>
+                          <input
+                            id={`${formId}-qual`}
+                            name="qualificationMethod"
+                            required
+                            className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor={`${formId}-year`}
+                            className="block text-sm text-sand-300 mb-1"
+                          >
+                            Year of title *
+                          </label>
+                          <input
+                            id={`${formId}-year`}
+                            name="titleYear"
+                            required
+                            inputMode="numeric"
+                            className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor={`${formId}-org`}
+                            className="block text-sm text-sand-300 mb-1"
+                          >
+                            Organiser / verification contact (optional)
+                          </label>
+                          <input
+                            id={`${formId}-org`}
+                            name="employer"
+                            className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                          />
+                        </div>
+                        <div>
+                          <label
+                            htmlFor={`${formId}-social`}
+                            className="block text-sm text-sand-300 mb-1"
+                          >
+                            Public profile links (optional)
+                          </label>
+                          <input
+                            id={`${formId}-social`}
+                            name="socialMedia"
+                            className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                          />
+                        </div>
+                      </>
+                    )}
+                    {regType === "judge" && (
+                      <div>
+                        <label
+                          htmlFor={`${formId}-bg`}
+                          className="block text-sm text-sand-300 mb-1"
+                        >
+                          Professional / sensory background
+                        </label>
+                        <textarea
+                          id={`${formId}-bg`}
+                          name="professionalBackground"
+                          rows={3}
+                          className="wec-input w-full px-4 py-3 rounded-lg text-sm resize-none"
+                        />
+                      </div>
+                    )}
+                    {regType === "volunteer" && (
+                      <div>
+                        <label
+                          htmlFor={`${formId}-role`}
+                          className="block text-sm text-sand-300 mb-1"
+                        >
+                          Role preference
+                        </label>
+                        <input
+                          id={`${formId}-role`}
+                          name="rolePreference"
+                          className="wec-input w-full px-4 py-3 rounded-lg text-sm"
+                        />
+                      </div>
+                    )}
+
+                    <label className="flex items-start gap-3 text-sm text-sand-400">
+                      <input
+                        name="agreedToRules"
+                        type="checkbox"
+                        className="mt-1 w-4 h-4 rounded border-[#3a2a1f]"
+                        required
+                      />
+                      <span>
+                        I agree to the{" "}
+                        <Link to="/rules-and-integrity" className="text-cinnamon-400">
+                          competition rules and code of conduct
+                        </Link>{" "}
+                        as published.
+                      </span>
+                    </label>
+                    <label className="flex items-start gap-3 text-sm text-sand-400">
+                      <input
+                        name="privacyConsent"
+                        type="checkbox"
+                        className="mt-1 w-4 h-4 rounded border-[#3a2a1f]"
+                        required
+                      />
+                      <span>
+                        I consent to WEC processing this information as described in the{" "}
+                        <Link to="/privacy" className="text-cinnamon-400">
+                          Privacy Policy
+                        </Link>
+                        .
+                      </span>
+                    </label>
+
+                    <div aria-live="polite" className="text-sm text-sand-500 min-h-5">
+                      {statusMsg}
+                    </div>
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 min-h-11"
+                      disabled={regSubmitting || !WEC_FACTS.features.registrationOpen}
+                    >
+                      {regSubmitting
+                        ? "Submitting…"
+                        : `Register as ${regType.charAt(0).toUpperCase()}${regType.slice(1)}`}
+                    </Button>
+                    <p className="text-xs text-sand-500 text-center">
+                      If submission fails, email{" "}
+                      <a
+                        href={WEC_FACTS.organisation.founderMailto}
+                        className="text-cinnamon-400"
+                      >
+                        {WEC_FACTS.organisation.founderEmail}
+                      </a>
+                      .
+                    </p>
+                  </form>
+                </div>
               </div>
             </div>
           )}
         </div>
       </section>
+
+      <ChampionsProductModule className="bg-[#1a1410]" />
     </div>
   );
 }

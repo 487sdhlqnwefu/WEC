@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /preview/
+Disallow: /404
+Disallow: /store
+
+# ChatGPT search discovery (separate from model-training crawlers)
+User-agent: OAI-SearchBot
+Allow: /
+
+# GPTBot left undecided — do not assume search == training crawl
+User-agent: GPTBot
+Disallow: /
+
+Sitemap: https://worldespressochampionship.com/sitemap.xml

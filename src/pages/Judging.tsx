@@ -1,6 +1,8 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import Seo from "@/components/Seo";
 import { CATEGORY_POINTS, WIN_THRESHOLD } from "@contracts/scoring";
+import { WEC_FACTS } from "@/data/wecFacts";
 import {
   Eye,
   Scale,
@@ -32,6 +34,11 @@ const SOFTWARE_SHOTS = [
 export default function Judging() {
   return (
     <div>
+      <Seo
+        title="How Judging Works | World Espresso Championship"
+        description="Scoring v3: three independent judges, Tactile 15 / Taste 10 / Flavour 8, 99 points per heat, 50+ wins. Blind Cup A vs Cup B for the World Espresso Championship."
+        path="/judging"
+      />
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cinnamon-950/20 to-transparent" />
         <div className="wec-container relative">
@@ -66,20 +73,20 @@ export default function Judging() {
               {
                 title: "Tactile",
                 pts: CATEGORY_POINTS.tactile,
-                pct: "45%",
-                desc: "Most objective. Texture is what consumers notice first and remember longest.",
+                pct: "45.45% (45% rounded)",
+                desc: "Highest weight in Scoring v3 because texture is comparatively stable under controlled conditions.",
               },
               {
                 title: "Taste",
                 pts: CATEGORY_POINTS.taste,
-                pct: "30%",
-                desc: "Sour, bitter, balance — clear signals a trained judge and a customer can both recognise.",
+                pct: "30.30% (30% rounded)",
+                desc: "Sour, bitter, and balance signals judges can ballot independently without deliberation.",
               },
               {
                 title: "Flavour",
                 pts: CATEGORY_POINTS.flavour,
-                pct: "24%",
-                desc: "Still matters — but cannot decide a close heat alone. The tie-breaker, not the decider.",
+                pct: "24.24% (24% rounded)",
+                desc: "Flavour matters, but its 8 points cannot win a heat on its own.",
               },
             ].map((c) => (
               <div key={c.title} className="wec-card rounded-xl p-6">
@@ -101,6 +108,68 @@ export default function Judging() {
               CATEGORY_POINTS.flavour}{" "}
             points each · 99 total ·{" "}
             <span className="text-sand-300">{WIN_THRESHOLD}+ wins</span>
+            . Percentages rounded; the points govern.
+          </p>
+          <p className="text-center text-xs text-sand-500 mt-3 max-w-2xl mx-auto">
+            {WEC_FACTS.scoring.methodologyNote} {WEC_FACTS.scoring.biasNote}
+          </p>
+        </div>
+      </section>
+
+      <section className="wec-section">
+        <div className="wec-container max-w-3xl">
+          <h2 className="text-2xl font-bold text-sand-100 mb-4">Worked scoring example</h2>
+          <p className="text-sand-400 text-sm mb-6">
+            Fictional ballots for illustration. Single elimination selects the champion under the
+            published rules; it is not a complete ranking of every competitor.
+          </p>
+          <div className="overflow-x-auto wec-card rounded-xl p-4 text-sm mb-4">
+            <table className="w-full text-left text-sand-400">
+              <thead className="text-sand-200">
+                <tr>
+                  <th className="py-2 pr-4">Judge</th>
+                  <th className="py-2 pr-4">Tactile (15)</th>
+                  <th className="py-2 pr-4">Taste (10)</th>
+                  <th className="py-2 pr-4">Flavour (8)</th>
+                  <th className="py-2">Points to A</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="py-2">J1</td>
+                  <td>A</td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>25</td>
+                </tr>
+                <tr>
+                  <td className="py-2">J2</td>
+                  <td>A</td>
+                  <td>B</td>
+                  <td>A</td>
+                  <td>23</td>
+                </tr>
+                <tr>
+                  <td className="py-2">J3</td>
+                  <td>B</td>
+                  <td>A</td>
+                  <td>A</td>
+                  <td>18</td>
+                </tr>
+                <tr className="text-sand-100 font-medium border-t border-[#3a2a1f]">
+                  <td className="py-2" colSpan={4}>
+                    Cup A total
+                  </td>
+                  <td>66</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-sand-500">
+            Cup A reaches 66 of 99 (≥{WIN_THRESHOLD}) and wins.{" "}
+            <Link to="/rules-and-integrity" className="text-cinnamon-400">
+              Rules &amp; Integrity
+            </Link>
           </p>
         </div>
       </section>
@@ -239,7 +308,7 @@ export default function Judging() {
                 Your brand sits next to a format people can verify. Not a private
                 score sheet. Not a story competition. A public, scientific
                 preference test — the same idea used in food science labs
-                worldwide (ISO 5495). Beside the result sits the Innovation Lab:
+                informed by paired-comparison sensory methodology. Beside the result sits the Innovation Lab:
                 structured elite-barista insight that can inform further testing
                 and product-development thinking.
               </p>

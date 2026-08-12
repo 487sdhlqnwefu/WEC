@@ -26,11 +26,22 @@ export default function History() {
               History of{" "}
               <span className="wec-gradient-text">Championships</span>
             </h1>
-            <p className="text-lg sm:text-xl text-sand-400 leading-relaxed max-w-3xl">
+            <p className="text-lg sm:text-xl text-sand-400 leading-relaxed max-w-3xl mb-6">
               From a proof of concept in Melbourne to a global movement. Every
               event built on the last, driven by competitor feedback and a
               vision for transparent competition.
             </p>
+            <p className="text-sand-400 leading-relaxed max-w-3xl mb-4">
+              WEC developed through four international championships from 2022 to 2025 with the
+              support of founding equipment partner Dalla Corte, host venues, judges, competitors
+              and local communities. In 2026, WEC begins its independent era in Panama.
+            </p>
+            <Link
+              to="/partners/dalla-corte-2022-2025"
+              className="text-cinnamon-400 hover:text-cinnamon-300 text-sm"
+            >
+              Thank you, Dalla Corte (2022–2025) →
+            </Link>
           </div>
         </div>
       </section>

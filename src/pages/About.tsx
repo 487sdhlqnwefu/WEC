@@ -44,46 +44,31 @@ export default function About() {
       id: "format",
       icon: Scale,
       title: "Competition Format",
-      content: `The World Espresso Championship is a single-elimination tournament built on ISO 5495:2005 paired comparison methodology. 32 country champions compete in 5 rounds of single-elimination competition. 31 matches total. One winner.
+      content: `The World Espresso Championship is a single-elimination tournament. 32 country champions compete in 5 rounds. 31 matches total. One winner.
 
 Each match: Two competitors face each other with the same coffee, same equipment, blind judges. Three sensory categories — Tactile (15), Taste (10), Flavour (8) — scored as Cup A or Cup B per judge. No visual categories. No deliberation. 99 points total across three judges. 50+ wins.
 
-This is Scoring v3: texture carries the most weight because it is the most objective and consumer-relevant attribute. Flavour cannot decide a heat alone. The coffee speaks. The judges choose. The loser is eliminated. The winner advances.`,
+Scoring v3 uses a blinded two-alternative forced-choice structure informed by paired-comparison sensory methodology, including ISO 5495 principles. WEC is designed to reduce avoidable bias: identities are hidden, equipment and ingredients are controlled, judges ballot independently, and results are published. Flavour matters, but its 8 points cannot win a heat on its own.`,
     },
     {
       id: "coffee",
       icon: Coffee,
-      title: "Champion's Coffee Product",
-      content: `WEC 2026 is the first year we create the Champion's Coffee Product. Here's how it works:
+      title: "Champion's Product",
+      content: `WEC's ambition is to help translate championship knowledge into a commercial coffee product when the champion, producer and partners agree it can be done responsibly. No product, launch date, royalty or distribution is guaranteed before agreements are signed.
 
-• The winner's recipe, official roasting profile, and official green coffee create a protocol
-• The coffee is named after the champion (e.g., "[Name]'s Champion Espresso")
-• The champion receives 5-10% royalty on every bag sold
-• The champion promotes the product through their channels and at industry events
-• The product launches globally within 30 days of the competition
-• Sold through the sponsor's retail channels, OCC's online store, and partner cafes
-
-This is unprecedented. No other competition does this. The champion doesn't just win a title — they win a product, a revenue stream, a legacy, a career.`,
+When a Champion's Product is created, WEC will publish who participates, how value is shared, what is measured and what has been delivered—subject only to legitimate personal and commercial confidentiality. When a commercial product exists, the champion's royalty/share must be higher than WEC's.`,
     },
     {
       id: "missing",
       icon: FileText,
-      title: "Fulfilling the Missing Compulsory Round",
-      content: `The World Barista Championship used to have a compulsory round. Every competitor used the same coffee. It was the only part of the competition that tested pure skill.
-
-They removed it.
-
-WEC is that round — but as a standalone competition with proper stakes, proper prizes, and a proper commercial future. We took the best part of WBC and built an entire championship around it.`,
+      title: "Why a controlled espresso championship",
+      content: `WEC exists to test barista skill under controlled conditions: same coffee, same machine, blind cups. The format isolates execution so the industry can see what won — and learn from it.`,
     },
     {
       id: "innovation",
       icon: Star,
       title: "A Vehicle for Innovation and Transparency",
-      content: `Every espresso in WEC is evaluated objectively. The data is public. The recipes are shared. The industry learns from each event.
-
-When the best recipe wins, everyone can learn from it. When extraction parameters are published, every barista can replicate it. When the champion's product is sold, the industry gets better coffee.
-
-This is how competition drives progress. This is what the manufacturer could not see. This is what the community always knew.`,
+      content: `Find excellence. Understand it. Build from it. The Innovation Lab supports the championship. It does not replace it. Competitor-specific research responses stay protected during the active tournament window.`,
     },
   ];
 
@@ -144,7 +129,7 @@ This is how competition drives progress. This is what the manufacturer could not
                 {[
                   { icon: Eye, label: "100% Blind Judging" },
                   { icon: FileText, label: "Public Recipe Data" },
-                  { icon: Scale, label: "ISO 5495 Standard" },
+                  { icon: Scale, label: "Scoring v3 Blind Format" },
                   { icon: Coffee, label: "Champion's Product" },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-2">
@@ -237,7 +222,7 @@ This is how competition drives progress. This is what the manufacturer could not
               { step: "01", title: "National Qualifier", desc: "Win your country's national espresso competition" },
               { step: "02", title: "World Finals", desc: "Join 31 other national champions in Panama" },
               { step: "03", title: "Single Elimination", desc: "Head-to-head matches with same coffee & equipment" },
-              { step: "04", title: "Blind Judging", desc: "ISO 5495 paired comparison. No bias. No politics." },
+              { step: "04", title: "Blind Judging", desc: "Paired comparison. Independent ballots. Published results." },
               { step: "05", title: "Champion Crowned", desc: "Winner receives title, prize & Champion's Coffee deal" },
             ].map((item) => (
               <div key={item.step} className="text-center">

@@ -14,6 +14,10 @@ rm -rf "$STAGE"
 mkdir -p "$STAGE/assets"
 
 cp dist/public/index.html dist/public/forms.html dist/public/_redirects "$STAGE/"
+# Crawler / PWA assets (optional if missing during partial builds)
+for f in robots.txt sitemap.xml favicon.svg site.webmanifest; do
+  [[ -f "dist/public/$f" ]] && cp "dist/public/$f" "$STAGE/"
+done
 
 cp dist/public/assets/index-*.js dist/public/assets/index-*.css "$STAGE/assets/"
 cp dist/public/assets/logo-*.png "$STAGE/assets/"

@@ -48,8 +48,8 @@ export const STATIC_EVENTS: StaticEvent[] = [
     keyHighlights:
       "First independently-run WEC at Café Unido. Roaster sponsor: Café Unido. Live transparent bracket.",
     description:
-      "Held at Café Unido, Panama City, on 26 October 2026 — the first independent WEC.",
-    championProduct: "To be announced — Champion's Coffee Product",
+      "Held at Café Unido, Panama City, on 26 October 2026 — the fifth World Espresso Championship and the first of WEC's independent era.",
+    championProduct: null,
     sponsor: "Café Unido (roaster sponsor)",
     isUpcoming: true,
     sortOrder: 1,
@@ -66,13 +66,13 @@ export const STATIC_EVENTS: StaticEvent[] = [
     venue: "Bobino Milano",
     winner: "Muhammad Aga",
     winnerProfileUrl: "https://www.instagram.com/muhammadaga/",
-    format: "Single elimination, ISO 5495 paired comparison",
+    format: "Single elimination, Scoring v3 blind paired comparison",
     keyHighlights:
-      "Held at Bobino Milano. The manufacturer's home territory — and the turning point toward independence.",
+      "Held at Bobino Milano with founding equipment partner Dalla Corte supporting the championship.",
     description:
-      "The event that proved WEC needed to become independent. Champion: Muhammad Aga (Indonesia).",
-    championProduct: "Pre-product era",
-    sponsor: "Italian espresso machine manufacturer",
+      "WEC 2025 in Milan. Champion: Muhammad Aga (Indonesia).",
+    championProduct: null,
+    sponsor: "Dalla Corte (founding equipment partner)",
     isUpcoming: false,
     sortOrder: 2,
     photoUrl: "/assets/champions/2025-muhammad-aga.jpg",
@@ -88,13 +88,13 @@ export const STATIC_EVENTS: StaticEvent[] = [
     venue: "Momos Coffee HQ",
     winner: "Ian Kissick",
     winnerProfileUrl: "https://www.instagram.com/ian_kissick/",
-    format: "Single elimination, ISO 5495 paired comparison",
+    format: "Single elimination, Scoring v3 blind paired comparison",
     keyHighlights:
-      "Biggest event yet. More SCA and WBC judges than ever before.",
+      "Biggest event yet. More international judges and guests than ever before.",
     description:
-      "The event that proved WEC had outgrown its original sponsor.",
-    championProduct: "Pre-product era",
-    sponsor: "Italian espresso machine manufacturer",
+      "A landmark year for the World Espresso Championship community.",
+    championProduct: null,
+    sponsor: "Dalla Corte (founding equipment partner)",
     isUpcoming: false,
     sortOrder: 3,
     photoUrl: "/assets/champions/2024-ian-kissick.jpg",
@@ -110,12 +110,12 @@ export const STATIC_EVENTS: StaticEvent[] = [
     venue: "360 Athens",
     winner: "Jack Simpson",
     winnerProfileUrl: "https://www.instagram.com/jacksimpson32/",
-    format: "Single elimination, ISO 5495 paired comparison",
+    format: "Single elimination, Scoring v3 blind paired comparison",
     keyHighlights:
-      "First event held alongside WBC. Increased visibility across the community.",
-    description: "Held during the WBC in Athens. The word began to spread.",
-    championProduct: "Pre-product era",
-    sponsor: "Italian espresso machine manufacturer",
+      "Increased visibility across the specialty coffee community.",
+    description: "Held in Athens. The word began to spread.",
+    championProduct: null,
+    sponsor: "Dalla Corte (founding equipment partner)",
     isUpcoming: false,
     sortOrder: 4,
     photoUrl: "/assets/champions/2023-jack-simpson.jpg",
@@ -131,13 +131,13 @@ export const STATIC_EVENTS: StaticEvent[] = [
     venue: "Code Black Coffee HQ",
     winner: "Junior Vargas",
     winnerProfileUrl: "https://www.instagram.com/jr.coffeeman/",
-    format: "Single elimination, ISO 5495 paired comparison",
+    format: "Single elimination, Scoring v3 blind paired comparison",
     keyHighlights:
       "The inaugural event. Competitors and judges gave overwhelmingly positive feedback.",
     description:
       "The first World Espresso Championship. A proof of concept that became a movement.",
-    championProduct: "Pre-product era",
-    sponsor: "Italian espresso machine manufacturer",
+    championProduct: null,
+    sponsor: "Dalla Corte (founding equipment partner)",
     isUpcoming: false,
     sortOrder: 5,
     photoUrl: "/assets/champions/2022-junior-vargas.jpg",
@@ -149,12 +149,12 @@ export const STATIC_EVENTS: StaticEvent[] = [
 export const STATIC_NEWS: StaticNewsPost[] = [
   {
     id: 1,
-    title: "WEC 2026 Panama: The Inaugural Year of Champion's Coffee",
+    title: "WEC 2026 Panama and the Champion's Product ambition",
     slug: "wec-2026-panama-champions-coffee",
     excerpt:
-      "This year changes everything. The winner of WEC 2026 will have their name on a coffee bag within 30 days of winning.",
+      "WEC 2026 Panama advances a transparent Champion's Product ambition — only if agreements can be made responsibly.",
     content:
-      "The World Espresso Championship is proud to announce the inaugural year of the Champion's Coffee Product. This unprecedented initiative transforms the competition from a title chase into a career-defining opportunity.",
+      "The World Espresso Championship is preparing for WEC 2026 Panama and a transparent Champion's Product model. No product, launch date, royalty or distribution is guaranteed before agreements are signed. When a product is created, WEC will publish who participates and what has been delivered.",
     category: "announcement",
     coverImage: null,
     author: "WEC Team",
@@ -166,9 +166,9 @@ export const STATIC_NEWS: StaticNewsPost[] = [
     title: "WEC Becomes Independent: A New Chapter Begins",
     slug: "wec-becomes-independent",
     excerpt:
-      "After years of being held back, WEC is finally free to become what it was always meant to be.",
+      "WEC begins its independent era in Panama in 2026, building on four championships supported by founding equipment partner Dalla Corte.",
     content:
-      "The World Espresso Championship has officially become an independent organization. Founded by Tristan Creswick in 2022, WEC is building the most objective, transparent, and commercially innovative coffee competition in the world.",
+      "The World Espresso Championship continues as an independent organization. Founded by Tristan Creswick in 2022, WEC is building a controlled, blind espresso championship with public results and a transparent approach to commercial value.",
     category: "announcement",
     coverImage: null,
     author: "WEC Team",
@@ -196,7 +196,7 @@ export const STATIC_NEWS: StaticNewsPost[] = [
     excerpt:
       "26 October 2026 at Café Unido, Panama City. Same coffee for every competitor. The first independent WEC has a home.",
     content:
-      "Café Unido is confirmed as venue and roaster sponsor for the World Espresso Championship 2026. Panama City. Blind paired comparison. Live public bracket. Inaugural Champion's Coffee Product year. Read the full story on /truth.",
+      "Café Unido is confirmed as venue and roaster sponsor for the World Espresso Championship 2026. Panama City. Blind paired comparison. Live public bracket. Read the full announcement on /news/cafe-unido-confirmed-wec-2026.",
     category: "announcement",
     coverImage: null,
     author: "WEC Team",

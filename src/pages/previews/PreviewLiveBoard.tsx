@@ -53,7 +53,7 @@ export default function PreviewLiveBoard() {
         <div className="wec-container flex flex-wrap gap-x-6 gap-y-2 text-xs text-sand-500">
           <span className="flex items-center gap-1.5 text-sand-300">
             <Eye className="w-3.5 h-3.5 text-cinnamon-400" />
-            Blind · ISO 5495 · Scoring v3
+            Blind · Scoring v3 · paired comparison
           </span>
           <span>Tactile {CATEGORY_POINTS.tactile} (45%)</span>
           <span>Taste {CATEGORY_POINTS.taste} (30%)</span>

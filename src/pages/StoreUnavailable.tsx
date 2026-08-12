@@ -1,21 +1,22 @@
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router";
 import Seo from "@/components/Seo";
+import { Link } from "react-router";
+import { Button } from "@/components/ui/button";
 
-export default function NotFound() {
+/** Shown when storeEnabled is false — genuine unavailable, noindex. */
+export default function StoreUnavailable() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center wec-section">
       <Seo
-        title="Page not found | World Espresso Championship"
-        description="This page does not exist on the World Espresso Championship website."
-        path="/404"
+        title="Store unavailable | World Espresso Championship"
+        description="The World Espresso Championship store is not currently available."
+        path="/store"
         noindex
       />
       <div className="wec-card rounded-xl p-8 max-w-md text-center">
-        <h1 className="text-4xl font-bold text-sand-100 mb-3">404</h1>
+        <h1 className="text-3xl font-bold text-sand-100 mb-3">Store unavailable</h1>
         <p className="text-sand-400 mb-6">
-          This page is not part of the World Espresso Championship site. Try Home, WEC 2026, or
-          Contact.
+          No Champion&apos;s Product is for sale at this time. When a product exists under signed
+          agreements, WEC will publish status and how to buy it.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button asChild className="bg-cinnamon-600 hover:bg-cinnamon-500 min-h-11">
