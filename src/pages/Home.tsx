@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { trpc } from "@/providers/trpc";
+import { STATIC_EVENTS } from "@/data/staticContent";
 import {
   Trophy,
   Coffee,
@@ -15,9 +16,17 @@ import {
 } from "lucide-react";
 
 export default function Home() {
-  const { data: events } = trpc.events.list.useQuery();
-  const upcomingEvent = events?.find((e) => e.isUpcoming);
-  const pastEvents = events?.filter((e) => !e.isUpcoming) ?? [];
+  const { data: events } = trpc.events.list.useQuery(undefined, {
+    retry: false,
+    refetchOnWindowFocus: false,
+  });
+  const list = events && events.length > 0 ? events : STATIC_EVENTS;
+  const upcomingEvent = list.find((e) => e.isUpcoming);
+  const pastFromList = list.filter((e) => !e.isUpcoming);
+  const pastEvents =
+    pastFromList.length > 0
+      ? pastFromList
+      : STATIC_EVENTS.filter((e) => !e.isUpcoming);
 
   return (
     <div>
@@ -292,7 +301,7 @@ export default function Home() {
                 Sponsors
               </h3>
               <p className="text-sand-400 text-sm leading-relaxed mb-6">
-                From €2,500 supporting partners up to presenting partners.
+                From €1–3k community partners up to a €75k presenting package.
                 Help us fund Panama — and stand beside a format people can trust.
               </p>
               <Link to="/panama-2026#sponsors">
@@ -362,9 +371,10 @@ export default function Home() {
               >
                 <div className="aspect-video bg-[#2a1f16] relative">
                   <img
-                    src={`/assets/event-${
-                      [33, 2, 28][event.id - 1] || event.id + 30
-                    }.jpg`}
+                    src={
+                      ("photoUrl" in event && event.photoUrl) ||
+                      `/assets/event-${[28, 2, 37, 35][Math.max(0, (event.id ?? 1) - 1)] ?? 2}.jpg`
+                    }
                     alt={event.name}
                     className="w-full h-full object-cover opacity-80"
                   />

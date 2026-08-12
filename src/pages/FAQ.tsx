@@ -59,15 +59,15 @@ const faqCategories = [
     questions: [
       {
         q: "What sponsorship tiers are available?",
-        a: "Presenting Partner (€15–25k), Official Partner (€7.5–12k), Supporting Partner (€2.5–5k), plus in-kind/trade by agreement. Café Unido is already confirmed as venue and roaster sponsor. Our cash target to run Panama cleanly is about €20,000.",
+        a: "Presenting Partner (€75,000), Official Partner (€10–20k), Supporting Partner (€3–10k), and Community Partner (€1–3k, cash or high-value in-kind). Café Unido is already confirmed as venue and roaster sponsor.",
       },
       {
         q: "What does a presenting partner receive?",
-        a: "Lead recognition ('presented with [Your Brand]'), on-site branding at Café Unido, logo on the live bracket and website, social/LinkedIn mentions, hospitality passes, and optional demo space.",
+        a: "Lead recognition ('WEC 2026 presented with [Your Brand]'), category exclusivity as lead partner, on-site branding at Café Unido, logo on the live bracket and website, social/LinkedIn package, hospitality passes, and optional demo space.",
       },
       {
         q: "Can smaller brands still sponsor?",
-        a: "Yes. Supporting Partner starts around €2,500, and we welcome in-kind partners (machines, water, media, travel support). Every partner that helps Panama run well matters.",
+        a: "Yes. Community Partner starts at €1–3k, Supporting Partner at €3–10k, and we welcome in-kind partners (machines, water, media, travel support). Every partner that helps Panama run well matters.",
       },
     ],
   },

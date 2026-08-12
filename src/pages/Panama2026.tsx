@@ -82,22 +82,24 @@ export default function Panama2026() {
   const sponsorTiers = [
     {
       name: "Presenting Partner",
-      price: "€15,000–€25,000",
+      price: "€75,000",
       description:
-        "Lead equipment or brand partner. Closest association with the live, blind format.",
+        "Lead presenting partner. Closest association with the live, blind format and the WEC brand.",
       features: [
         "'WEC 2026 presented with [Your Brand]' recognition",
+        "Category exclusivity as lead partner",
         "On-site branding at Café Unido",
         "Logo on live bracket + website",
-        "Social + LinkedIn campaign mentions",
-        "2–4 team passes / hospitality",
+        "Social + LinkedIn campaign package",
+        "4–6 team passes / hospitality",
         "Optional machine or product demo zone",
+        "Priority access to Competition Intelligence (by agreement)",
       ],
       highlighted: true,
     },
     {
       name: "Official Partner",
-      price: "€7,500–€12,000",
+      price: "€10,000–€20,000",
       description:
         "Strong visibility for grinders, water, milk, or media brands that fit the sensory story.",
       features: [
@@ -105,31 +107,32 @@ export default function Panama2026() {
         "Logo on website + event materials",
         "Live-board mention during finals",
         "Social media package",
-        "2 team passes",
+        "2–3 team passes",
       ],
       highlighted: false,
     },
     {
       name: "Supporting Partner",
-      price: "€2,500–€5,000",
+      price: "€3,000–€10,000",
       description:
         "Accessible entry for roasters, tools, and regional brands who want to stand with WEC.",
       features: [
         "Logo on website sponsor wall",
         "Social thank-you posts",
         "Name in event programme",
-        "1 team pass",
+        "1–2 team passes",
       ],
       highlighted: false,
     },
     {
-      name: "In-kind / Trade",
-      price: "By agreement",
+      name: "Community Partner",
+      price: "€1,000–€3,000",
       description:
-        "Coffee already covered by Café Unido. Open for machines, water, cups, media, travel support.",
+        "Entry-level partnership for tools, media, travel support, or regional brands — cash or high-value in-kind.",
       features: [
-        "Negotiated visibility for real operational value",
-        "Credit on site + live board where relevant",
+        "Logo on website sponsor wall",
+        "Social thank-you credit",
+        "Name in event programme",
         "Warm intro to competitor & judge network",
       ],
       highlighted: false,
@@ -394,10 +397,11 @@ export default function Panama2026() {
                   <input name="phone" placeholder="Phone" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
                   <select name="tier" className="wec-input w-full px-4 py-3 rounded-lg text-sm" defaultValue="">
                     <option value="">Select Tier</option>
-                    <option value="title">Presenting Partner (€15–25k)</option>
-                    <option value="gold">Official Partner (€7.5–12k)</option>
-                    <option value="supporting">Supporting Partner (€2.5–5k)</option>
-                    <option value="custom">In-kind / Trade</option>
+                    <option value="title">Presenting Partner (€75k)</option>
+                    <option value="gold">Official Partner (€10–20k)</option>
+                    <option value="supporting">Supporting Partner (€3–10k)</option>
+                    <option value="silver">Community Partner (€1–3k)</option>
+                    <option value="custom">In-kind / Trade (value match)</option>
                   </select>
                   <input name="website" placeholder="Company Website" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />
                   <input name="budget" placeholder="Budget Range" className="wec-input w-full px-4 py-3 rounded-lg text-sm" />

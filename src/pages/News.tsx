@@ -1,31 +1,42 @@
 import { trpc } from "@/providers/trpc";
-import { Calendar, ArrowRight, Newspaper, FileText, Megaphone, Coffee } from "lucide-react";
-import { Link } from "react-router";
+import { STATIC_NEWS } from "@/data/staticContent";
+import { Calendar, Newspaper, FileText, Megaphone, Coffee } from "lucide-react";
 
 export default function News() {
-  const { data: posts, isLoading } = trpc.news.list.useQuery();
+  const { data: posts } = trpc.news.list.useQuery(undefined, {
+    retry: false,
+    refetchOnWindowFocus: false,
+  });
+  const list = posts && posts.length > 0 ? posts : STATIC_NEWS;
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
-      case "press_release": return FileText;
-      case "announcement": return Megaphone;
-      case "event_coverage": return Coffee;
-      default: return Newspaper;
+      case "press_release":
+        return FileText;
+      case "announcement":
+        return Megaphone;
+      case "event_coverage":
+        return Coffee;
+      default:
+        return Newspaper;
     }
   };
 
   const getCategoryLabel = (category: string) => {
     switch (category) {
-      case "press_release": return "Press Release";
-      case "announcement": return "Announcement";
-      case "event_coverage": return "Event Coverage";
-      default: return "Blog";
+      case "press_release":
+        return "Press Release";
+      case "announcement":
+        return "Announcement";
+      case "event_coverage":
+        return "Event Coverage";
+      default:
+        return "Blog";
     }
   };
 
   return (
     <div>
-      {/* Hero */}
       <section className="relative py-16 sm:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-cinnamon-950/20 to-transparent" />
         <div className="wec-container relative">
@@ -42,16 +53,10 @@ export default function News() {
         </div>
       </section>
 
-      {/* Posts */}
       <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
-          {isLoading ? (
-            <div className="text-center py-20">
-              <div className="w-8 h-8 border-2 border-cinnamon-600 border-t-transparent rounded-full animate-spin mx-auto" />
-            </div>
-          ) : (
-            <div className="grid gap-6">
-              {posts?.map((post) => {
+          <div className="grid gap-6">
+              {list.map((post) => {
                 const Icon = getCategoryIcon(post.category ?? "blog");
                 return (
                   <article
@@ -83,22 +88,19 @@ export default function News() {
                       {post.title}
                     </h2>
                     {post.excerpt && (
-                      <p className="text-sand-400 text-sm leading-relaxed mb-4">
+                      <p className="text-sand-400 leading-relaxed mb-3">
                         {post.excerpt}
                       </p>
                     )}
-                    <Link
-                      to={`/news/${post.slug}`}
-                      className="inline-flex items-center text-sm text-cinnamon-400 hover:text-cinnamon-300 transition-colors"
-                    >
-                      Read More
-                      <ArrowRight className="ml-1 w-4 h-4" />
-                    </Link>
+                    {post.content && (
+                      <p className="text-sand-500 text-sm leading-relaxed">
+                        {post.content}
+                      </p>
+                    )}
                   </article>
                 );
               })}
             </div>
-          )}
         </div>
       </section>
     </div>

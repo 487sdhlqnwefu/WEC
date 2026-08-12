@@ -14,6 +14,7 @@ import {
   Eye,
   Scale,
   BookOpen,
+  User,
 } from "lucide-react";
 
 export default function About() {
@@ -162,8 +163,58 @@ This is how competition drives progress. This is what the manufacturer could not
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* Founder */}
       <section className="wec-section">
+        <div className="wec-container">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <User className="w-8 h-8 text-cinnamon-400" />
+                <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
+                  Founder
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
+                Tristan Creswick
+              </h2>
+              <p className="text-sand-400 leading-relaxed mb-4">
+                Tristan founded the World Espresso Championship in 2022 to prove
+                a simple idea: the best espresso should be decided by the cup —
+                same coffee, same machine, blind judges — not by storytelling or
+                politics.
+              </p>
+              <p className="text-sand-400 leading-relaxed mb-4">
+                After years building WEC inside an equipment manufacturer, he
+                left that path to make the championship independent. Today he
+                runs WEC full-time: competition design, Scoring v3, tournament
+                software, sponsor relationships, and the push toward Panama 2026
+                at Café Unido.
+              </p>
+              <p className="text-sand-500 text-sm leading-relaxed">
+                The goal is not another trophy. It is a transparent format the
+                industry can trust — and a Champion&apos;s Coffee Product that
+                turns winning into a real career.
+              </p>
+            </div>
+            <div className="relative">
+              <div className="aspect-[4/3] rounded-2xl overflow-hidden border border-[#3a2a1f]">
+                <img
+                  src="/assets/event-25.jpg"
+                  alt="World Espresso Championship"
+                  className="w-full h-full object-cover opacity-90"
+                />
+              </div>
+              <p className="mt-4 text-sm text-sand-500">
+                Four championships held since 2022. First independent finals:
+                Panama City · 26 October 2026.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
@@ -194,7 +245,7 @@ This is how competition drives progress. This is what the manufacturer could not
       </section>
 
       {/* Accordion Sections */}
-      <section className="wec-section bg-[#140f0b]">
+      <section className="wec-section">
         <div className="wec-container">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-8 text-center">

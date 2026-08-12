@@ -6,7 +6,28 @@ import {
   Scale,
   ArrowRight,
   Handshake,
+  Monitor,
+  Radio,
+  ShieldCheck,
 } from "lucide-react";
+
+const SOFTWARE_SHOTS = [
+  {
+    src: "/assets/marketing/02-live-bracket-board.png",
+    alt: "Live public bracket board",
+    caption: "Live public bracket — every heat visible in real time",
+  },
+  {
+    src: "/assets/marketing/03-admin-match-control.png",
+    alt: "Admin match control",
+    caption: "Day-of match control — start heats, assign cups, finalize",
+  },
+  {
+    src: "/assets/marketing/04-judging-trust-v3.png",
+    alt: "Scoring v3 judging interface",
+    caption: "Scoring v3 ballots — blind Cup A / Cup B, no deliberation",
+  },
+];
 
 export default function Judging() {
   return (
@@ -74,13 +95,113 @@ export default function Judging() {
             ))}
           </div>
           <p className="text-center text-sm text-sand-500 mt-6">
-            Three judges · {CATEGORY_POINTS.tactile + CATEGORY_POINTS.taste + CATEGORY_POINTS.flavour}{" "}
-            points each · 99 total · <span className="text-sand-300">{WIN_THRESHOLD}+ wins</span>
+            Three judges ·{" "}
+            {CATEGORY_POINTS.tactile +
+              CATEGORY_POINTS.taste +
+              CATEGORY_POINTS.flavour}{" "}
+            points each · 99 total ·{" "}
+            <span className="text-sand-300">{WIN_THRESHOLD}+ wins</span>
           </p>
         </div>
       </section>
 
+      {/* Software platform — first of its kind */}
       <section className="wec-section">
+        <div className="wec-container">
+          <div className="max-w-3xl mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <Monitor className="w-8 h-8 text-cinnamon-400" />
+              <span className="text-sm text-cinnamon-400 font-medium uppercase tracking-wider">
+                Competition software
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold text-sand-100 mb-4">
+              First of its kind for{" "}
+              <span className="wec-gradient-text">espresso competition</span>
+            </h2>
+            <p className="text-sand-400 leading-relaxed mb-4">
+              Most coffee competitions still run on spreadsheets, paper ballots,
+              and private score sheets. WEC built purpose-built tournament
+              software for blind paired comparison: Scoring v3 ballots, Cup A/B
+              assignment, public live brackets, and day-of admin control —
+              designed so competitors, sponsors, and the public can watch the
+              result unfold in real time.
+            </p>
+            <p className="text-sand-500 text-sm leading-relaxed">
+              This is the operating system of the championship — and the
+              foundation for the Innovation Lab, where elite baristas can
+              document what they attempted and what they learned.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-4 mb-10">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Trust by design",
+                desc: "Blind cups, complete ballots only, public outcomes — no closed-door score drift.",
+              },
+              {
+                icon: Radio,
+                title: "Live for everyone",
+                desc: "The bracket updates as heats finalize. Sponsors and fans see the same board.",
+              },
+              {
+                icon: Monitor,
+                title: "Built for day-of",
+                desc: "Admin start/finalize flow, void/reset for errors, 32-competitor single elimination.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="wec-card rounded-xl p-5">
+                <item.icon className="w-5 h-5 text-gold mb-3" />
+                <h3 className="text-base font-semibold text-sand-100 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-sand-400 leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {SOFTWARE_SHOTS.map((shot) => (
+              <figure key={shot.src} className="space-y-3">
+                <div className="rounded-xl overflow-hidden border border-[#3a2a1f] bg-[#0d0a08]">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="w-full h-auto object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <figcaption className="text-sm text-sand-500 text-center">
+                  {shot.caption}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
+          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link to="/live/wec-2026-panama">
+              <Button className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100">
+                View live board
+                <ArrowRight className="ml-2 w-4 h-4" />
+              </Button>
+            </Link>
+            <Link to="/innovation">
+              <Button
+                variant="outline"
+                className="border-sand-400/30 text-sand-200"
+              >
+                Innovation Lab
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="wec-section bg-[#140f0b]">
         <div className="wec-container">
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div>
@@ -144,7 +265,7 @@ export default function Judging() {
         </div>
       </section>
 
-      <section className="wec-section bg-[#140f0b]">
+      <section className="wec-section">
         <div className="wec-container text-center">
           <p className="text-sand-500 text-sm mb-2">Next championship</p>
           <h2 className="text-2xl sm:text-3xl font-bold text-sand-100 mb-2">
