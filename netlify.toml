@@ -1,0 +1,15 @@
+# Static SPA on Netlify (no Node API on this host)
+[build]
+  publish = "dist/public"
+  command = "npx vite build"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
