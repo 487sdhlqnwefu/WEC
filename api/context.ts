@@ -1,11 +1,14 @@
 import type { FetchCreateContextFnOptions } from "@trpc/server/adapters/fetch";
 import type { User } from "@db/schema";
+import type { ProfileRow } from "./throwdown/uow";
 import { authenticateRequest } from "./kimi/auth";
+import { loadThrowdownProfile } from "./throwdown/session";
 
 export type TrpcContext = {
   req: Request;
   resHeaders: Headers;
   user?: User;
+  throwdownProfile?: ProfileRow;
 };
 
 export async function createContext(
@@ -16,6 +19,11 @@ export async function createContext(
     ctx.user = await authenticateRequest(opts.req.headers);
   } catch {
     // Authentication is optional here
+  }
+  try {
+    ctx.throwdownProfile = await loadThrowdownProfile(opts.req.headers);
+  } catch {
+    // Throwdown session is optional
   }
   return ctx;
 }

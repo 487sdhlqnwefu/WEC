@@ -171,7 +171,7 @@ View all applications in the admin dashboard.
 
 // ─── Generic Send Helper ───────────────────────────────────────
 
-async function sendEmail({
+export async function sendEmail({
   to,
   subject,
   text,

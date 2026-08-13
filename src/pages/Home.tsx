@@ -61,13 +61,22 @@ export default function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-            <Link to="/panama-2026">
+            <Link to="/throwdown">
               <Button
                 size="lg"
                 className="bg-cinnamon-600 hover:bg-cinnamon-500 text-sand-100 px-8 py-6 text-base wec-glow"
               >
-                Register for WEC 2026
+                Espresso Throwdown
                 <ArrowRight className="ml-2 w-5 h-5" />
+              </Button>
+            </Link>
+            <Link to="/panama-2026">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8 py-6 text-base"
+              >
+                Register for WEC 2026
               </Button>
             </Link>
             <Link to="/about">

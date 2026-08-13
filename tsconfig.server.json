@@ -17,8 +17,10 @@
     "paths": {
       "@/*": ["./src/*"],
       "@contracts/*": ["./contracts/*"],
-      "@db/*": ["./db/*"]
+      "@db/*": ["./db/*"],
+      "@throwdown/*": ["./domain/throwdown/*"],
+      "@throwdown": ["./domain/throwdown/index.ts"]
     }
   },
-  "include": ["api", "contracts", "db"]
+  "include": ["api", "contracts", "db", "domain"]
 }

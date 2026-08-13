@@ -9,6 +9,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(templateRoot, "src"),
       "@contracts": path.resolve(templateRoot, "contracts"),
+      "@db": path.resolve(templateRoot, "db"),
+      "@throwdown": path.resolve(templateRoot, "domain/throwdown"),
       "@assets": path.resolve(templateRoot, "attached_assets"),
     },
   },
@@ -17,6 +19,7 @@ export default defineConfig({
     include: [
       "api/**/*.test.ts",
       "api/**/*.spec.ts",
+      "domain/**/*.test.ts",
       "src/**/*.test.ts",
       "src/**/*.spec.ts",
     ],
