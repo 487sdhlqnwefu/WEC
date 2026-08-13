@@ -209,3 +209,5 @@ export const nationalOrganisers = mysqlTable("national_organisers", {
 });
 
 export type NationalOrganiser = typeof nationalOrganisers.$inferSelect;
+
+export * from "./throwdown-schema";

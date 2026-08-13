@@ -24,6 +24,12 @@
       ],
       "@db/*": [
         "./db/*"
+      ],
+      "@throwdown": [
+        "./domain/throwdown/index.ts"
+      ],
+      "@throwdown/*": [
+        "./domain/throwdown/*"
       ]
     },
     "moduleResolution": "bundler",
@@ -40,6 +46,7 @@
     "noUncheckedSideEffectImports": true
   },
   "include": [
-    "src"
+    "src",
+    "domain"
   ]
 }

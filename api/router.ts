@@ -12,6 +12,8 @@ import { organiserRouter } from "./organisers-router";
 import { adminRouter } from "./admin-router";
 import { stripeRouter } from "./stripe-router";
 
+import { throwdownRouter } from "./throwdown/router";
+
 export const appRouter = createRouter({
   ping: publicQuery.query(() => ({ ok: true, ts: Date.now() })),
   auth: authRouter,
@@ -26,6 +28,7 @@ export const appRouter = createRouter({
   organiser: organiserRouter,
   admin: adminRouter,
   stripe: stripeRouter,
+  throwdown: throwdownRouter,
 });
 
 export type AppRouter = typeof appRouter;
