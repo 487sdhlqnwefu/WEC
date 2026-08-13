@@ -9,6 +9,7 @@ const footerLinks = {
     { label: "Our Vision", href: "/vision" },
   ],
   participate: [
+    { label: "World Latte Art Throwdown", href: "/throwdown" },
     { label: "Competitor Registration", href: "/panama-2026" },
     { label: "Judge Registration", href: "/panama-2026" },
     { label: "Volunteer", href: "/panama-2026" },
