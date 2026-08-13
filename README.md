@@ -1,5 +1,20 @@
 # React + TypeScript + Vite
 
+World Espresso Championship website plus the **World Latte Art Throwdown** sibling product at `/throwdown`.
+
+See `docs/wlat/README.md` for tournament setup, payments, tests, and operations.
+
+## Scripts
+
+```bash
+npm install
+npm run dev
+npm test
+npm run check
+npm run lint
+```
+
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

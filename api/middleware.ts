@@ -23,6 +23,17 @@ const requireAuth = t.middleware(async (opts) => {
   return next({ ctx: { ...ctx, user: ctx.user } });
 });
 
+const requireWlat = t.middleware(async (opts) => {
+  const { ctx, next } = opts;
+  if (!ctx.user && !ctx.wlatMember) {
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+      message: ErrorMessages.unauthenticated,
+    });
+  }
+  return next({ ctx });
+});
+
 function requireRole(role: string) {
   return t.middleware(async (opts) => {
     const { ctx, next } = opts;
@@ -39,4 +50,5 @@ function requireRole(role: string) {
 }
 
 export const authedQuery = t.procedure.use(requireAuth);
+export const wlatAuthed = t.procedure.use(requireWlat);
 export const adminQuery = authedQuery.use(requireRole("admin"));
