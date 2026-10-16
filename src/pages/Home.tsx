@@ -70,13 +70,14 @@ export default function Home() {
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
-            <Link to="/about">
+            <Link to="/competitions">
               <Button
                 size="lg"
                 variant="outline"
                 className="border-sand-400/30 text-sand-200 hover:bg-sand-400/10 px-8 py-6 text-base"
               >
-                Learn More
+                Competition software
+                <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
             </Link>
           </div>

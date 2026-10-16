@@ -26,6 +26,9 @@ dist-ssr
 .env
 .env.local
 .env.*.local
+# Local competition software store
+.data/
+
 # Database
 *.db
 *.sqlite

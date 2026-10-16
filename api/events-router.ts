@@ -5,8 +5,12 @@ import { eq, desc } from "drizzle-orm";
 
 export const eventsRouter = createRouter({
   list: publicQuery.query(async () => {
-    const db = getDb();
-    return db.select().from(events).orderBy(events.sortOrder);
+    try {
+      const db = getDb();
+      return await db.select().from(events).orderBy(events.sortOrder);
+    } catch {
+      return [];
+    }
   }),
 
   getById: publicQuery.input((val: unknown) => {

@@ -9,9 +9,10 @@ const footerLinks = {
     { label: "Our Vision", href: "/vision" },
   ],
   participate: [
+    { label: "Competition software", href: "/competitions" },
+    { label: "Free member account", href: "/join" },
     { label: "Competitor Registration", href: "/panama-2026" },
     { label: "Judge Registration", href: "/panama-2026" },
-    { label: "Volunteer", href: "/panama-2026" },
     { label: "National Organisers", href: "/about" },
   ],
   resources: [

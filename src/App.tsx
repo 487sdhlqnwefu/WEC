@@ -12,6 +12,11 @@ import Contact from "./pages/Contact";
 import Decisions from "./pages/Decisions";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
+import Join from "./pages/Join";
+import Competitions from "./pages/Competitions";
+import CompetitionNew from "./pages/CompetitionNew";
+import CompetitionDetail from "./pages/CompetitionDetail";
+import CompetitionJudge from "./pages/CompetitionJudge";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -28,6 +33,11 @@ export default function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/decisions" element={<Decisions />} />
+        <Route path="/competitions" element={<Competitions />} />
+        <Route path="/competitions/new" element={<CompetitionNew />} />
+        <Route path="/competitions/:slug" element={<CompetitionDetail />} />
+        <Route path="/competitions/:slug/judge" element={<CompetitionJudge />} />
+        <Route path="/join" element={<Join />} />
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="/login" element={<Login />} />

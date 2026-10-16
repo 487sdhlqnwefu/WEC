@@ -11,6 +11,8 @@ import { donationsRouter } from "./donations-router";
 import { organiserRouter } from "./organisers-router";
 import { adminRouter } from "./admin-router";
 import { stripeRouter } from "./stripe-router";
+import { membersRouter } from "./members-router";
+import { competitionsRouter } from "./competitions-router";
 
 export const appRouter = createRouter({
   ping: publicQuery.query(() => ({ ok: true, ts: Date.now() })),
@@ -26,6 +28,8 @@ export const appRouter = createRouter({
   organiser: organiserRouter,
   admin: adminRouter,
   stripe: stripeRouter,
+  members: membersRouter,
+  competitions: competitionsRouter,
 });
 
 export type AppRouter = typeof appRouter;

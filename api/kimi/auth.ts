@@ -37,14 +37,19 @@ async function exchangeAuthCode(
   return resp.json() as Promise<TokenResponse>;
 }
 
-const jwks = jose.createRemoteJWKSet(
-  new URL(`${env.kimiAuthUrl}/api/.well-known/jwks.json`),
-);
+function getJwks() {
+  if (!env.kimiAuthUrl) {
+    throw new Error("KIMI_AUTH_URL is not configured");
+  }
+  return jose.createRemoteJWKSet(
+    new URL(`${env.kimiAuthUrl}/api/.well-known/jwks.json`),
+  );
+}
 
 async function verifyAccessToken(
   accessToken: string,
 ): Promise<{ userId: string; clientId: string }> {
-  const { payload } = await jose.jwtVerify(accessToken, jwks);
+  const { payload } = await jose.jwtVerify(accessToken, getJwks());
   const userId = payload.user_id as string;
   const clientId = payload.client_id as string;
   if (!userId) {
@@ -64,11 +69,20 @@ export async function authenticateRequest(headers: Headers) {
   if (!claim) {
     throw Errors.forbidden("Invalid authentication token.");
   }
-  const user = await findUserByUnionId(claim.unionId);
-  if (!user) {
+  const { findMemberByUnionId } = await import("../platform/store");
+  const { memberToUser } = await import("../members-router");
+  const member = await findMemberByUnionId(claim.unionId);
+  if (member) return memberToUser(member);
+  try {
+    const user = await findUserByUnionId(claim.unionId);
+    if (!user) {
+      throw Errors.forbidden("User not found. Please re-login.");
+    }
+    return user;
+  } catch (error) {
+    if (error && typeof error === "object" && "status" in error) throw error;
     throw Errors.forbidden("User not found. Please re-login.");
   }
-  return user;
 }
 
 export function createOAuthCallbackHandler() {

@@ -23,6 +23,10 @@ const faqCategories = [
         q: "How does blind judging work?",
         a: "Judges never know whose coffee is whose. Each match presents two cups labeled A and B. The judge chooses the better espresso. No discussion, no deliberation. The coffee speaks for itself.",
       },
+      {
+        q: "Is there free competition software for other events?",
+        a: "Yes. World Coffee Tournaments hosts free-to-use competition software for any member. Community events pay nothing. Sponsored events pay a host fee. The first format shipped is The Barista League 2026 pillars (Concept 31%, Service 31%, Product 38%) with public scorecards. Open an account on the Competitions page.",
+      },
     ],
   },
   {
