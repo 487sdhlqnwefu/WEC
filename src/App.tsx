@@ -13,6 +13,14 @@ import Decisions from "./pages/Decisions";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import WbtLayout from "./wbt/WbtLayout";
+import WbtHome from "./wbt/pages/Home";
+import WbtHow from "./wbt/pages/HowItWorks";
+import WbtSitters from "./wbt/pages/Sitters";
+import WbtCompetitors from "./wbt/pages/Competitors";
+import WbtLuck from "./wbt/pages/Luck";
+import WbtWec from "./wbt/pages/Wec";
+import WbtContact from "./wbt/pages/Contact";
 
 export default function App() {
   return (
@@ -28,6 +36,15 @@ export default function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/decisions" element={<Decisions />} />
+      </Route>
+      <Route element={<WbtLayout />}>
+        <Route path="/wbt" element={<WbtHome />} />
+        <Route path="/wbt/how-it-works" element={<WbtHow />} />
+        <Route path="/wbt/sitters" element={<WbtSitters />} />
+        <Route path="/wbt/competitors" element={<WbtCompetitors />} />
+        <Route path="/wbt/luck" element={<WbtLuck />} />
+        <Route path="/wbt/wec" element={<WbtWec />} />
+        <Route path="/wbt/contact" element={<WbtContact />} />
       </Route>
       <Route path="/admin" element={<Admin />} />
       <Route path="/login" element={<Login />} />

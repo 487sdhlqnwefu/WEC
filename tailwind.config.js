@@ -79,6 +79,17 @@ module.exports = {
         gold: "#C48D49",
         navy: "#214966",
         taupe: "#BDA088",
+        wbt: {
+          paper: "#F3EBE0",
+          cream: "#FBF6EE",
+          ink: "#2A1F18",
+          mute: "#5C4A3D",
+          line: "#D9CBB8",
+          brown: "#6B3E2E",
+          gold: "#C4A35A",
+          red: "#A63D3D",
+          purple: "#6B4C7A",
+        },
       },
       fontFamily: {
         lexend: ["Lexend", "sans-serif"],

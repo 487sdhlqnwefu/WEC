@@ -19,6 +19,7 @@ const footerLinks = {
     { label: "News & Media", href: "/news" },
     { label: "FAQ", href: "/faq" },
     { label: "Contact", href: "/contact" },
+    { label: "World Barista Tournament", href: "/wbt" },
   ],
 };
 
