@@ -34,7 +34,7 @@ const TITLES: Record<string, string> = {
   "/how-it-works": "How it works — World Barista Tournament",
   "/sitters": "Sitters — World Barista Tournament",
   "/festival": "Festival — World Barista Tournament",
-  "/results": "Likes vs commission — World Barista Tournament",
+  "/results": "Likes vs art vs commission — World Barista Tournament",
   "/competitors": "Competitors — World Barista Tournament",
   "/luck": "Luck vs skill — World Barista Tournament",
   "/wec": "WEC — World Barista Tournament",

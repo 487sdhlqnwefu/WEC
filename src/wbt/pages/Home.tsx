@@ -91,7 +91,7 @@ export default function WbtHome() {
 
         <section>
           <h2 className="wbt-display text-3xl uppercase mb-4">{HOME.whoH2}</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-3 gap-4">
             <article className="border border-wbt-line bg-wbt-cream p-6">
               <h3 className="wbt-display text-2xl uppercase mb-2">{HOME.sittersTitle}</h3>
               <p className="text-sm text-wbt-mute mb-3">{HOME.sittersBody}</p>
@@ -107,6 +107,13 @@ export default function WbtHome() {
                 className="text-xs uppercase tracking-[0.14em] text-wbt-gold"
               >
                 {HOME.competitorsLink}
+              </Link>
+            </article>
+            <article className="border border-wbt-line bg-wbt-cream p-6">
+              <h3 className="wbt-display text-2xl uppercase mb-2">{HOME.festivalTitle}</h3>
+              <p className="text-sm text-wbt-mute mb-3">{HOME.festivalBody}</p>
+              <Link to={wbtHref("festival")} className="text-xs uppercase tracking-[0.14em] text-wbt-gold">
+                {HOME.festivalLink}
               </Link>
             </article>
           </div>

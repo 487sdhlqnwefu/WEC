@@ -21,7 +21,7 @@ export const SIBLING_LINK = "WEC espresso knockout";
 
 export const FOOTER = {
   blurb:
-    "Sitter tickets and entry fees pay for the decision. Industry tickets, paid coffees (competitor commission), and side games pay for the festival. Kit is on loan. The silent till may take a paid isolation sponsor — not title rights.",
+    "Sitter tickets and entry fees pay for the decision. Industry tickets, paid coffees (competitor commission), pair packs, and side games pay for the festival. Kit is on loan. The silent till may take a paid isolation sponsor — not title rights. Look, then drink. Art side prizes published, not the title.",
   legal:
     "World Barista Tournament. Sibling of World Espresso Championship. Neither result decides the other.",
   canonical:
@@ -54,7 +54,7 @@ export const HOME = {
   title: "World Barista Tournament",
   eyebrow: "World Barista Tournament",
   h1: "Two drinks. Same order. Which do you like more?",
-  lede: "There is no world’s best coffee — only the world’s best coffee for you. A barista’s job is to make this person’s order. Ordinary drinkers pay to sit. Baristas pay to compete. We count.",
+  lede: "There is no world’s best coffee — only the world’s best coffee for you. A barista’s job is to make this person’s order. Ordinary drinkers pay to sit on a silent path — no stage, no PA — until their assessments are done; then they may enter the festival. Baristas pay to compete. Industry pays to watch. Milk pours once; you look; side prizes if you vote; then those drinks get drunk. We count likes for the title.",
   sit: "Sit silent",
   festival: "Festival",
   compete: "Compete",
@@ -68,11 +68,11 @@ export const HOME = {
   pathsH2: "Two paths. One weekend.",
   pathsSilentTitle: "Silent path",
   pathsSilent:
-    "Until your assessments are done: no stage, no emcee, no industry floor. You order alone. After that you may enter the festival.",
+    "Until your assessments for the event are done: no stage, no emcee, no PA, no industry floor. You order alone. You will not see the show until you have voted. After that you may enter the festival.",
   pathsFestTitle: "Festival / stage",
   pathsFest:
-    "Industry pays to watch. Emcee, latte-art votes, pair packs, cup tasters. After official tickets, paid coffees — competitors take a commission. Grand. Loud. Celebrate coffee. Not the title.",
-  pass: "The same milk drinks pass through a closed door: stage pour → phone close-up vote → silent likes. The art vote is not the title.",
+    "Industry pays to watch. Emcee, art side prizes, pair packs, cup tasters. After official tickets, paid coffees — competitors take a commission. Grand. Loud. Celebrate coffee. Not the title.",
+  pass: "One pour. Look. Then drink. Stage → phone side prizes → the same cups continue (silent likes, pair pack, or the floor). Not the title. Not a dump sport.",
   pathsLinkSilent: "Sitters",
   pathsLinkFest: "Festival",
   colourH2: "Order like a customer",
@@ -83,29 +83,33 @@ export const HOME = {
   whoH2: "Who pays is who it exists for",
   sittersTitle: "Sitters",
   sittersBody:
-    "You register, pay about the price of two to five café coffees, and drink two serious coffees of your order. Silent until your assessments are done. Then you may enter the festival.",
+    "You register, pay about the price of two to five café coffees, and drink two serious coffees of your order. That funds the decision.",
   sittersLink: "Register interest",
   competitorsTitle: "Competitors",
   competitorsBody:
     "You pay an entry fee. Same station class. The coffee list is the list the competitors chose.",
   competitorsLink: "The job",
+  festivalTitle: "Festival",
+  festivalBody:
+    "Industry pays to watch, vote look as a side prize, buy a pair pack, play odd-cup games, and drink the coffee. Competitors take a commission. None of that picks the champion.",
+  festivalLink: "Not the title",
   luckH2: "We name the luck. Then we count.",
   luck: "Every competition has luck. We say where it sits. We print how thick or thin the count was. We never claim zero luck.",
   luckLink: "Luck vs skill",
   siblingH2: "WEC is the espresso knockout.",
   sibling:
-    "WBT is the café tournament. Same honesty about pairs. Different job. A WEC result does not crown WBT, and the other way around.",
+    "WBT is the café tournament. Same honesty about pairs. Different job. A WEC result does not crown WBT, and the other way around. Both sit under World Coffee Tournaments.",
   siblingLink: "Read the sibling",
-  resultsH2: "Likes decide the title. Commissions are a story.",
+  resultsH2: "Likes vs art vs commission",
   results:
-    "We publish both: who ordinary drinkers liked, and who the festival paid to drink. The market is ordinary taste. Flavour-chasing is a small crowd.",
-  resultsLink: "Likes vs commission",
+    "Champion = silent-path paired likes. Art side prizes and commissions are published next to that. None of those other columns is the title. Those cups were drunk. Not a dump sport.",
+  resultsLink: "Likes vs art vs commission",
 } as const;
 
 export const HOW = {
   title: "How it works — World Barista Tournament",
   h1: "How it works",
-  lede: "A ticket lands. Two people make it. Two cups arrive together. You say which you like more. After the last ballot, the match is a count. Sitters do that alone, off-stage.",
+  lede: "A ticket lands. Two people make it. Two cups arrive together. You say which you like more. After the last ballot, the match is a count.",
   steps: [
     {
       title: "You order",
@@ -113,11 +117,15 @@ export const HOW = {
     },
     {
       title: "Both bars get the same ticket",
-      body: "Names off. House till. No face-to-face ordering while the pair stays blind. On the silent path the person orders alone — no one in their ear. That till may take a paid isolation sponsor. It does not buy the title.",
+      body: "Names off. House till on the silent path. You order alone. No face-to-face ordering while the pair stays blind.",
     },
     {
       title: "Two cups at the same time",
       body: "Look, then drink. Milk drinks include how they look in the cup — not a pattern exam.",
+    },
+    {
+      title: "Look, then drink",
+      body: "The pour happens once on the festival stage. Audience phones may vote side prizes: overall, new pattern, contrast, consistency. The same drinks get drunk — closed doors to you, a pair pack, or the floor. Published. Not the title. Not a dump sport.",
     },
     {
       title: "Forced like",
@@ -142,15 +150,15 @@ export const HOW = {
   firstH2: "First tournament, in outline",
   first: [
     "Field of 16, in pools then knockout. Two matches at a time.",
-    "Sitter tickets and entry fees pay for the decision. We do not open the doors on a thin sitter floor.",
-    "The festival is a different door: industry tickets, side games, paid coffees with competitor commission.",
+    "The title exists for sitters and competitors because they pay. We do not open the silent doors on a thin sitter floor.",
+    "Industry festival is a second door. Art side prizes, pair packs, and cup tasters live there. They do not pick the champion. Those cups are drunk.",
     "This page is the sport, not the match-day till software.",
   ],
 } as const;
 
 export const SITTERS = {
   title: "Sitters — World Barista Tournament",
-  h1: "You will not see the show.",
+  h1: "You will not see the show until you have voted.",
   lede: "This is the silent path. Ordinary drinkers. Not a judging caste. You pay to sit, you order alone, you pick the cup you like more. No stage, no audio, no industry — until your assessments are done. After that you may enter the festival.",
   silentH2: "The silent wing",
   silent: [
@@ -163,9 +171,10 @@ export const SITTERS = {
   seat: [
     "Register and pay a small ticket — about two to five café coffees.",
     "On the day you sit, a short, simple activity so the words texture, sour vs bitter, and aftertaste are in the mouth. Not a weeks-long course.",
-    "Order from the colour board like a customer, alone at the till. That till may be a paid isolation sponsor. It does not name a champion.",
+    "Order from the colour board like a customer.",
     "Receive two finished drinks at the same time. Never one.",
     "Pick which you like more. Optional notes. Then you are done with that ticket.",
+    "After your assessments for the event are done, you may enter the festival. Until then, silent.",
   ],
   whoH2: "Who should sit",
   who: [
@@ -178,7 +187,7 @@ export const SITTERS = {
     "Two cups at once.",
     "A choice that is allowed to be “I just like this one more.”",
     "No requirement to match a wheel.",
-    "No show until you have voted. Then you may enter the festival.",
+    "Nobody in your ear. Isolation of opinion is the product.",
   ],
   formH2: "Register interest",
   formIntro:
@@ -271,33 +280,33 @@ export const LUCK = {
 export const FESTIVAL = {
   title: "Festival — World Barista Tournament",
   h1: "The festival is the loud door.",
-  lede: "Industry pays to watch. Emcee on the stage. Latte art as the pass between rooms. Pair packs. Cup tasters. After official tickets, buy a coffee from the people who just competed — they take a commission. None of that is the title.",
-  whoH2: "Who this path is for",
-  who: [
-    "Baristas, roasters, trade palates, people who want the show.",
-    "You pay a spectator ticket. You may cheer. You may play the side games.",
-    "You do not sit the silent wing. You do not vote the title. Sitters may join you only after their assessments are done.",
-  ],
-  bridgeH2: "Latte art is the bridge",
-  bridge:
-    "Milk drinks are poured on the festival stage. You see the pour live, then close-up on your phone. You tap which looks better — or which barista you prefer. Still a vote. Then the same drinks pass through closed doors to silent sitters for like. The art vote is published. It is not the title.",
+  lede: "Industry pays to watch. Emcee on the stage. Look, then drink. Side prizes on the pour. Pair packs. Cup tasters. After official tickets, buy a coffee from the people who just competed — they take a commission. None of that is the title. This is not a dump sport.",
+  lookH2: "Look, then drink",
+  look: "A pattern is worth a quick look. Then the cup is consumed. Milk drinks are poured once on the festival stage. You see the pour live, then close-up on your phone. You may vote side prizes: overall look, novel pattern, contrast, consistency — or which barista you prefer. Still a look vote. Then the same drinks get drunk: through closed doors to silent sitters, in a pair pack, or on the floor. Published. Not the title. Not a visual-only championship.",
+  prizesH2: "Side prizes",
+  prizesIntro: "Extra games. Fun. Same liquid. Zero title weight.",
+  prizes: ["Overall look", "Novel pattern", "Contrast", "Consistency"],
   packsH2: "Pair packs",
   packs:
-    "Buy both cups: one from each barista in the match. Compare them yourself, later against the official count. Entertainment and teaching. Not a ballot.",
+    "Buy one from each of the two baristas. Own two-cup pick. Compare later to official likes. Entertainment and teaching. Not a ballot. You drink them.",
   gamesH2: "Cup tasters",
   games:
-    "Odd-cup triangles, a clock, hard on purpose. Sensory gym. Zero title weight. Humbles an inflated palate. Not a trade-ritual course.",
-  coffeeH2: "Paid coffees, competitor commission",
-  coffee:
-    "When official tickets are done, competitors make paid drinks for the festival floor. The barista takes a commission. That number is published next to the likes. It is not the title.",
-  moneyH2: "What the festival pays for",
-  money:
-    "Spectator tickets, paid industry coffees, and side games pay for the festival. They do not buy title rights. No cash title sponsor.",
+    "Odd-cup triangles, a clock, hard on purpose. Sensory gym. Zero title weight. You taste the cups.",
+  getH2: "The loud wing",
+  get: [
+    "A different door from the sitters until sitters have finished assessing. Then they may enter.",
+    "Watch the bars. Cheer. Emcee. Make it grand.",
+    "Look, then drink. Art side prizes, pair packs, cup tasters — zero title weight.",
+    "After official tickets, paid coffees. Industry pays. Competitors take a commission.",
+  ],
+  notH2: "Not the title",
+  not: "Ordinary drinkers on the silent path pick which of two drinks they like more. We count. That is the champion. We also publish art side prizes and commission / sales by barista. The people who chase edge-of-tomorrow flavour are a small crowd. A living is made on ordinary liking. A scoresheet opinion is not a fact.",
   formH2: "Register interest",
-  formIntro: "Leave your name if you want an industry / spectator ticket when the first festival opens.",
+  formIntro:
+    "Festival tickets are not on sale here yet. Leave your name if you want the loud wing when they are.",
   name: "Name",
   email: "Email",
-  city: "City / company",
+  city: "City",
   note: "Anything we should know",
   submit: "Register interest",
   success: "Interest noted. We will write when festival tickets open.",
@@ -306,9 +315,9 @@ export const FESTIVAL = {
 } as const;
 
 export const RESULTS = {
-  title: "Likes vs commission — World Barista Tournament",
-  h1: "Likes vs commission",
-  lede: "The champion is who ordinary drinkers liked more, in pairs. We also print who the festival paid to drink. Celebration and data. Not a rant.",
+  title: "Likes vs art vs commission — World Barista Tournament",
+  h1: "Likes vs art vs commission",
+  lede: "Champion = silent-path paired likes. Also print festival art side prizes — overall, novel pattern, contrast, consistency — published, not the title; those cups were drunk. Commissions next to that. Optional: pair-pack picks vs official likes — still not a ballot. Market is ordinary taste; flavour-chasing is a small crowd. A scoresheet opinion is not a fact. Empty tables until event one. No rant. Not a dump sport.",
   likesH2: "Likes — the title",
   likes:
     "Counted paired likes from the silent path. That is who won the tournament. Different sitters can like opposite cups. Both can be right for them.",
@@ -316,24 +325,29 @@ export const RESULTS = {
   commissions:
     "After official tickets, festival coffees. Competitor commission by barista. If you want to make a living, the consumer profile is the market. Flavour-chasing is a small crowd.",
   factH2: "A scoresheet opinion is not a fact",
-  fact: "We put both columns on one page so you can see them. We do not pretend a small trained palate is the same as the people who buy coffee.",
+  fact: "We put the columns on one page so you can see them. We do not pretend a small trained palate is the same as the people who buy coffee.",
   emptyH2: "No numbers yet",
-  artH2: "Art votes — published, not the title",
-  art: "Festival phone votes on how the milk drinks look. Printed next to likes so you can see the gap. Art vote is not the champion.",
+  artH2: "Art side prizes — published, not the title",
+  art: "Overall look, novel pattern, contrast, consistency. Phone votes on the same cups that get drunk. Printed next to likes so you can see the gap. Side prizes are not the champion. Not a dump sport.",
   empty:
-    "First tournament not yet counted. When it is, this page shows likes (the title), art votes, and industry commissions.",
-  columns: ["Competitor", "Silent-path likes", "Art vote", "Festival commission"],
+    "First tournament not yet counted. When it is, this page shows likes (the title), art side prizes, and industry commissions.",
+  columns: [
+    "Competitor",
+    "Silent-path likes",
+    "Art side prizes",
+    "Festival commission",
+  ],
 } as const;
 
 export const WEC_PAGE = {
   title: "WEC — World Barista Tournament",
   h1: "WEC is the espresso knockout. WBT is the café tournament.",
-  lede: "World Espresso Championship came first: paired espresso, same honesty about two cups. It stays that. World Barista Tournament is the full café job under the same two-cup law, decided by paid ordinary drinkers on the silent path.",
+  lede: "World Espresso Championship came first: paired espresso, same honesty about two cups. It stays that. World Barista Tournament is the full café job under the same two-cup law, decided by paid ordinary drinkers. Both sit under World Coffee Tournaments. WBT does not replace WEC.",
   lines: [
     "WEC job: espresso.",
     "WBT job: espresso-based, milk, batch, hand brew, cold brew.",
     "Both: two cups at the same time.",
-    "WBT sitters: ordinary drinkers who paid. Silent wing. They do not see the festival.",
+    "WBT sitters: ordinary drinkers who paid.",
     "WBT coffee: competitor-chosen list; hopper skill per colour.",
     "A WEC result does not seed WBT. A WBT champion is not automatically WEC champion.",
     "WBT public home: worldbaristatournament.com. Umbrella is World Coffee Tournaments at www.worldcoffeetournaments.com. The WEC site stays WEC on its own host.",
@@ -389,4 +403,7 @@ export const FORBIDDEN = [
   "championship platform",
   "bergamot",
   "jasmine",
+  "world latte art",
+  "wlac",
+  "sustainability director",
 ] as const;
