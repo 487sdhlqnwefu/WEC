@@ -13,6 +13,7 @@ export const WBT_PUBLIC_HOST = "worldbaristatournament.com";
 /** Live umbrella. Prefer www; they are fixing the apex. */
 export const UMBRELLA_PUBLIC_HOST = "www.worldcoffeetournaments.com";
 export const UMBRELLA_PUBLIC_URL = "https://www.worldcoffeetournaments.com";
+export const SCC_PUBLIC_URL = "https://specialtycoffeecommunity.com";
 
 export type WbtSlug =
   | "home"

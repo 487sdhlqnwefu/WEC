@@ -71,6 +71,8 @@ describe("WBT public copy", () => {
     expect(ALL_COPY).toMatch(/worldbaristatournament\.com/);
     expect(ALL_COPY).toMatch(/www\.worldcoffeetournaments\.com/);
     expect(ALL_COPY).toMatch(/World Coffee Tournaments/);
+    expect(ALL_COPY).toMatch(/a World Coffee Tournaments event/);
+    expect(ALL_COPY).toMatch(/free membership later/);
     expect(ALL_COPY).not.toMatch(/judging app/i);
   });
 

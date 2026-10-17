@@ -13,12 +13,12 @@ export default function WecSibling() {
         ))}
       </ul>
       <div className="flex flex-wrap gap-3">
-        <WecHomeLink className="inline-flex rounded-md bg-wbt-brown text-wbt-paper px-5 py-2.5 text-sm font-medium hover:bg-wbt-ink">
+        <WecHomeLink className="inline-flex bg-wbt-gold text-wbt-paper px-5 py-2.5 text-xs uppercase tracking-[0.16em] hover:bg-wbt-ink">
           {WEC_PAGE.wecHome}
         </WecHomeLink>
         <Link
           to={wbtHref("home")}
-          className="inline-flex rounded-md border border-wbt-ink px-5 py-2.5 text-sm font-medium"
+          className="inline-flex border border-wbt-ink px-5 py-2.5 text-xs uppercase tracking-[0.16em]"
         >
           {WEC_PAGE.wbtHome}
         </Link>

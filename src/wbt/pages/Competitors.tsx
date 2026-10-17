@@ -6,7 +6,7 @@ export default function Competitors() {
   return (
     <PageShell title={COMPETITORS.h1} lede={COMPETITORS.lede}>
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{COMPETITORS.winH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{COMPETITORS.winH2}</h2>
         {COMPETITORS.win.map((p) => (
           <p key={p} className="text-wbt-mute max-w-2xl mb-3">
             {p}
@@ -15,7 +15,7 @@ export default function Competitors() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{COMPETITORS.barH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{COMPETITORS.barH2}</h2>
         <ul className="space-y-2 text-wbt-mute max-w-2xl">
           {COMPETITORS.bar.map((line) => (
             <li key={line}>{line}</li>
@@ -24,7 +24,7 @@ export default function Competitors() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{COMPETITORS.listH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{COMPETITORS.listH2}</h2>
         {COMPETITORS.list.map((p) => (
           <p key={p} className="text-wbt-mute max-w-2xl mb-3">
             {p}
@@ -33,17 +33,17 @@ export default function Competitors() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{COMPETITORS.kitH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{COMPETITORS.kitH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{COMPETITORS.kit}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{COMPETITORS.fieldH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{COMPETITORS.fieldH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{COMPETITORS.field}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-2">{COMPETITORS.formH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-2">{COMPETITORS.formH2}</h2>
         <p className="text-wbt-mute max-w-2xl mb-6">{COMPETITORS.formIntro}</p>
         <WbtForm
           subjectPrefix="[WBT competitor]"

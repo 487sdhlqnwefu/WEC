@@ -6,7 +6,7 @@ export default function Festival() {
   return (
     <PageShell title={FESTIVAL.h1} lede={FESTIVAL.lede}>
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{FESTIVAL.whoH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.whoH2}</h2>
         <ul className="space-y-2 text-wbt-mute max-w-2xl">
           {FESTIVAL.who.map((line) => (
             <li key={line}>{line}</li>
@@ -15,22 +15,22 @@ export default function Festival() {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{FESTIVAL.gamesH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.gamesH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{FESTIVAL.games}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{FESTIVAL.coffeeH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.coffeeH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{FESTIVAL.coffee}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{FESTIVAL.moneyH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.moneyH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{FESTIVAL.money}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-2">{FESTIVAL.formH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-2">{FESTIVAL.formH2}</h2>
         <p className="text-wbt-mute max-w-2xl mb-6">{FESTIVAL.formIntro}</p>
         <WbtForm
           subjectPrefix="[WBT festival]"

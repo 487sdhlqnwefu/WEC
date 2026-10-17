@@ -58,7 +58,7 @@ export function WbtForm({
       <button
         type="submit"
         disabled={pending}
-        className="inline-flex items-center rounded-md bg-wbt-brown text-wbt-paper px-5 py-2.5 text-sm font-medium hover:bg-wbt-ink disabled:opacity-60"
+        className="inline-flex items-center bg-wbt-gold text-wbt-paper px-5 py-2.5 text-xs uppercase tracking-[0.16em] font-medium hover:opacity-90 disabled:opacity-60"
       >
         {pending ? "Sending…" : submitLabel}
       </button>

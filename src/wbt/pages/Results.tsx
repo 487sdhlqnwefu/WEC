@@ -5,22 +5,22 @@ export default function Results() {
   return (
     <PageShell title={RESULTS.h1} lede={RESULTS.lede}>
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{RESULTS.likesH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.likesH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{RESULTS.likes}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{RESULTS.commissionsH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.commissionsH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{RESULTS.commissions}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{RESULTS.factH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.factH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{RESULTS.fact}</p>
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-3">{RESULTS.emptyH2}</h2>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.emptyH2}</h2>
         <p className="text-wbt-mute max-w-2xl mb-6">{RESULTS.empty}</p>
         <div className="overflow-x-auto border border-wbt-line rounded-lg bg-wbt-cream">
           <table className="w-full text-sm text-left">

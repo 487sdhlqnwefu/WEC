@@ -27,6 +27,8 @@ export const FOOTER = {
   canonical:
     "WBT: worldbaristatournament.com. Umbrella — World Coffee Tournaments: www.worldcoffeetournaments.com.",
   umbrellaName: "World Coffee Tournaments",
+  family: "a World Coffee Tournaments event",
+  scc: "Specialty Coffee Community — free membership later",
 } as const;
 
 export const COLOURS = [
