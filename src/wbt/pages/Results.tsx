@@ -10,6 +10,11 @@ export default function Results() {
       </section>
 
       <section>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.artH2}</h2>
+        <p className="text-wbt-mute max-w-2xl">{RESULTS.art}</p>
+      </section>
+
+      <section>
         <h2 className="wbt-display text-3xl uppercase mb-3">{RESULTS.commissionsH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{RESULTS.commissions}</p>
       </section>
@@ -35,7 +40,7 @@ export default function Results() {
             </thead>
             <tbody>
               <tr>
-                <td colSpan={3} className="px-4 py-8 text-wbt-mute">
+                <td colSpan={4} className="px-4 py-8 text-wbt-mute">
                   Empty until event one locks.
                 </td>
               </tr>

@@ -67,6 +67,12 @@ describe("WBT public copy", () => {
     expect(ALL_COPY).toMatch(/Field of 16|Sixteen baristas/);
     expect(ALL_COPY).toMatch(/name the luck/i);
     expect(ALL_COPY).toMatch(/will not see the show/i);
+    expect(ALL_COPY).toMatch(/may enter the festival/i);
+    expect(ALL_COPY).toMatch(/latte art is the bridge/i);
+    expect(ALL_COPY).toMatch(/pair pack/i);
+    expect(ALL_COPY).toMatch(/cup taster/i);
+    expect(ALL_COPY).toMatch(/art vote is not the title|art vote is published/i);
+    expect(ALL_COPY).toMatch(/pass through (a )?closed door/i);
     expect(ALL_COPY).toMatch(/commission/i);
     expect(ALL_COPY).toMatch(/worldbaristatournament\.com/);
     expect(ALL_COPY).toMatch(/www\.worldcoffeetournaments\.com/);

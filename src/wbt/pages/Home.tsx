@@ -22,14 +22,17 @@ export default function WbtHome() {
             {HOME.h1}
           </h1>
           <p className="mt-6 text-lg text-wbt-mute max-w-2xl leading-relaxed">{HOME.lede}</p>
-          <div className="mt-10 grid md:grid-cols-2 gap-4 max-w-4xl">
-            <Link to={wbtHref("sitters")} className="wbt-ticket block p-6 pl-8 hover:border-wbt-gold">
+          <div className="mt-10 flex flex-col md:flex-row md:items-stretch gap-3 max-w-5xl">
+            <Link to={wbtHref("sitters")} className="wbt-ticket block p-6 pl-8 hover:border-wbt-gold md:flex-1">
               <p className="text-[10px] uppercase tracking-[0.24em] text-wbt-gold mb-2">Door · silent</p>
               <h2 className="wbt-display text-3xl uppercase">{HOME.pathsSilentTitle}</h2>
               <p className="text-sm text-wbt-mute mt-3">{HOME.pathsSilent}</p>
               <p className="mt-5 text-xs uppercase tracking-[0.16em] text-wbt-ink">{HOME.sit} →</p>
             </Link>
-            <Link to={wbtHref("festival")} className="wbt-ticket block p-6 pl-8 hover:border-wbt-red">
+            <p className="md:self-center md:max-w-[14rem] text-sm text-wbt-gold text-center px-2">
+              {HOME.pass}
+            </p>
+            <Link to={wbtHref("festival")} className="wbt-ticket block p-6 pl-8 hover:border-wbt-red md:flex-1">
               <p className="text-[10px] uppercase tracking-[0.24em] text-wbt-red mb-2">Door · festival</p>
               <h2 className="wbt-display text-3xl uppercase">{HOME.pathsFestTitle}</h2>
               <p className="text-sm text-wbt-mute mt-3">{HOME.pathsFest}</p>

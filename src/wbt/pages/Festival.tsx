@@ -15,6 +15,16 @@ export default function Festival() {
       </section>
 
       <section>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.bridgeH2}</h2>
+        <p className="text-wbt-mute max-w-2xl">{FESTIVAL.bridge}</p>
+      </section>
+
+      <section>
+        <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.packsH2}</h2>
+        <p className="text-wbt-mute max-w-2xl">{FESTIVAL.packs}</p>
+      </section>
+
+      <section>
         <h2 className="wbt-display text-3xl uppercase mb-3">{FESTIVAL.gamesH2}</h2>
         <p className="text-wbt-mute max-w-2xl">{FESTIVAL.games}</p>
       </section>
