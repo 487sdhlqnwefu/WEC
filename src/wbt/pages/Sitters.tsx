@@ -6,6 +6,15 @@ export default function Sitters() {
   return (
     <PageShell title={SITTERS.h1} lede={SITTERS.lede}>
       <section>
+        <h2 className="text-2xl font-semibold mb-3">{SITTERS.silentH2}</h2>
+        <ul className="space-y-2 text-wbt-mute max-w-2xl">
+          {SITTERS.silent.map((line) => (
+            <li key={line}>{line}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section>
         <h2 className="text-2xl font-semibold mb-3">{SITTERS.seatH2}</h2>
         <ol className="space-y-2 text-wbt-mute max-w-2xl list-decimal list-inside">
           {SITTERS.seat.map((line) => (
@@ -41,13 +50,19 @@ export default function Sitters() {
           success={SITTERS.success}
           error={SITTERS.error}
           extraMessage={(data) =>
-            data.get("weekly") ? "Drinks coffee at least weekly: yes" : ""
+            [
+              data.get("weekly") ? "Drinks coffee at least weekly: yes" : "",
+              data.get("silent") ? "Understands they will not see the show: yes" : "",
+            ]
+              .filter(Boolean)
+              .join("\n")
           }
         >
           <Field name="name" label={SITTERS.name} required />
           <Field name="email" label={SITTERS.email} type="email" required />
           <Field name="city" label={SITTERS.city} />
           <Check name="weekly" label={SITTERS.weekly} required />
+          <Check name="silent" label={SITTERS.silentCheck} required />
           <Field name="note" label={SITTERS.note} as="textarea" />
         </WbtForm>
       </section>

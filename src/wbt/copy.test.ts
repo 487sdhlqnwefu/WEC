@@ -3,13 +3,15 @@ import {
   COLOURS,
   COMPETITORS,
   CONTACT,
+  FESTIVAL,
+  FOOTER,
   FORBIDDEN,
   HOME,
   HOW,
   LUCK,
-  NAV,
+  NAV_ITEMS,
+  RESULTS,
   SITTERS,
-  WBT_PATHS,
   WEC_PAGE,
 } from "./copy";
 
@@ -26,24 +28,29 @@ const ALL_COPY = flatten({
   HOME,
   HOW,
   SITTERS,
+  FESTIVAL,
+  RESULTS,
   COMPETITORS,
   LUCK,
   WEC_PAGE,
   CONTACT,
   COLOURS,
-  NAV,
+  NAV_ITEMS,
+  FOOTER,
 });
 
 describe("WBT public copy", () => {
-  it("covers the seven required pages", () => {
-    expect(NAV.map((item) => item.href)).toEqual([
-      WBT_PATHS.home,
-      WBT_PATHS.how,
-      WBT_PATHS.sitters,
-      WBT_PATHS.competitors,
-      WBT_PATHS.luck,
-      WBT_PATHS.wec,
-      WBT_PATHS.contact,
+  it("covers dual-path IA", () => {
+    expect(NAV_ITEMS.map((item) => item.slug)).toEqual([
+      "home",
+      "how",
+      "sitters",
+      "festival",
+      "results",
+      "competitors",
+      "luck",
+      "wec",
+      "contact",
     ]);
   });
 
@@ -59,6 +66,11 @@ describe("WBT public copy", () => {
     expect(ALL_COPY).toMatch(/two to five café coffees/);
     expect(ALL_COPY).toMatch(/Field of 16|Sixteen baristas/);
     expect(ALL_COPY).toMatch(/name the luck/i);
+    expect(ALL_COPY).toMatch(/will not see the show/i);
+    expect(ALL_COPY).toMatch(/commission/i);
+    expect(ALL_COPY).toMatch(/worldbaristatournament\.com/);
+    expect(ALL_COPY).toMatch(/www\.worldcoffeetournaments\.com/);
+    expect(ALL_COPY).toMatch(/World Coffee Tournaments/);
     expect(ALL_COPY).not.toMatch(/judging app/i);
   });
 

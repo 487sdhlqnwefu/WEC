@@ -5,11 +5,19 @@ import {
   COLOURS,
   CONTACT_EMAIL,
   FOOTER,
-  NAV,
+  NAV_ITEMS,
   SIBLING_LINK,
-  WBT_PATHS,
   WORDMARK,
 } from "./copy";
+import {
+  isActiveWbtPath,
+  isWbtRootHost,
+  UMBRELLA_PUBLIC_URL,
+  WBT_PUBLIC_HOST,
+  wbtHref,
+  wbtPathKey,
+} from "./host";
+import WecHomeLink from "./WecHomeLink";
 import {
   Sheet,
   SheetClose,
@@ -20,13 +28,15 @@ import {
 import { Toaster } from "@/components/ui/sonner";
 
 const TITLES: Record<string, string> = {
-  [WBT_PATHS.home]: "World Barista Tournament",
-  [WBT_PATHS.how]: "How it works — World Barista Tournament",
-  [WBT_PATHS.sitters]: "Sitters — World Barista Tournament",
-  [WBT_PATHS.competitors]: "Competitors — World Barista Tournament",
-  [WBT_PATHS.luck]: "Luck vs skill — World Barista Tournament",
-  [WBT_PATHS.wec]: "WEC — World Barista Tournament",
-  [WBT_PATHS.contact]: "Contact — World Barista Tournament",
+  "/": "World Barista Tournament",
+  "/how-it-works": "How it works — World Barista Tournament",
+  "/sitters": "Sitters — World Barista Tournament",
+  "/festival": "Festival — World Barista Tournament",
+  "/results": "Likes vs commission — World Barista Tournament",
+  "/competitors": "Competitors — World Barista Tournament",
+  "/luck": "Luck vs skill — World Barista Tournament",
+  "/wec": "WEC — World Barista Tournament",
+  "/contact": "Contact — World Barista Tournament",
 };
 
 function ColourRule() {
@@ -45,9 +55,10 @@ export default function WbtLayout() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    document.title = TITLES[location.pathname] ?? "World Barista Tournament";
+    const key = wbtPathKey(location.pathname);
+    document.title = TITLES[key] ?? "World Barista Tournament";
     return () => {
-      document.title = "World Espresso Championship";
+      if (!isWbtRootHost()) document.title = "World Espresso Championship";
     };
   }, [location.pathname]);
 
@@ -56,21 +67,22 @@ export default function WbtLayout() {
       <ColourRule />
       <header className="sticky top-0 z-50 bg-wbt-cream/95 backdrop-blur border-b border-wbt-line">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
-          <Link to={WBT_PATHS.home} className="leading-tight shrink-0">
+          <Link to={wbtHref("home")} className="leading-tight shrink-0">
             <span className="block text-sm font-bold tracking-[0.18em]">{WORDMARK.line1}</span>
             <span className="block text-[10px] tracking-[0.28em] text-wbt-brown">
               {WORDMARK.line2}
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1">
-            {NAV.map((item) => {
-              const active = location.pathname === item.href;
+          <nav className="hidden xl:flex items-center gap-0.5 flex-wrap justify-end">
+            {NAV_ITEMS.map((item) => {
+              const href = wbtHref(item.slug);
+              const active = isActiveWbtPath(location.pathname, item.slug);
               return (
                 <Link
-                  key={item.href}
-                  to={item.href}
-                  className={`px-2.5 py-1.5 text-sm rounded-md ${
+                  key={item.slug}
+                  to={href}
+                  className={`px-2 py-1.5 text-xs rounded-md ${
                     active
                       ? "bg-wbt-brown text-wbt-paper"
                       : "text-wbt-mute hover:text-wbt-ink hover:bg-wbt-paper"
@@ -83,17 +95,14 @@ export default function WbtLayout() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <Link
-              to={WBT_PATHS.wecHome}
-              className="hidden sm:inline text-xs text-wbt-mute hover:text-wbt-ink underline-offset-4 hover:underline"
-            >
+            <WecHomeLink className="hidden sm:inline text-xs text-wbt-mute hover:text-wbt-ink underline-offset-4 hover:underline">
               {SIBLING_LINK}
-            </Link>
+            </WecHomeLink>
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <button
                   type="button"
-                  className="lg:hidden p-2 text-wbt-ink"
+                  className="xl:hidden p-2 text-wbt-ink"
                   aria-label="Open menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -102,10 +111,10 @@ export default function WbtLayout() {
               <SheetContent side="right" className="bg-wbt-cream border-wbt-line w-[280px]">
                 <SheetTitle className="sr-only">WBT menu</SheetTitle>
                 <div className="flex flex-col gap-1 mt-8">
-                  {NAV.map((item) => (
-                    <SheetClose asChild key={item.href}>
+                  {NAV_ITEMS.map((item) => (
+                    <SheetClose asChild key={item.slug}>
                       <Link
-                        to={item.href}
+                        to={wbtHref(item.slug)}
                         className="px-3 py-2 text-sm text-wbt-ink hover:bg-wbt-paper rounded-md"
                       >
                         {item.label}
@@ -113,12 +122,9 @@ export default function WbtLayout() {
                     </SheetClose>
                   ))}
                   <SheetClose asChild>
-                    <Link
-                      to={WBT_PATHS.wecHome}
-                      className="px-3 py-2 text-sm text-wbt-mute"
-                    >
+                    <WecHomeLink className="px-3 py-2 text-sm text-wbt-mute">
                       {SIBLING_LINK}
-                    </Link>
+                    </WecHomeLink>
                   </SheetClose>
                 </div>
               </SheetContent>
@@ -136,20 +142,33 @@ export default function WbtLayout() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
           <p className="text-sm text-wbt-mute max-w-xl mb-6">{FOOTER.blurb}</p>
           <nav className="flex flex-wrap gap-x-4 gap-y-2 text-sm mb-8">
-            {NAV.map((item) => (
+            {NAV_ITEMS.map((item) => (
               <Link
-                key={item.href}
-                to={item.href}
+                key={item.slug}
+                to={wbtHref(item.slug)}
                 className="text-wbt-ink hover:text-wbt-brown"
               >
                 {item.label}
               </Link>
             ))}
-            <Link to={WBT_PATHS.wecHome} className="text-wbt-mute hover:text-wbt-ink">
+            <WecHomeLink className="text-wbt-mute hover:text-wbt-ink">
               {SIBLING_LINK}
-            </Link>
+            </WecHomeLink>
           </nav>
           <p className="text-xs text-wbt-mute">{FOOTER.legal}</p>
+          <p className="text-xs text-wbt-mute mt-2">{FOOTER.canonical}</p>
+          <p className="text-xs text-wbt-mute mt-2">
+            <a className="hover:text-wbt-ink underline-offset-4 hover:underline" href={`https://${WBT_PUBLIC_HOST}`}>
+              {WBT_PUBLIC_HOST}
+            </a>
+            <span> · </span>
+            <a
+              className="hover:text-wbt-ink underline-offset-4 hover:underline"
+              href={UMBRELLA_PUBLIC_URL}
+            >
+              {FOOTER.umbrellaName}
+            </a>
+          </p>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             className="text-xs text-wbt-mute hover:text-wbt-ink mt-2 inline-block"

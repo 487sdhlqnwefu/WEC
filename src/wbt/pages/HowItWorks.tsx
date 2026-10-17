@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import { HOW, WBT_PATHS } from "../copy";
+import { HOW } from "../copy";
+import { wbtHref } from "../host";
 import { PageShell } from "../WbtLayout";
 
 export default function HowItWorks() {
@@ -44,11 +45,15 @@ export default function HowItWorks() {
           ))}
         </ul>
         <p className="mt-6 text-sm">
-          <Link to={WBT_PATHS.sitters} className="text-wbt-brown hover:underline">
+          <Link to={wbtHref("sitters")} className="text-wbt-brown hover:underline">
             Sitters
           </Link>
           <span className="text-wbt-mute"> · </span>
-          <Link to={WBT_PATHS.competitors} className="text-wbt-brown hover:underline">
+          <Link to={wbtHref("festival")} className="text-wbt-brown hover:underline">
+            Festival
+          </Link>
+          <span className="text-wbt-mute"> · </span>
+          <Link to={wbtHref("competitors")} className="text-wbt-brown hover:underline">
             Competitors
           </Link>
         </p>

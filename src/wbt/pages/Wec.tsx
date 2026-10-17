@@ -1,6 +1,8 @@
 import { Link } from "react-router";
-import { WBT_PATHS, WEC_PAGE } from "../copy";
+import { WEC_PAGE } from "../copy";
+import { wbtHref } from "../host";
 import { PageShell } from "../WbtLayout";
+import WecHomeLink from "../WecHomeLink";
 
 export default function WecSibling() {
   return (
@@ -11,14 +13,11 @@ export default function WecSibling() {
         ))}
       </ul>
       <div className="flex flex-wrap gap-3">
-        <Link
-          to={WBT_PATHS.wecHome}
-          className="inline-flex rounded-md bg-wbt-brown text-wbt-paper px-5 py-2.5 text-sm font-medium hover:bg-wbt-ink"
-        >
+        <WecHomeLink className="inline-flex rounded-md bg-wbt-brown text-wbt-paper px-5 py-2.5 text-sm font-medium hover:bg-wbt-ink">
           {WEC_PAGE.wecHome}
-        </Link>
+        </WecHomeLink>
         <Link
-          to={WBT_PATHS.home}
+          to={wbtHref("home")}
           className="inline-flex rounded-md border border-wbt-ink px-5 py-2.5 text-sm font-medium"
         >
           {WEC_PAGE.wbtHome}

@@ -40,6 +40,9 @@ export default function WbtContact() {
         {about === "Unpaid kit loan" ? (
           <p className="text-sm text-wbt-mute">{CONTACT.kitHint}</p>
         ) : null}
+        {about === "Silent-path till" ? (
+          <p className="text-sm text-wbt-mute">{CONTACT.posHint}</p>
+        ) : null}
         <Field name="message" label={CONTACT.message} as="textarea" required />
       </WbtForm>
     </PageShell>
